@@ -1,0 +1,202 @@
+syntax = "proto3";
+
+package klash;
+
+import "koinos/options.proto"; 
+
+message empty_message {}
+
+message uint64 {
+  uint64 value = 1 [jstype = JS_STRING];
+}
+
+message uint64Array {
+  repeated uint64 values = 1 [jstype = JS_STRING];
+}
+
+message tournament_config {
+  uint64 prize = 1 [jstype = JS_STRING];
+  uint64 sign_up_duration = 2 [jstype = JS_STRING];
+}
+
+message full_tournament_config {
+  uint64 tournament_id = 1 [jstype = JS_STRING];
+  uint64 tournament_sign_up_start = 2 [jstype = JS_STRING];
+  bool is_tournament_started = 3;
+  tournament_config config = 4;
+}
+
+message contract_metadata {
+  bytes owner = 1 [(koinos.btype) = ADDRESS];
+}
+
+message player {
+  bytes address = 1 [(koinos.btype) = ADDRESS];
+}
+
+message players {
+  repeated player players = 1;
+}
+
+message sign {
+  string sign_hash = 1;
+  uint64 sign = 2 [jstype = JS_STRING];
+}
+
+message match {
+  player player1 = 1;
+  player player2 = 2;
+  uint64 score1 = 3 [jstype = JS_STRING];
+  uint64 score2 = 4 [jstype = JS_STRING];
+  uint64 winner = 5 [jstype = JS_STRING];
+  uint64 round = 6 [jstype = JS_STRING];
+  uint64 tournament_id = 7 [jstype = JS_STRING];
+  sign sign1 = 8;
+  sign sign2 = 9;
+}
+
+message round {
+  repeated match matches = 1;
+}
+
+message tournament_tree {
+  repeated round rounds = 1;
+}
+
+message waiting_players_rounds {
+  repeated players waiting_players_rounds = 1;
+}
+
+// @description Get the token metadata
+// @read-only true
+// @result contract_metadata
+message get_contract_metadata_arguments {}
+
+// @description Create a new tournament and open sign-ups
+// @read-only false
+// @result full_tournament_config
+message create_tournament_arguments {
+  tournament_config config = 1;
+}
+
+// @description Start the tournament
+// @read-only false
+// @result tournament_tree
+message start_tournament_arguments {}
+
+// @description Get the current tournament config
+// @read-only true
+// @result full_tournament_config
+message get_tournament_config_arguments {}
+
+// @description Get the current tournament tree
+// @read-only true
+// @result tournament_tree
+message get_tournament_tree_arguments {}
+
+// @description Get the current tournament waiting players
+// @read-only true
+// @result waiting_players_rounds
+message get_waiting_players_arguments {}
+
+// @description Get the number of unfinished matches for each round
+// @read-only true
+// @result uint64Array
+message get_unfinished_matches_arguments {}
+
+// @description Sign up to the current tournament
+// @read-only false
+// @result empty_message
+message sign_up_arguments {
+  bytes from = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description Play a sign in a match (it is a rock-paper-scissors game)
+// @read-only false
+// @result empty_message
+message play_sign_arguments {
+  bytes from = 1 [(koinos.btype) = ADDRESS];
+  string sign_hash = 2;
+}
+
+// @description Verify the sign after both players have sent their hashed signs
+// @read-only false
+// @result empty_message
+message verify_sign_arguments {
+  bytes from = 1 [(koinos.btype) = ADDRESS];
+  uint64 sign = 2;
+  uint64 random_seed = 3 [jstype = JS_STRING];
+}
+
+// @description Get the current match for a specific player
+// @read-only true
+// @result match
+message get_current_match_arguments {
+  bytes from = 1 [(koinos.btype) = ADDRESS];
+}
+
+// @description Get the current tournament players
+// @read-only true
+// @result players
+message get_signed_up_players_arguments {}
+
+// @description Update the owner of the contract
+// @read-only false
+// @result empty_message
+message update_owner_arguments {
+  bytes new_owner = 1 [(koinos.btype) = ADDRESS];
+}
+
+message tournament_created_event {
+  full_tournament_config config = 1;
+}
+
+message player_signed_up_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+}
+
+message tournament_started_event {
+  tournament_tree tree = 1;
+  waiting_players_rounds waiting_players = 2;
+}
+
+message sign_played_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+  string sign_hash = 2;
+}
+
+message sign_verified_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+  uint64 sign = 2 [jstype = JS_STRING];
+}
+
+message match_round_finished_event {
+  match match = 1;
+  bytes round_winner = 2 [(koinos.btype) = ADDRESS];
+}
+
+message match_finished_event {
+  match match = 1;
+}
+
+message tournament_round_finished_event {
+  uint64 round = 1 [jstype = JS_STRING];
+}
+
+message new_match_created_event {
+  match match = 1;
+}
+
+message new_player_waiting_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+  uint64 round = 2 [jstype = JS_STRING];
+}
+
+message player_skipped_round_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+  uint64 round = 2 [jstype = JS_STRING];
+}
+
+message tournament_finished_event {
+  match match = 1;
+}

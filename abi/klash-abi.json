@@ -1,0 +1,550 @@
+{
+    "methods": {
+        "get_contract_metadata": {
+            "input": "klash.get_contract_metadata_arguments",
+            "output": "klash.contract_metadata",
+            "description": "Get the token metadata",
+            "entryPoint": 2018486792,
+            "readOnly": true
+        },
+        "create_tournament": {
+            "input": "klash.create_tournament_arguments",
+            "output": "klash.full_tournament_config",
+            "description": "Create a new tournament and open sign-ups",
+            "entryPoint": 3659537568,
+            "readOnly": false
+        },
+        "start_tournament": {
+            "input": "klash.start_tournament_arguments",
+            "output": "klash.tournament_tree",
+            "description": "Start the tournament",
+            "entryPoint": 1941351620,
+            "readOnly": false
+        },
+        "get_tournament_config": {
+            "input": "klash.get_tournament_config_arguments",
+            "output": "klash.full_tournament_config",
+            "description": "Get the current tournament config",
+            "entryPoint": 1197905317,
+            "readOnly": true
+        },
+        "get_tournament_tree": {
+            "input": "klash.get_tournament_tree_arguments",
+            "output": "klash.tournament_tree",
+            "description": "Get the current tournament tree",
+            "entryPoint": 3488782159,
+            "readOnly": true
+        },
+        "get_waiting_players": {
+            "input": "klash.get_waiting_players_arguments",
+            "output": "klash.waiting_players_rounds",
+            "description": "Get the current tournament waiting players",
+            "entryPoint": 3563274264,
+            "readOnly": true
+        },
+        "get_unfinished_matches": {
+            "input": "klash.get_unfinished_matches_arguments",
+            "output": "klash.uint64Array",
+            "description": "Get the number of unfinished matches for each round",
+            "entryPoint": 1821174149,
+            "readOnly": true
+        },
+        "sign_up": {
+            "input": "klash.sign_up_arguments",
+            "output": "klash.empty_message",
+            "description": "Sign up to the current tournament",
+            "entryPoint": 1896143594,
+            "readOnly": false
+        },
+        "play_sign": {
+            "input": "klash.play_sign_arguments",
+            "output": "klash.empty_message",
+            "description": "Play a sign in a match (it is a rock-paper-scissors game)",
+            "entryPoint": 4190815200,
+            "readOnly": false
+        },
+        "verify_sign": {
+            "input": "klash.verify_sign_arguments",
+            "output": "klash.empty_message",
+            "description": "Verify the sign after both players have sent their hashed signs",
+            "entryPoint": 2054509980,
+            "readOnly": false
+        },
+        "get_current_match": {
+            "input": "klash.get_current_match_arguments",
+            "output": "klash.match",
+            "description": "Get the current match for a specific player",
+            "entryPoint": 2211686144,
+            "readOnly": true
+        },
+        "get_signed_up_players": {
+            "input": "klash.get_signed_up_players_arguments",
+            "output": "klash.players",
+            "description": "Get the current tournament players",
+            "entryPoint": 2692486419,
+            "readOnly": true
+        },
+        "update_owner": {
+            "input": "klash.update_owner_arguments",
+            "output": "klash.empty_message",
+            "description": "Update the owner of the contract",
+            "entryPoint": 1220346089,
+            "readOnly": false
+        }
+    },
+    "types": {
+        "nested": {
+            "klash": {
+                "nested": {
+                    "empty_message": {
+                        "fields": {}
+                    },
+                    "uint64": {
+                        "fields": {
+                            "value": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "uint64Array": {
+                        "fields": {
+                            "values": {
+                                "rule": "repeated",
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "tournament_config": {
+                        "fields": {
+                            "prize": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "signUpDuration": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "full_tournament_config": {
+                        "fields": {
+                            "tournamentId": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "tournamentSignUpStart": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "isTournamentStarted": {
+                                "type": "bool",
+                                "id": 3
+                            },
+                            "config": {
+                                "type": "tournament_config",
+                                "id": 4
+                            }
+                        }
+                    },
+                    "contract_metadata": {
+                        "fields": {
+                            "owner": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "player": {
+                        "fields": {
+                            "address": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "players": {
+                        "fields": {
+                            "players": {
+                                "rule": "repeated",
+                                "type": "player",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "sign": {
+                        "fields": {
+                            "signHash": {
+                                "type": "string",
+                                "id": 1
+                            },
+                            "sign": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "match": {
+                        "fields": {
+                            "player1": {
+                                "type": "player",
+                                "id": 1
+                            },
+                            "player2": {
+                                "type": "player",
+                                "id": 2
+                            },
+                            "score1": {
+                                "type": "uint64",
+                                "id": 3,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "score2": {
+                                "type": "uint64",
+                                "id": 4,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "winner": {
+                                "type": "uint64",
+                                "id": 5,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "round": {
+                                "type": "uint64",
+                                "id": 6,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "tournamentId": {
+                                "type": "uint64",
+                                "id": 7,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "sign1": {
+                                "type": "sign",
+                                "id": 8
+                            },
+                            "sign2": {
+                                "type": "sign",
+                                "id": 9
+                            }
+                        }
+                    },
+                    "round": {
+                        "fields": {
+                            "matches": {
+                                "rule": "repeated",
+                                "type": "match",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "tournament_tree": {
+                        "fields": {
+                            "rounds": {
+                                "rule": "repeated",
+                                "type": "round",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "waiting_players_rounds": {
+                        "fields": {
+                            "waitingPlayersRounds": {
+                                "rule": "repeated",
+                                "type": "players",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "get_contract_metadata_arguments": {
+                        "fields": {}
+                    },
+                    "create_tournament_arguments": {
+                        "fields": {
+                            "config": {
+                                "type": "tournament_config",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "start_tournament_arguments": {
+                        "fields": {}
+                    },
+                    "get_tournament_config_arguments": {
+                        "fields": {}
+                    },
+                    "get_tournament_tree_arguments": {
+                        "fields": {}
+                    },
+                    "get_waiting_players_arguments": {
+                        "fields": {}
+                    },
+                    "get_unfinished_matches_arguments": {
+                        "fields": {}
+                    },
+                    "sign_up_arguments": {
+                        "fields": {
+                            "from": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "play_sign_arguments": {
+                        "fields": {
+                            "from": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "signHash": {
+                                "type": "string",
+                                "id": 2
+                            }
+                        }
+                    },
+                    "verify_sign_arguments": {
+                        "fields": {
+                            "from": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "sign": {
+                                "type": "uint64",
+                                "id": 2
+                            },
+                            "randomSeed": {
+                                "type": "uint64",
+                                "id": 3,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "get_current_match_arguments": {
+                        "fields": {
+                            "from": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "get_signed_up_players_arguments": {
+                        "fields": {}
+                    },
+                    "update_owner_arguments": {
+                        "fields": {
+                            "newOwner": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "tournament_created_event": {
+                        "fields": {
+                            "config": {
+                                "type": "full_tournament_config",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "player_signed_up_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "tournament_started_event": {
+                        "fields": {
+                            "tree": {
+                                "type": "tournament_tree",
+                                "id": 1
+                            },
+                            "waitingPlayers": {
+                                "type": "waiting_players_rounds",
+                                "id": 2
+                            }
+                        }
+                    },
+                    "sign_played_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "signHash": {
+                                "type": "string",
+                                "id": 2
+                            }
+                        }
+                    },
+                    "sign_verified_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "sign": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "match_round_finished_event": {
+                        "fields": {
+                            "match": {
+                                "type": "match",
+                                "id": 1
+                            },
+                            "roundWinner": {
+                                "type": "bytes",
+                                "id": 2,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
+                    "match_finished_event": {
+                        "fields": {
+                            "match": {
+                                "type": "match",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "tournament_round_finished_event": {
+                        "fields": {
+                            "round": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "new_match_created_event": {
+                        "fields": {
+                            "match": {
+                                "type": "match",
+                                "id": 1
+                            }
+                        }
+                    },
+                    "new_player_waiting_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "round": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "player_skipped_round_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "round": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "tournament_finished_event": {
+                        "fields": {
+                            "match": {
+                                "type": "match",
+                                "id": 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

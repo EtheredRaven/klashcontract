@@ -1,0 +1,96 @@
+{
+    "methods": {
+        "get_contract_metadata": {
+            "argument": "klash.get_contract_metadata_arguments",
+            "return": "klash.contract_metadata",
+            "description": "Get the token metadata",
+            "entry-point": "0x784faa08",
+            "read-only": true
+        },
+        "create_tournament": {
+            "argument": "klash.create_tournament_arguments",
+            "return": "klash.full_tournament_config",
+            "description": "Create a new tournament and open sign-ups",
+            "entry-point": "0xda201ca0",
+            "read-only": false
+        },
+        "start_tournament": {
+            "argument": "klash.start_tournament_arguments",
+            "return": "klash.tournament_tree",
+            "description": "Start the tournament",
+            "entry-point": "0x73b6acc4",
+            "read-only": false
+        },
+        "get_tournament_config": {
+            "argument": "klash.get_tournament_config_arguments",
+            "return": "klash.full_tournament_config",
+            "description": "Get the current tournament config",
+            "entry-point": "0x476695a5",
+            "read-only": true
+        },
+        "get_tournament_tree": {
+            "argument": "klash.get_tournament_tree_arguments",
+            "return": "klash.tournament_tree",
+            "description": "Get the current tournament tree",
+            "entry-point": "0xcff2974f",
+            "read-only": true
+        },
+        "get_waiting_players": {
+            "argument": "klash.get_waiting_players_arguments",
+            "return": "klash.waiting_players_rounds",
+            "description": "Get the current tournament waiting players",
+            "entry-point": "0xd4634018",
+            "read-only": true
+        },
+        "get_unfinished_matches": {
+            "argument": "klash.get_unfinished_matches_arguments",
+            "return": "klash.uint64Array",
+            "description": "Get the number of unfinished matches for each round",
+            "entry-point": "0x6c8ce985",
+            "read-only": true
+        },
+        "sign_up": {
+            "argument": "klash.sign_up_arguments",
+            "return": "klash.empty_message",
+            "description": "Sign up to the current tournament",
+            "entry-point": "0x7104daea",
+            "read-only": false
+        },
+        "play_sign": {
+            "argument": "klash.play_sign_arguments",
+            "return": "klash.empty_message",
+            "description": "Play a sign in a match (it is a rock-paper-scissors game)",
+            "entry-point": "0xf9cac3e0",
+            "read-only": false
+        },
+        "verify_sign": {
+            "argument": "klash.verify_sign_arguments",
+            "return": "klash.empty_message",
+            "description": "Verify the sign after both players have sent their hashed signs",
+            "entry-point": "0x7a75559c",
+            "read-only": false
+        },
+        "get_current_match": {
+            "argument": "klash.get_current_match_arguments",
+            "return": "klash.match",
+            "description": "Get the current match for a specific player",
+            "entry-point": "0x83d3a700",
+            "read-only": true
+        },
+        "get_signed_up_players": {
+            "argument": "klash.get_signed_up_players_arguments",
+            "return": "klash.players",
+            "description": "Get the current tournament players",
+            "entry-point": "0xa07c1513",
+            "read-only": true
+        },
+        "update_owner": {
+            "argument": "klash.update_owner_arguments",
+            "return": "klash.empty_message",
+            "description": "Update the owner of the contract",
+            "entry-point": "0x48bd00e9",
+            "read-only": false
+        }
+    },
+    "types": "CpgWChphc3NlbWJseS9wcm90by9rbGFzaC5wcm90bxIFa2xhc2gaFGtvaW5vcy9vcHRpb25zLnByb3RvIg8KDWVtcHR5X21lc3NhZ2UiIgoGdWludDY0EhgKBXZhbHVlGAEgASgEQgIwAVIFdmFsdWUiKQoLdWludDY0QXJyYXkSGgoGdmFsdWVzGAEgAygEQgIwAVIGdmFsdWVzIlsKEXRvdXJuYW1lbnRfY29uZmlnEhgKBXByaXplGAEgASgEQgIwAVIFcHJpemUSLAoQc2lnbl91cF9kdXJhdGlvbhgCIAEoBEICMAFSDnNpZ25VcER1cmF0aW9uIuQBChZmdWxsX3RvdXJuYW1lbnRfY29uZmlnEicKDXRvdXJuYW1lbnRfaWQYASABKARCAjABUgx0b3VybmFtZW50SWQSOwoYdG91cm5hbWVudF9zaWduX3VwX3N0YXJ0GAIgASgEQgIwAVIVdG91cm5hbWVudFNpZ25VcFN0YXJ0EjIKFWlzX3RvdXJuYW1lbnRfc3RhcnRlZBgDIAEoCFITaXNUb3VybmFtZW50U3RhcnRlZBIwCgZjb25maWcYBCABKAsyGC5rbGFzaC50b3VybmFtZW50X2NvbmZpZ1IGY29uZmlnIi8KEWNvbnRyYWN0X21ldGFkYXRhEhoKBW93bmVyGAEgASgMQgSAtRgGUgVvd25lciIoCgZwbGF5ZXISHgoHYWRkcmVzcxgBIAEoDEIEgLUYBlIHYWRkcmVzcyIyCgdwbGF5ZXJzEicKB3BsYXllcnMYASADKAsyDS5rbGFzaC5wbGF5ZXJSB3BsYXllcnMiOwoEc2lnbhIbCglzaWduX2hhc2gYASABKAlSCHNpZ25IYXNoEhYKBHNpZ24YAiABKARCAjABUgRzaWduIrYCCgVtYXRjaBInCgdwbGF5ZXIxGAEgASgLMg0ua2xhc2gucGxheWVyUgdwbGF5ZXIxEicKB3BsYXllcjIYAiABKAsyDS5rbGFzaC5wbGF5ZXJSB3BsYXllcjISGgoGc2NvcmUxGAMgASgEQgIwAVIGc2NvcmUxEhoKBnNjb3JlMhgEIAEoBEICMAFSBnNjb3JlMhIaCgZ3aW5uZXIYBSABKARCAjABUgZ3aW5uZXISGAoFcm91bmQYBiABKARCAjABUgVyb3VuZBInCg10b3VybmFtZW50X2lkGAcgASgEQgIwAVIMdG91cm5hbWVudElkEiEKBXNpZ24xGAggASgLMgsua2xhc2guc2lnblIFc2lnbjESIQoFc2lnbjIYCSABKAsyCy5rbGFzaC5zaWduUgVzaWduMiIvCgVyb3VuZBImCgdtYXRjaGVzGAEgAygLMgwua2xhc2gubWF0Y2hSB21hdGNoZXMiNwoPdG91cm5hbWVudF90cmVlEiQKBnJvdW5kcxgBIAMoCzIMLmtsYXNoLnJvdW5kUgZyb3VuZHMiXgoWd2FpdGluZ19wbGF5ZXJzX3JvdW5kcxJEChZ3YWl0aW5nX3BsYXllcnNfcm91bmRzGAEgAygLMg4ua2xhc2gucGxheWVyc1IUd2FpdGluZ1BsYXllcnNSb3VuZHMiIQofZ2V0X2NvbnRyYWN0X21ldGFkYXRhX2FyZ3VtZW50cyJPChtjcmVhdGVfdG91cm5hbWVudF9hcmd1bWVudHMSMAoGY29uZmlnGAEgASgLMhgua2xhc2gudG91cm5hbWVudF9jb25maWdSBmNvbmZpZyIcChpzdGFydF90b3VybmFtZW50X2FyZ3VtZW50cyIhCh9nZXRfdG91cm5hbWVudF9jb25maWdfYXJndW1lbnRzIh8KHWdldF90b3VybmFtZW50X3RyZWVfYXJndW1lbnRzIh8KHWdldF93YWl0aW5nX3BsYXllcnNfYXJndW1lbnRzIiIKIGdldF91bmZpbmlzaGVkX21hdGNoZXNfYXJndW1lbnRzIi0KEXNpZ25fdXBfYXJndW1lbnRzEhgKBGZyb20YASABKAxCBIC1GAZSBGZyb20iTAoTcGxheV9zaWduX2FyZ3VtZW50cxIYCgRmcm9tGAEgASgMQgSAtRgGUgRmcm9tEhsKCXNpZ25faGFzaBgCIAEoCVIIc2lnbkhhc2giagoVdmVyaWZ5X3NpZ25fYXJndW1lbnRzEhgKBGZyb20YASABKAxCBIC1GAZSBGZyb20SEgoEc2lnbhgCIAEoBFIEc2lnbhIjCgtyYW5kb21fc2VlZBgDIAEoBEICMAFSCnJhbmRvbVNlZWQiNwobZ2V0X2N1cnJlbnRfbWF0Y2hfYXJndW1lbnRzEhgKBGZyb20YASABKAxCBIC1GAZSBGZyb20iIQofZ2V0X3NpZ25lZF91cF9wbGF5ZXJzX2FyZ3VtZW50cyI7ChZ1cGRhdGVfb3duZXJfYXJndW1lbnRzEiEKCW5ld19vd25lchgBIAEoDEIEgLUYBlIIbmV3T3duZXIiUQoYdG91cm5hbWVudF9jcmVhdGVkX2V2ZW50EjUKBmNvbmZpZxgBIAEoCzIdLmtsYXNoLmZ1bGxfdG91cm5hbWVudF9jb25maWdSBmNvbmZpZyI2ChZwbGF5ZXJfc2lnbmVkX3VwX2V2ZW50EhwKBnBsYXllchgBIAEoDEIEgLUYBlIGcGxheWVyIo4BChh0b3VybmFtZW50X3N0YXJ0ZWRfZXZlbnQSKgoEdHJlZRgBIAEoCzIWLmtsYXNoLnRvdXJuYW1lbnRfdHJlZVIEdHJlZRJGCg93YWl0aW5nX3BsYXllcnMYAiABKAsyHS5rbGFzaC53YWl0aW5nX3BsYXllcnNfcm91bmRzUg53YWl0aW5nUGxheWVycyJOChFzaWduX3BsYXllZF9ldmVudBIcCgZwbGF5ZXIYASABKAxCBIC1GAZSBnBsYXllchIbCglzaWduX2hhc2gYAiABKAlSCHNpZ25IYXNoIksKE3NpZ25fdmVyaWZpZWRfZXZlbnQSHAoGcGxheWVyGAEgASgMQgSAtRgGUgZwbGF5ZXISFgoEc2lnbhgCIAEoBEICMAFSBHNpZ24iaQoabWF0Y2hfcm91bmRfZmluaXNoZWRfZXZlbnQSIgoFbWF0Y2gYASABKAsyDC5rbGFzaC5tYXRjaFIFbWF0Y2gSJwoMcm91bmRfd2lubmVyGAIgASgMQgSAtRgGUgtyb3VuZFdpbm5lciI6ChRtYXRjaF9maW5pc2hlZF9ldmVudBIiCgVtYXRjaBgBIAEoCzIMLmtsYXNoLm1hdGNoUgVtYXRjaCI7Ch90b3VybmFtZW50X3JvdW5kX2ZpbmlzaGVkX2V2ZW50EhgKBXJvdW5kGAEgASgEQgIwAVIFcm91bmQiPQoXbmV3X21hdGNoX2NyZWF0ZWRfZXZlbnQSIgoFbWF0Y2gYASABKAsyDC5rbGFzaC5tYXRjaFIFbWF0Y2giUgoYbmV3X3BsYXllcl93YWl0aW5nX2V2ZW50EhwKBnBsYXllchgBIAEoDEIEgLUYBlIGcGxheWVyEhgKBXJvdW5kGAIgASgEQgIwAVIFcm91bmQiVAoacGxheWVyX3NraXBwZWRfcm91bmRfZXZlbnQSHAoGcGxheWVyGAEgASgMQgSAtRgGUgZwbGF5ZXISGAoFcm91bmQYAiABKARCAjABUgVyb3VuZCI/Chl0b3VybmFtZW50X2ZpbmlzaGVkX2V2ZW50EiIKBW1hdGNoGAEgASgLMgwua2xhc2gubWF0Y2hSBW1hdGNoYgZwcm90bzM="
+}
