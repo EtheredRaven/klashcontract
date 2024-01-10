@@ -54,7 +54,12 @@ export function createFullSignedUpTournament(
   return tournament;
 }
 
-export function startTournament(c: Klash): void {
+export function signUp(c: Klash, account: Uint8Array): void {
+  setAuthority(account);
+  c.sign_up(new klash.sign_up_arguments(account));
+}
+
+export function startTournament(c: Klash, setTimestamp: boolean = true): u64 {
   setAuthority(CONTRACT_ID);
 
   const config = c.get_tournament_config(
@@ -64,6 +69,7 @@ export function startTournament(c: Klash): void {
     config.tournament_sign_up_start + config.config!.sign_up_duration + 1;
   setBlock(timestamp);
   c.start_tournament(new klash.start_tournament_arguments());
+  return timestamp;
 }
 
 export function playSign(
@@ -156,4 +162,9 @@ export function getPlayerAddress(i: i32): Uint8Array {
   const account = new Uint8Array(1);
   account[0] = i;
   return account;
+}
+
+export function canTimeout(c: Klash, account: Uint8Array): bool {
+  return c.can_timeout_player(new klash.can_timeout_player_arguments(account))
+    .value;
 }

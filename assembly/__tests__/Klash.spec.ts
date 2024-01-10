@@ -1,17 +1,12 @@
 import { Klash } from "../Klash";
-import Random from "../Random";
 import { klash } from "../proto/klash";
 import {
-  System,
-  Crypto,
   Base58,
   MockVM,
   Arrays,
   Protobuf,
   authority,
   chain,
-  StringBytes,
-  protocol,
 } from "@koinos/sdk-as";
 import {
   createTournament,
@@ -24,6 +19,8 @@ import {
   verifySign,
   playRound,
   playMatch,
+  signUp,
+  canTimeout,
 } from "./utils";
 import Constants from "../Constants";
 
@@ -301,12 +298,20 @@ describe("contract", () => {
     expect(tournament_config.is_tournament_started).toStrictEqual(true);
 
     const events = MockVM.getEvents();
-    expect(events.length).toBe(2); // 1 for tournament created, 1 for tournament started
-    expect(events[1].name).toBe("klash.tournament_started_event");
+    expect(events.length).toBe(3); // 1 for tournament created, 1 for tournament started
+    expect(events[2].name).toBe("klash.tournament_started_event");
     const decodedEvent = Protobuf.decode<klash.tournament_started_event>(
-      events[1].data!,
+      events[2].data!,
       klash.tournament_started_event.decode
     );
+
+    expect(events[1].name).toBe("klash.tournament_round_started_event");
+    const decodedEvent2 = Protobuf.decode<klash.tournament_round_started_event>(
+      events[1].data!,
+      klash.tournament_round_started_event.decode
+    );
+    expect(decodedEvent2.round).toStrictEqual(1);
+    expect(decodedEvent2.timestamp).toBeGreaterThan(0);
 
     const tree = decodedEvent.tree!;
     expect(tree.rounds.length).toStrictEqual(1);
@@ -325,7 +330,7 @@ describe("contract", () => {
     for (let i: i32 = 0; i < playersNumbers.length; i++) {
       const playersNumber = playersNumbers[i];
       createFullSignedUpTournament(c, playersNumber);
-      startTournament(c);
+      let startTimestamp = startTournament(c, false);
 
       // Check the tournament tree
       const tree = c.get_tournament_tree(
@@ -336,6 +341,16 @@ describe("contract", () => {
       expect(tree.rounds[0].matches.length).toStrictEqual(
         <i32>(playersNumber / 2)
       );
+
+      // Check the starting timestamps of these rounds
+      for (let j: i32 = 0; j < roundsNumber; j++) {
+        const round = tree.rounds[j];
+        if (j == 0) {
+          expect(round.start_timestamp).toStrictEqual(startTimestamp);
+        } else {
+          expect(round.start_timestamp).toStrictEqual(0);
+        }
+      }
 
       const waiting_players = c.get_waiting_players(
         new klash.get_waiting_players_arguments()
@@ -499,18 +514,24 @@ describe("contract", () => {
   it("should play a sign", () => {
     const c = new Klash();
     createFullSignedUpTournament(c, 2);
-    startTournament(c);
+    const START_TIME = startTournament(c);
 
     const player1Address = getPlayerAddress(0);
     const player2Address = getPlayerAddress(1);
 
-    const hashed_sign1 = playSign(c, player1Address);
     const hashed_sign2 = playSign(
       c,
       player2Address,
       Constants.PAPER_SIGN,
       20000
     );
+    const match = c.get_current_match(
+      new klash.get_current_match_arguments(player1Address)
+    );
+    expect(match.player2!.last_action_timestamp).toStrictEqual(START_TIME);
+    expect(match.player1!.last_action_timestamp).toStrictEqual(0);
+
+    const hashed_sign1 = playSign(c, player1Address);
 
     const match1 = c.get_current_match(
       new klash.get_current_match_arguments(player1Address)
@@ -518,6 +539,8 @@ describe("contract", () => {
     const match2 = c.get_current_match(
       new klash.get_current_match_arguments(player2Address)
     );
+
+    expect(match1.player1!.last_action_timestamp).toStrictEqual(START_TIME);
 
     expect(match1.tournament_id).toStrictEqual(match2.tournament_id);
     expect(match1.round).toStrictEqual(match2.round);
@@ -533,10 +556,10 @@ describe("contract", () => {
 
     // Check events
     const events = MockVM.getEvents();
-    expect(events.length).toStrictEqual(6); // 1 for tournament created, 2 for sign-up, 1 for tournament started, 2 for sign played
-    expect(events[4].name).toBe("klash.sign_played_event");
+    expect(events.length).toStrictEqual(7); // 1 for tournament created, 2 for sign-up, 1 for tournament started, 1 for round started, 2 for sign played
+    expect(events[6].name).toBe("klash.sign_played_event");
     const decodedEvent = Protobuf.decode<klash.sign_played_event>(
-      events[4].data!,
+      events[6].data!,
       klash.sign_played_event.decode
     );
     expect(Arrays.equal(decodedEvent.player, player1Address)).toStrictEqual(
@@ -635,10 +658,10 @@ describe("contract", () => {
 
     // Check the events
     const events = MockVM.getEvents();
-    expect(events.length).toStrictEqual(9); // 1 for tournament created, 2 for sign-up, 1 for tournament started, 2 for sign played, 2 for sign verified, 1 for match round finished
-    expect(events[6].name).toBe("klash.sign_verified_event");
+    expect(events.length).toStrictEqual(10); // 1 for tournament created, 2 for sign-up, 1 for tournament started, 1 for round started, 2 for sign played, 2 for sign verified, 1 for match round finished
+    expect(events[7].name).toBe("klash.sign_verified_event");
     const decodedEvent1 = Protobuf.decode<klash.sign_verified_event>(
-      events[6].data!,
+      events[7].data!,
       klash.sign_verified_event.decode
     );
     expect(decodedEvent1.sign).toStrictEqual(Constants.ROCK_SIGN);
@@ -646,9 +669,9 @@ describe("contract", () => {
       Arrays.equal(decodedEvent1.player, getPlayerAddress(0))
     ).toStrictEqual(true);
 
-    expect(events[7].name).toBe("klash.sign_verified_event");
+    expect(events[8].name).toBe("klash.sign_verified_event");
     const decodedEvent2 = Protobuf.decode<klash.sign_verified_event>(
-      events[7].data!,
+      events[8].data!,
       klash.sign_verified_event.decode
     );
     expect(decodedEvent2.sign).toStrictEqual(Constants.PAPER_SIGN);
@@ -656,9 +679,9 @@ describe("contract", () => {
       Arrays.equal(decodedEvent2.player, getPlayerAddress(1))
     ).toStrictEqual(true);
 
-    expect(events[8].name).toBe("klash.match_round_finished_event");
+    expect(events[9].name).toBe("klash.match_round_finished_event");
     const decodedEvent3 = Protobuf.decode<klash.match_round_finished_event>(
-      events[8].data!,
+      events[9].data!,
       klash.match_round_finished_event.decode
     );
     const match = decodedEvent3.match!;
@@ -1105,5 +1128,302 @@ describe("contract", () => {
     expect(match2.winner).toStrictEqual(Constants.MATCH_NOT_CREATED);
   });
 
-  // TODO: add and test the timeout
+  it("should get the right timestamps and timeout booleans", () => {
+    const c = new Klash();
+    createTournament(c, CONTRACT_ID, 100, 1000);
+    signUp(c, getPlayerAddress(0));
+    signUp(c, getPlayerAddress(1));
+    signUp(c, getPlayerAddress(2));
+    signUp(c, getPlayerAddress(3));
+
+    const START_TIME = startTournament(c);
+
+    let events3 = MockVM.getEvents();
+    let decodedEvent3 = Protobuf.decode<klash.tournament_round_started_event>(
+      events3[events3.length - 2].data!,
+      klash.tournament_round_started_event.decode
+    );
+    expect(decodedEvent3.timestamp).toStrictEqual(START_TIME);
+
+    expect(c._tournamentTree.get()!.rounds[0].start_timestamp).toStrictEqual(
+      START_TIME
+    );
+
+    // Check the timestamps
+    let match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(0);
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(2))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(0);
+
+    // Check that the players cannot be timed out
+    setBlock(START_TIME + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    setBlock(START_TIME + Constants.TIMEOUT_DURATION + 1); // And then yes
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+
+    setBlock(START_TIME);
+    playSign(c, getPlayerAddress(0));
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(0);
+
+    setBlock(START_TIME + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(START_TIME + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false); // He is waiting for the opponent
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+
+    let newRoundStartTime = START_TIME + 1;
+    setBlock(newRoundStartTime);
+
+    playSign(c, getPlayerAddress(1), Constants.PAPER_SIGN, 20000);
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(1))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(START_TIME + 1);
+
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+
+    // Check the event
+    let events = MockVM.getEvents();
+    let decodedEvent = Protobuf.decode<klash.sign_played_event>(
+      events[events.length - 1].data!,
+      klash.sign_played_event.decode
+    );
+    expect(decodedEvent.timestamp).toStrictEqual(START_TIME + 1);
+
+    let verifySignTimestamp = START_TIME + 2;
+    setBlock(verifySignTimestamp);
+    verifySign(c, getPlayerAddress(1), Constants.PAPER_SIGN, 20000);
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(1))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(
+      verifySignTimestamp
+    );
+    events = MockVM.getEvents();
+    let decodedEvent1 = Protobuf.decode<klash.sign_verified_event>(
+      events[events.length - 1].data!,
+      klash.sign_verified_event.decode
+    );
+    expect(decodedEvent1.timestamp).toStrictEqual(verifySignTimestamp);
+
+    setBlock(verifySignTimestamp + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(verifySignTimestamp + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false); // Waiting for the other player to verify its sign
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION - 1); // The starting timer is at the start of the round
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+
+    newRoundStartTime = START_TIME + 3;
+    setBlock(newRoundStartTime);
+    verifySign(c, getPlayerAddress(0));
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(
+      newRoundStartTime
+    );
+    expect(match.player2!.last_action_timestamp).toStrictEqual(
+      newRoundStartTime
+    ); // Should set the timestamp to the start of the next round
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+
+    let playStartTime = START_TIME + 4;
+    setBlock(playStartTime);
+    playSign(c, getPlayerAddress(1), Constants.SCISSORS_SIGN, 20000);
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(1))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME + 3);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(playStartTime);
+
+    setBlock(playStartTime + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(playStartTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    setBlock(newRoundStartTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+
+    setBlock(START_TIME + 5);
+    playSign(c, getPlayerAddress(0));
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME + 5);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(START_TIME + 4);
+    setBlock(START_TIME + 6);
+    verifySign(c, getPlayerAddress(1), Constants.SCISSORS_SIGN, 20000);
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(1))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(START_TIME + 5);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(START_TIME + 6);
+
+    let matchTime = START_TIME + 7;
+    setBlock(matchTime);
+    verifySign(c, getPlayerAddress(0));
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.player1!.last_action_timestamp).toStrictEqual(matchTime);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(matchTime);
+
+    playRound(
+      c,
+      getPlayerAddress(0),
+      Constants.ROCK_SIGN,
+      getPlayerAddress(1),
+      Constants.PAPER_SIGN
+    );
+
+    setBlock(matchTime + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(matchTime + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+
+    setBlock(matchTime);
+    playRound(
+      c,
+      getPlayerAddress(0),
+      Constants.SCISSORS_SIGN,
+      getPlayerAddress(1),
+      Constants.SCISSORS_SIGN
+    );
+
+    setBlock(matchTime * 2);
+    playRound(
+      c,
+      getPlayerAddress(0),
+      Constants.PAPER_SIGN,
+      getPlayerAddress(1),
+      Constants.SCISSORS_SIGN
+    );
+    setBlock(matchTime * 2 + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(matchTime * 2 + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(true);
+
+    playRound(
+      c,
+      getPlayerAddress(0),
+      Constants.SCISSORS_SIGN,
+      getPlayerAddress(1),
+      Constants.ROCK_SIGN
+    );
+
+    // Match is over
+    setBlock(matchTime * 3 + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+
+    setBlock(START_TIME + 8);
+    playMatch(c, getPlayerAddress(2), getPlayerAddress(3));
+    setBlock(START_TIME + 8 + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(2))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(3))).toStrictEqual(false);
+    setBlock(START_TIME + 8 + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(2))).toStrictEqual(true); // Player 2 is in a new match with a starting time round of START_TIME + 8
+    expect(canTimeout(c, getPlayerAddress(3))).toStrictEqual(false);
+
+    setBlock(START_TIME + 9);
+    // Check the start timestamp of round 2
+    let round2 = c.get_tournament_tree(
+      new klash.get_tournament_tree_arguments()
+    ).rounds[1];
+    expect(round2.start_timestamp).toStrictEqual(START_TIME + 8);
+
+    let match2 = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(2))
+    );
+    expect(match2.player1!.last_action_timestamp).toStrictEqual(0);
+    expect(match2.player2!.last_action_timestamp).toStrictEqual(0);
+    setBlock(START_TIME + 10);
+    playMatch(c, getPlayerAddress(2), getPlayerAddress(1));
+    match2 = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(2))
+    );
+    expect(match2.player1!.last_action_timestamp).toStrictEqual(
+      START_TIME + 10
+    );
+    expect(match2.player2!.last_action_timestamp).toStrictEqual(
+      START_TIME + 10
+    );
+    setBlock(START_TIME + 10 + Constants.TIMEOUT_DURATION - 1);
+    expect(canTimeout(c, getPlayerAddress(2))).toStrictEqual(false);
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+    setBlock(START_TIME + 10 + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(2))).toStrictEqual(false); // Tournament is over
+    expect(canTimeout(c, getPlayerAddress(1))).toStrictEqual(false);
+  });
+
+  it("can timeout a player", () => {
+    const c = new Klash();
+    createFullSignedUpTournament(c, 3);
+    const START_TIME = startTournament(c);
+
+    setBlock(START_TIME + Constants.TIMEOUT_DURATION + 1);
+    expect(canTimeout(c, getPlayerAddress(0))).toStrictEqual(true);
+    c.timeout_player(new klash.timeout_player_arguments(getPlayerAddress(0)));
+
+    let match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(0))
+    );
+    expect(match.winner).toStrictEqual(Constants.MATCH_PLAYER_2_WON);
+
+    match = c.get_current_match(
+      new klash.get_current_match_arguments(getPlayerAddress(1))
+    );
+    expect(match.winner).toStrictEqual(Constants.MATCH_NOT_FINISHED);
+    expect(match.player1!.last_action_timestamp).toStrictEqual(0);
+    expect(match.player2!.last_action_timestamp).toStrictEqual(0);
+    expect(Arrays.equal(match.player1!.address, getPlayerAddress(1))).toBe(
+      true
+    );
+    expect(Arrays.equal(match.player2!.address, getPlayerAddress(2))).toBe(
+      true
+    );
+  });
+
+  it("cannot timeout a player if not authorized", () => {
+    expect(() => {
+      const c = new Klash();
+      createFullSignedUpTournament(c, 3);
+      const START_TIME = startTournament(c);
+
+      setBlock(START_TIME + Constants.TIMEOUT_DURATION - 1);
+      c.timeout_player(new klash.timeout_player_arguments(getPlayerAddress(0)));
+    }).toThrow();
+
+    expect(MockVM.getErrorMessage()).toStrictEqual("Player can't be timed-out");
+  });
 });

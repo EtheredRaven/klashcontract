@@ -49,6 +49,13 @@
             "entryPoint": 1821174149,
             "readOnly": true
         },
+        "can_timeout_player": {
+            "input": "klash.can_timeout_player_arguments",
+            "output": "klash.boolean",
+            "description": "Check if a player can be timeouted",
+            "entryPoint": 423332444,
+            "readOnly": true
+        },
         "sign_up": {
             "input": "klash.sign_up_arguments",
             "output": "klash.empty_message",
@@ -59,7 +66,7 @@
         "play_sign": {
             "input": "klash.play_sign_arguments",
             "output": "klash.empty_message",
-            "description": "Play a sign in a match (it is a rock-paper-scissors game)",
+            "description": "Play a sign in a match as a hashed value to avoid cheating from the other player",
             "entryPoint": 4190815200,
             "readOnly": false
         },
@@ -68,6 +75,13 @@
             "output": "klash.empty_message",
             "description": "Verify the sign after both players have sent their hashed signs",
             "entryPoint": 2054509980,
+            "readOnly": false
+        },
+        "timeout_player": {
+            "input": "klash.timeout_player_arguments",
+            "output": "klash.empty_message",
+            "description": "Timeout a player that didn't play or verify a sign in a match",
+            "entryPoint": 3678060079,
             "readOnly": false
         },
         "get_current_match": {
@@ -107,6 +121,14 @@
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
+                            }
+                        }
+                    },
+                    "boolean": {
+                        "fields": {
+                            "value": {
+                                "type": "bool",
+                                "id": 1
                             }
                         }
                     },
@@ -184,6 +206,13 @@
                                 "id": 1,
                                 "options": {
                                     "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "lastActionTimestamp": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
                                 }
                             }
                         }
@@ -273,6 +302,13 @@
                                 "rule": "repeated",
                                 "type": "match",
                                 "id": 1
+                            },
+                            "startTimestamp": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
                             }
                         }
                     },
@@ -320,6 +356,17 @@
                     "get_unfinished_matches_arguments": {
                         "fields": {}
                     },
+                    "can_timeout_player_arguments": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            }
+                        }
+                    },
                     "sign_up_arguments": {
                         "fields": {
                             "from": {
@@ -364,6 +411,17 @@
                                 "id": 3,
                                 "options": {
                                     "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "timeout_player_arguments": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
                                 }
                             }
                         }
@@ -436,6 +494,13 @@
                             "signHash": {
                                 "type": "string",
                                 "id": 2
+                            },
+                            "timestamp": {
+                                "type": "uint64",
+                                "id": 3,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
                             }
                         }
                     },
@@ -451,6 +516,13 @@
                             "sign": {
                                 "type": "uint64",
                                 "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "timestamp": {
+                                "type": "uint64",
+                                "id": 3,
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
@@ -485,6 +557,31 @@
                             "round": {
                                 "type": "uint64",
                                 "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "timestamp": {
+                                "type": "uint64",
+                                "id": 2,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            }
+                        }
+                    },
+                    "tournament_round_started_event": {
+                        "fields": {
+                            "round": {
+                                "type": "uint64",
+                                "id": 1,
+                                "options": {
+                                    "jstype": "JS_STRING"
+                                }
+                            },
+                            "timestamp": {
+                                "type": "uint64",
+                                "id": 2,
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
@@ -532,6 +629,21 @@
                                 "options": {
                                     "jstype": "JS_STRING"
                                 }
+                            }
+                        }
+                    },
+                    "player_timed_out_event": {
+                        "fields": {
+                            "player": {
+                                "type": "bytes",
+                                "id": 1,
+                                "options": {
+                                    "(koinos.btype)": "ADDRESS"
+                                }
+                            },
+                            "match": {
+                                "type": "match",
+                                "id": 2
                             }
                         }
                     },

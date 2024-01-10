@@ -182,11 +182,24 @@ export class Klash {
 
     const roundsNumber: i32 = Random.log2(shuffledPlayers.length - 1) + 1;
 
+    const timestamp = System.getBlock().header!.timestamp;
+
     // Create the right number of empty rounds and waiting players
     let round_matches_number: u64 = <u64>players.length;
     let additionalMatch: boolean = false; // To account for the last player if there is an odd number of players
     for (let i: i32 = 0; i < roundsNumber; i++) {
-      tournamentTree.rounds.push(new klash.round([]));
+      tournamentTree.rounds.push(new klash.round([], i == 0 ? timestamp : 0)); // First round is started
+      // emit the event
+      if (i == 0) {
+        System.event(
+          "klash.tournament_round_started_event",
+          Protobuf.encode(
+            new klash.tournament_round_started_event(1, timestamp),
+            klash.tournament_round_started_event.encode
+          ),
+          []
+        );
+      }
       waitingPlayersRounds.waiting_players_rounds.push(new klash.players([]));
 
       let old_round_matches_number = round_matches_number;
@@ -367,6 +380,52 @@ export class Klash {
   }
 
   /**
+   * Check if a player can be timeouted
+   * @external
+   * @param args
+   * @param args.player - The address of the player to timeout
+   * @returns True if the player can be timeouted, false otherwise
+   */
+  can_timeout_player(args: klash.can_timeout_player_arguments): klash.boolean {
+    const player = args.player!;
+    const match = this._matches.get(player)!;
+    const isPlayer1 = Arrays.equal(match.player1!.address, player);
+    const playerObject = isPlayer1 ? match.player1 : match.player2;
+    const playerSign = isPlayer1 ? match.sign1 : match.sign2;
+    const opponentSign = isPlayer1 ? match.sign2 : match.sign1;
+
+    // If he is waiting for his opponent, then he can't be timeouted
+    const isPlayerWaitingForOpponent =
+      (playerSign != null && opponentSign == null) ||
+      (playerSign != null &&
+        playerSign!.sign != Constants.UNKNOWN_SIGN &&
+        opponentSign != null &&
+        opponentSign!.sign == Constants.UNKNOWN_SIGN);
+    if (isPlayerWaitingForOpponent) return new klash.boolean(false);
+
+    // If the match is finished or waiting, then he can't be timeouted
+    if (match.winner != Constants.MATCH_NOT_FINISHED)
+      return new klash.boolean(false);
+
+    // If the round has not started, then he can't be timeouted
+    let currentRoundStartTime =
+      this._tournamentTree.get()!.rounds[(match.round as i32) - 1]
+        .start_timestamp;
+    if (currentRoundStartTime == 0) return new klash.boolean(false);
+
+    const currentTimestamp = System.getBlock().header!.timestamp;
+    // If he has not played yet in this match, the timestamp to compare is the start time of the round
+    let lastTimestamp =
+      playerObject!.last_action_timestamp > 0
+        ? playerObject!.last_action_timestamp
+        : currentRoundStartTime;
+
+    return new klash.boolean(
+      SafeMath.add(lastTimestamp, Constants.TIMEOUT_DURATION) < currentTimestamp
+    );
+  }
+
+  /**
    * Update the owner of the contract (in charge of creating and starting tournaments)
    * @external
    * @param args
@@ -419,7 +478,7 @@ export class Klash {
     );
 
     // Add the player in the list of signed up players
-    signed_up_players.players.push(new klash.player(from));
+    signed_up_players.players.push(new klash.player(from, 0));
     this._signedUpPlayers.put(signed_up_players);
 
     // Emit the event
@@ -459,6 +518,11 @@ export class Klash {
       "Player has already played his sign for this round"
     );
 
+    const timestamp = System.getBlock().header!.timestamp;
+    isPlayer1
+      ? (match.player1!.last_action_timestamp = timestamp)
+      : (match.player2!.last_action_timestamp = timestamp);
+
     // For now, the game only knows the hash of the sign, to avoid the opponent to guess the sign before the end of the round
     const new_sign = new klash.sign(sign_hash, Constants.UNKNOWN_SIGN);
     isPlayer1 ? (match.sign1 = new_sign) : (match.sign2 = new_sign);
@@ -468,7 +532,7 @@ export class Klash {
     System.event(
       "klash.sign_played_event",
       Protobuf.encode(
-        new klash.sign_played_event(from, sign_hash),
+        new klash.sign_played_event(from, sign_hash, timestamp),
         klash.sign_played_event.encode
       ),
       []
@@ -528,21 +592,25 @@ export class Klash {
       "Hashed sign does not match"
     );
 
+    const timestamp = System.getBlock().header!.timestamp;
+
     // Store the new sign
     playerSign.sign = sign;
     isPlayer1 ? (match.sign1 = playerSign) : (match.sign2 = playerSign);
+    isPlayer1
+      ? (match.player1!.last_action_timestamp = timestamp)
+      : (match.player2!.last_action_timestamp = timestamp);
 
     System.event(
       "klash.sign_verified_event",
       Protobuf.encode(
-        new klash.sign_verified_event(from, sign),
+        new klash.sign_verified_event(from, sign, timestamp),
         klash.sign_verified_event.encode
       ),
       []
     );
 
     // If the opponent sign is already verified, then both signs will be verified
-    const unfinishedMatchesNumber = this._unfinishedMatchesNumber.get()!;
     const shouldResolveRound = opponentSign.sign != Constants.UNKNOWN_SIGN;
     if (shouldResolveRound) {
       let round_winner: Uint8Array | null = null;
@@ -576,134 +644,204 @@ export class Klash {
       // Reset the signs for the next round
       match.sign1 = null;
       match.sign2 = null;
+      match.player1!.last_action_timestamp = timestamp;
+      match.player2!.last_action_timestamp = timestamp;
     }
 
+    this._update_match(match);
+
+    // If there is a winner, then the match is finished and the winner will play against the next player in the waiting list
     const winner =
       match.score1 >= 4
         ? Constants.MATCH_PLAYER_1_WON
         : match.score2 >= 4
         ? Constants.MATCH_PLAYER_2_WON
         : Constants.MATCH_NOT_FINISHED;
+    if (winner != Constants.MATCH_NOT_FINISHED) {
+      this._resolve_match(match, winner);
+    }
+
+    return new klash.empty_message();
+  }
+
+  /**
+   * Resolve a match
+   * @internal
+   * @param args
+   * @param args.match - The match to resolve
+   * @param args.winner - The winner status of the match
+   * @returns An empty message
+   */
+  _resolve_match(match: klash.match, winner: u64): void {
+    const roundNumber = match.round as i32;
+    const unfinishedMatchesNumber = this._unfinishedMatchesNumber.get()!;
+    unfinishedMatchesNumber.values[roundNumber - 1] = SafeMath.sub(
+      unfinishedMatchesNumber.values[roundNumber - 1],
+      1
+    );
+    this._unfinishedMatchesNumber.put(unfinishedMatchesNumber);
+
     match.winner = winner;
     this._update_match(match);
 
-    // If there is a winner, then the match is finished and the winner will play against the next player in the waiting list
-    if (winner != Constants.MATCH_NOT_FINISHED) {
-      const roundNumber = match.round as i32;
-      unfinishedMatchesNumber.values[roundNumber - 1] = SafeMath.sub(
-        unfinishedMatchesNumber.values[roundNumber - 1],
-        1
+    const timestamp = System.getBlock().header!.timestamp;
+
+    const waitingPlayersRounds = this._waitingPlayers.get()!;
+    const nextRoundWaitingPlayers =
+      waitingPlayersRounds.waiting_players_rounds[roundNumber - 1];
+    const winningPlayer =
+      winner == Constants.MATCH_PLAYER_1_WON ? match.player1! : match.player2!;
+    winningPlayer.last_action_timestamp = 0;
+    if (nextRoundWaitingPlayers.players.length > 0) {
+      // If there is a player waiting for a match
+      const newOpponent = nextRoundWaitingPlayers.players.pop();
+      this._waitingPlayers.put(waitingPlayersRounds);
+      const newMatch = new klash.match(
+        winningPlayer,
+        newOpponent,
+        0,
+        0,
+        Constants.MATCH_NOT_FINISHED,
+        roundNumber + 1,
+        match.tournament_id,
+        null,
+        null
       );
-      this._unfinishedMatchesNumber.put(unfinishedMatchesNumber);
-
-      const waitingPlayersRounds = this._waitingPlayers.get()!;
-      const nextRoundWaitingPlayers =
-        waitingPlayersRounds.waiting_players_rounds[roundNumber - 1];
-      const winningPlayer =
-        winner == Constants.MATCH_PLAYER_1_WON
-          ? match.player1!
-          : match.player2!;
-      if (nextRoundWaitingPlayers.players.length > 0) {
-        // If there is a player waiting for a match
-        const newOpponent = nextRoundWaitingPlayers.players.pop();
-        this._waitingPlayers.put(waitingPlayersRounds);
-        const newMatch = new klash.match(
-          winningPlayer,
-          newOpponent,
-          0,
-          0,
-          Constants.MATCH_NOT_FINISHED,
-          roundNumber + 1,
-          match.tournament_id,
-          null,
-          null
-        );
-        this._update_match(newMatch);
-
-        System.event(
-          "klash.new_match_created_event",
-          Protobuf.encode(
-            new klash.new_match_created_event(newMatch),
-            klash.new_match_created_event.encode
-          ),
-          []
-        );
-      } else if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
-        // If there is no player waiting for a match and all the matches of the round are finished
-        // Go into the next waiting list
-        const nextRoundWaitingPlayers =
-          waitingPlayersRounds.waiting_players_rounds[roundNumber];
-        nextRoundWaitingPlayers.players.push(winningPlayer);
-        this._waitingPlayers.put(waitingPlayersRounds);
-
-        // Emit the event
-        System.event(
-          "player_skipped_round_event",
-          Protobuf.encode(
-            new klash.player_skipped_round_event(
-              winningPlayer.address!,
-              roundNumber
-            ),
-            klash.player_skipped_round_event.encode
-          ),
-          []
-        );
-      } else {
-        // If there are still matches to be played in the round, just wait for the next match
-        const nextRoundWaitingPlayers =
-          waitingPlayersRounds.waiting_players_rounds[roundNumber - 1];
-        nextRoundWaitingPlayers.players.push(winningPlayer);
-        this._waitingPlayers.put(waitingPlayersRounds);
-
-        // Emit the event
-        System.event(
-          "klash.new_player_waiting_event",
-          Protobuf.encode(
-            new klash.new_player_waiting_event(
-              winningPlayer.address!,
-              roundNumber - 1
-            ),
-            klash.new_player_waiting_event.encode
-          ),
-          []
-        );
-      }
+      this._update_match(newMatch);
 
       System.event(
-        "klash.match_finished_event",
+        "klash.new_match_created_event",
         Protobuf.encode(
-          new klash.match_finished_event(match),
-          klash.match_finished_event.encode
+          new klash.new_match_created_event(newMatch),
+          klash.new_match_created_event.encode
+        ),
+        []
+      );
+    } else if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
+      // If there is no player waiting for a match and all the matches of the round are finished
+      // Go into the next waiting list
+      const nextRoundWaitingPlayers =
+        waitingPlayersRounds.waiting_players_rounds[roundNumber];
+      nextRoundWaitingPlayers.players.push(winningPlayer);
+      this._waitingPlayers.put(waitingPlayersRounds);
+
+      // Emit the event
+      System.event(
+        "player_skipped_round_event",
+        Protobuf.encode(
+          new klash.player_skipped_round_event(
+            winningPlayer.address!,
+            roundNumber
+          ),
+          klash.player_skipped_round_event.encode
+        ),
+        []
+      );
+    } else {
+      // If there are still matches to be played in the round, just wait for the next match
+      const nextRoundWaitingPlayers =
+        waitingPlayersRounds.waiting_players_rounds[roundNumber - 1];
+      nextRoundWaitingPlayers.players.push(winningPlayer);
+      this._waitingPlayers.put(waitingPlayersRounds);
+
+      // Emit the event
+      System.event(
+        "klash.new_player_waiting_event",
+        Protobuf.encode(
+          new klash.new_player_waiting_event(
+            winningPlayer.address!,
+            roundNumber - 1
+          ),
+          klash.new_player_waiting_event.encode
+        ),
+        []
+      );
+    }
+
+    System.event(
+      "klash.match_finished_event",
+      Protobuf.encode(
+        new klash.match_finished_event(match),
+        klash.match_finished_event.encode
+      ),
+      []
+    );
+
+    // If the tournament is finished, then emit the event
+    if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
+      // Emit tournament round finished event
+      System.event(
+        "klash.tournament_round_finished_event",
+        Protobuf.encode(
+          new klash.tournament_round_finished_event(roundNumber, timestamp),
+          klash.tournament_round_finished_event.encode
         ),
         []
       );
 
-      // If the tournament is finished, then emit the event
-      if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
-        // Emit tournament round finished event
+      // If it is the last round, then emit the tournament finished event
+      if (roundNumber == unfinishedMatchesNumber.values.length - 1) {
+        // The last round is only the winner so we don't care about it
         System.event(
-          "klash.tournament_round_finished_event",
+          "klash.tournament_finished_event",
           Protobuf.encode(
-            new klash.tournament_round_finished_event(roundNumber),
-            klash.tournament_round_finished_event.encode
+            new klash.tournament_finished_event(match),
+            klash.tournament_finished_event.encode
           ),
           []
         );
+      } else {
+        const tree = this._tournamentTree.get()!;
+        tree.rounds[roundNumber].start_timestamp = timestamp;
+        this._tournamentTree.put(tree);
 
-        // If it is the last round, then emit the tournament finished event
-        if (roundNumber == unfinishedMatchesNumber.values.length - 1) {
-          // The last round is only the winner so we don't care about it
-          System.event(
-            "klash.tournament_finished_event",
-            Protobuf.encode(
-              new klash.tournament_finished_event(match),
-              klash.tournament_finished_event.encode
+        System.event(
+          "klash.tournament_round_started_event",
+          Protobuf.encode(
+            new klash.tournament_round_started_event(
+              roundNumber + 1,
+              timestamp
             ),
-            []
-          );
-        }
+            klash.tournament_round_started_event.encode
+          ),
+          []
+        );
       }
     }
+  }
+
+  /**
+   * Timeout a player if he does not play in time
+   * @external
+   * @param args
+   * @param args.player - The address of the player to timeout
+   * @returns An empty message
+   */
+  timeout_player(args: klash.timeout_player_arguments): klash.empty_message {
+    const player = args.player!;
+
+    const can_be_timeouted = this.can_timeout_player(
+      new klash.can_timeout_player_arguments(player)
+    );
+    System.require(can_be_timeouted.value, "Player can't be timed-out");
+
+    const match = this._matches.get(player)!;
+    const isPlayer1 = Arrays.equal(match.player1!.address, player);
+
+    this._resolve_match(
+      match,
+      isPlayer1 ? Constants.MATCH_PLAYER_2_WON : Constants.MATCH_PLAYER_1_WON
+    );
+
+    // Emit the event
+    System.event(
+      "klash.player_timed_out_event",
+      Protobuf.encode(
+        new klash.player_timed_out_event(player, match),
+        klash.player_timed_out_event.encode
+      ),
+      []
+    );
 
     return new klash.empty_message();
   }

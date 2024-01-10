@@ -93,6 +93,16 @@ export function main(): i32 {
       break;
     }
 
+    case 0x193b8a5c: {
+      const args = Protobuf.decode<ProtoNamespace.can_timeout_player_arguments>(
+        contractArgs.args,
+        ProtoNamespace.can_timeout_player_arguments.decode
+      );
+      const res = c.can_timeout_player(args);
+      retbuf = Protobuf.encode(res, ProtoNamespace.boolean.encode);
+      break;
+    }
+
     case 0x7104daea: {
       const args = Protobuf.decode<ProtoNamespace.sign_up_arguments>(
         contractArgs.args,
@@ -119,6 +129,16 @@ export function main(): i32 {
         ProtoNamespace.verify_sign_arguments.decode
       );
       const res = c.verify_sign(args);
+      retbuf = Protobuf.encode(res, ProtoNamespace.empty_message.encode);
+      break;
+    }
+
+    case 0xdb3abe2f: {
+      const args = Protobuf.decode<ProtoNamespace.timeout_player_arguments>(
+        contractArgs.args,
+        ProtoNamespace.timeout_player_arguments.decode
+      );
+      const res = c.timeout_player(args);
       retbuf = Protobuf.encode(res, ProtoNamespace.empty_message.encode);
       break;
     }

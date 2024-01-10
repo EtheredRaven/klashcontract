@@ -60,6 +60,42 @@ export namespace klash {
     }
   }
 
+  @unmanaged
+  export class boolean {
+    static encode(message: boolean, writer: Writer): void {
+      if (message.value != false) {
+        writer.uint32(8);
+        writer.bool(message.value);
+      }
+    }
+
+    static decode(reader: Reader, length: i32): boolean {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new boolean();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.value = reader.bool();
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    value: bool;
+
+    constructor(value: bool = false) {
+      this.value = value;
+    }
+  }
+
   export class uint64Array {
     static encode(message: uint64Array, writer: Writer): void {
       const unique_name_values = message.values;
@@ -265,6 +301,11 @@ export namespace klash {
         writer.uint32(10);
         writer.bytes(unique_name_address);
       }
+
+      if (message.last_action_timestamp != 0) {
+        writer.uint32(16);
+        writer.uint64(message.last_action_timestamp);
+      }
     }
 
     static decode(reader: Reader, length: i32): player {
@@ -278,6 +319,10 @@ export namespace klash {
             message.address = reader.bytes();
             break;
 
+          case 2:
+            message.last_action_timestamp = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -288,9 +333,14 @@ export namespace klash {
     }
 
     address: Uint8Array | null;
+    last_action_timestamp: u64;
 
-    constructor(address: Uint8Array | null = null) {
+    constructor(
+      address: Uint8Array | null = null,
+      last_action_timestamp: u64 = 0
+    ) {
       this.address = address;
+      this.last_action_timestamp = last_action_timestamp;
     }
   }
 
@@ -533,6 +583,11 @@ export namespace klash {
         match.encode(unique_name_matches[i], writer);
         writer.ldelim();
       }
+
+      if (message.start_timestamp != 0) {
+        writer.uint32(16);
+        writer.uint64(message.start_timestamp);
+      }
     }
 
     static decode(reader: Reader, length: i32): round {
@@ -546,6 +601,10 @@ export namespace klash {
             message.matches.push(match.decode(reader, reader.uint32()));
             break;
 
+          case 2:
+            message.start_timestamp = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -556,9 +615,11 @@ export namespace klash {
     }
 
     matches: Array<match>;
+    start_timestamp: u64;
 
-    constructor(matches: Array<match> = []) {
+    constructor(matches: Array<match> = [], start_timestamp: u64 = 0) {
       this.matches = matches;
+      this.start_timestamp = start_timestamp;
     }
   }
 
@@ -841,6 +902,42 @@ export namespace klash {
     constructor() {}
   }
 
+  export class can_timeout_player_arguments {
+    static encode(message: can_timeout_player_arguments, writer: Writer): void {
+      const unique_name_player = message.player;
+      if (unique_name_player !== null) {
+        writer.uint32(10);
+        writer.bytes(unique_name_player);
+      }
+    }
+
+    static decode(reader: Reader, length: i32): can_timeout_player_arguments {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new can_timeout_player_arguments();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.player = reader.bytes();
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    player: Uint8Array | null;
+
+    constructor(player: Uint8Array | null = null) {
+      this.player = player;
+    }
+  }
+
   export class sign_up_arguments {
     static encode(message: sign_up_arguments, writer: Writer): void {
       const unique_name_from = message.from;
@@ -987,6 +1084,42 @@ export namespace klash {
       this.from = from;
       this.sign = sign;
       this.random_seed = random_seed;
+    }
+  }
+
+  export class timeout_player_arguments {
+    static encode(message: timeout_player_arguments, writer: Writer): void {
+      const unique_name_player = message.player;
+      if (unique_name_player !== null) {
+        writer.uint32(10);
+        writer.bytes(unique_name_player);
+      }
+    }
+
+    static decode(reader: Reader, length: i32): timeout_player_arguments {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new timeout_player_arguments();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.player = reader.bytes();
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    player: Uint8Array | null;
+
+    constructor(player: Uint8Array | null = null) {
+      this.player = player;
     }
   }
 
@@ -1240,6 +1373,11 @@ export namespace klash {
         writer.uint32(18);
         writer.string(unique_name_sign_hash);
       }
+
+      if (message.timestamp != 0) {
+        writer.uint32(24);
+        writer.uint64(message.timestamp);
+      }
     }
 
     static decode(reader: Reader, length: i32): sign_played_event {
@@ -1257,6 +1395,10 @@ export namespace klash {
             message.sign_hash = reader.string();
             break;
 
+          case 3:
+            message.timestamp = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1268,13 +1410,16 @@ export namespace klash {
 
     player: Uint8Array | null;
     sign_hash: string | null;
+    timestamp: u64;
 
     constructor(
       player: Uint8Array | null = null,
-      sign_hash: string | null = null
+      sign_hash: string | null = null,
+      timestamp: u64 = 0
     ) {
       this.player = player;
       this.sign_hash = sign_hash;
+      this.timestamp = timestamp;
     }
   }
 
@@ -1289,6 +1434,11 @@ export namespace klash {
       if (message.sign != 0) {
         writer.uint32(16);
         writer.uint64(message.sign);
+      }
+
+      if (message.timestamp != 0) {
+        writer.uint32(24);
+        writer.uint64(message.timestamp);
       }
     }
 
@@ -1307,6 +1457,10 @@ export namespace klash {
             message.sign = reader.uint64();
             break;
 
+          case 3:
+            message.timestamp = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1318,10 +1472,16 @@ export namespace klash {
 
     player: Uint8Array | null;
     sign: u64;
+    timestamp: u64;
 
-    constructor(player: Uint8Array | null = null, sign: u64 = 0) {
+    constructor(
+      player: Uint8Array | null = null,
+      sign: u64 = 0,
+      timestamp: u64 = 0
+    ) {
       this.player = player;
       this.sign = sign;
+      this.timestamp = timestamp;
     }
   }
 
@@ -1426,6 +1586,11 @@ export namespace klash {
         writer.uint32(8);
         writer.uint64(message.round);
       }
+
+      if (message.timestamp != 0) {
+        writer.uint32(16);
+        writer.uint64(message.timestamp);
+      }
     }
 
     static decode(
@@ -1442,6 +1607,10 @@ export namespace klash {
             message.round = reader.uint64();
             break;
 
+          case 2:
+            message.timestamp = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1452,9 +1621,61 @@ export namespace klash {
     }
 
     round: u64;
+    timestamp: u64;
 
-    constructor(round: u64 = 0) {
+    constructor(round: u64 = 0, timestamp: u64 = 0) {
       this.round = round;
+      this.timestamp = timestamp;
+    }
+  }
+
+  @unmanaged
+  export class tournament_round_started_event {
+    static encode(
+      message: tournament_round_started_event,
+      writer: Writer
+    ): void {
+      if (message.round != 0) {
+        writer.uint32(8);
+        writer.uint64(message.round);
+      }
+
+      if (message.timestamp != 0) {
+        writer.uint32(16);
+        writer.uint64(message.timestamp);
+      }
+    }
+
+    static decode(reader: Reader, length: i32): tournament_round_started_event {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new tournament_round_started_event();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.round = reader.uint64();
+            break;
+
+          case 2:
+            message.timestamp = reader.uint64();
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    round: u64;
+    timestamp: u64;
+
+    constructor(round: u64 = 0, timestamp: u64 = 0) {
+      this.round = round;
+      this.timestamp = timestamp;
     }
   }
 
@@ -1587,6 +1808,56 @@ export namespace klash {
     constructor(player: Uint8Array | null = null, round: u64 = 0) {
       this.player = player;
       this.round = round;
+    }
+  }
+
+  export class player_timed_out_event {
+    static encode(message: player_timed_out_event, writer: Writer): void {
+      const unique_name_player = message.player;
+      if (unique_name_player !== null) {
+        writer.uint32(10);
+        writer.bytes(unique_name_player);
+      }
+
+      const unique_name_match = message.match;
+      if (unique_name_match !== null) {
+        writer.uint32(18);
+        writer.fork();
+        match.encode(unique_name_match, writer);
+        writer.ldelim();
+      }
+    }
+
+    static decode(reader: Reader, length: i32): player_timed_out_event {
+      const end: usize = length < 0 ? reader.end : reader.ptr + length;
+      const message = new player_timed_out_event();
+
+      while (reader.ptr < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1:
+            message.player = reader.bytes();
+            break;
+
+          case 2:
+            message.match = match.decode(reader, reader.uint32());
+            break;
+
+          default:
+            reader.skipType(tag & 7);
+            break;
+        }
+      }
+
+      return message;
+    }
+
+    player: Uint8Array | null;
+    match: match | null;
+
+    constructor(player: Uint8Array | null = null, match: match | null = null) {
+      this.player = player;
+      this.match = match;
     }
   }
 

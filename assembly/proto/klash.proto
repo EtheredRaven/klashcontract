@@ -10,6 +10,10 @@ message uint64 {
   uint64 value = 1 [jstype = JS_STRING];
 }
 
+message boolean {
+  bool value = 1;
+}
+
 message uint64Array {
   repeated uint64 values = 1 [jstype = JS_STRING];
 }
@@ -32,6 +36,7 @@ message contract_metadata {
 
 message player {
   bytes address = 1 [(koinos.btype) = ADDRESS];
+  uint64 last_action_timestamp = 2 [jstype = JS_STRING];
 }
 
 message players {
@@ -57,6 +62,7 @@ message match {
 
 message round {
   repeated match matches = 1;
+  uint64 start_timestamp = 2 [jstype = JS_STRING];
 }
 
 message tournament_tree {
@@ -104,6 +110,13 @@ message get_waiting_players_arguments {}
 // @result uint64Array
 message get_unfinished_matches_arguments {}
 
+// @description Check if a player can be timeouted
+// @read-only true
+// @result boolean
+message can_timeout_player_arguments {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+}
+
 // @description Sign up to the current tournament
 // @read-only false
 // @result empty_message
@@ -111,7 +124,7 @@ message sign_up_arguments {
   bytes from = 1 [(koinos.btype) = ADDRESS];
 }
 
-// @description Play a sign in a match (it is a rock-paper-scissors game)
+// @description Play a sign in a match as a hashed value to avoid cheating from the other player
 // @read-only false
 // @result empty_message
 message play_sign_arguments {
@@ -126,6 +139,13 @@ message verify_sign_arguments {
   bytes from = 1 [(koinos.btype) = ADDRESS];
   uint64 sign = 2;
   uint64 random_seed = 3 [jstype = JS_STRING];
+}
+
+// @description Timeout a player that didn't play or verify a sign in a match
+// @read-only false
+// @result empty_message
+message timeout_player_arguments {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
 }
 
 // @description Get the current match for a specific player
@@ -163,11 +183,13 @@ message tournament_started_event {
 message sign_played_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   string sign_hash = 2;
+  uint64 timestamp = 3 [jstype = JS_STRING];
 }
 
 message sign_verified_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 sign = 2 [jstype = JS_STRING];
+  uint64 timestamp = 3 [jstype = JS_STRING];
 }
 
 message match_round_finished_event {
@@ -181,6 +203,12 @@ message match_finished_event {
 
 message tournament_round_finished_event {
   uint64 round = 1 [jstype = JS_STRING];
+  uint64 timestamp = 2 [jstype = JS_STRING];
+}
+
+message tournament_round_started_event {
+  uint64 round = 1 [jstype = JS_STRING];
+  uint64 timestamp = 2 [jstype = JS_STRING];
 }
 
 message new_match_created_event {
@@ -195,6 +223,11 @@ message new_player_waiting_event {
 message player_skipped_round_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 round = 2 [jstype = JS_STRING];
+}
+
+message player_timed_out_event {
+  bytes player = 1 [(koinos.btype) = ADDRESS];
+  match match = 2;
 }
 
 message tournament_finished_event {

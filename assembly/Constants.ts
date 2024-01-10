@@ -19,7 +19,5 @@ export default class Constants {
   static PAPER_SIGN: u32 = 2;
   static SCISSORS_SIGN: u32 = 3;
 
-  static NEW_MATCH_TIMEOUT_DURATION: u64 = 5 * 60 * 1000; // 5 minutes
-  static PLAY_SIGN_TIMEOUT_DURATION: u64 = 2 * 60 * 1000;
-  static VERIFY_SIGN_TIMEOUT_DURATION: u64 = 2 * 60 * 1000;
+  static TIMEOUT_DURATION: u64 = 3 * 60 * 1000; // 3 minutes
 }

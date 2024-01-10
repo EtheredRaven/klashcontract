@@ -87,6 +87,17 @@ export class Klash {
     return res;
   }
 
+  can_timeout_player(args: klash.can_timeout_player_arguments): klash.boolean {
+    // const player = args.player;
+
+    // YOUR CODE HERE
+
+    const res = new klash.boolean();
+    // res.value = ;
+
+    return res;
+  }
+
   sign_up(args: klash.sign_up_arguments): klash.empty_message {
     // const from = args.from;
 
@@ -112,6 +123,16 @@ export class Klash {
     // const from = args.from;
     // const sign = args.sign;
     // const random_seed = args.random_seed;
+
+    // YOUR CODE HERE
+
+    const res = new klash.empty_message();
+
+    return res;
+  }
+
+  timeout_player(args: klash.timeout_player_arguments): klash.empty_message {
+    // const player = args.player;
 
     // YOUR CODE HERE
 
