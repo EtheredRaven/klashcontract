@@ -23,6 +23,7 @@ import {
   canTimeout,
 } from "./utils";
 import Constants from "../Constants";
+import Random from "../Random";
 
 const CONTRACT_ID = Base58.decode("1KLASH1i4nXLHWh19obwtotNGx2GufiMbG");
 const MOCK_ACCT1 = Base58.decode("1DQzuCcTKacbs9GGScRTU1Hc8BsyARTPqG");
@@ -40,6 +41,34 @@ describe("contract", () => {
     MockVM.setContractArguments(new Uint8Array(0));
     MockVM.setEntryPoint(1);
     setBlock(CURRENT_DATE);
+  });
+
+  it("should hash correctly", () => {
+    let seed = 1234;
+    let sign = 5;
+    let hashedSign = Random.hashString(sign, seed);
+    expect(Random.verifySign(sign, seed, hashedSign)).toStrictEqual(true);
+
+    seed = 1;
+    sign = 1;
+    hashedSign = Random.hashString(sign, seed);
+    expect(hashedSign).toBe(
+      "12204fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb3262c817a5eeb8"
+    );
+
+    seed = 1;
+    sign = 2;
+    hashedSign = Random.hashString(sign, seed);
+    expect(hashedSign).toBe(
+      "12206f4b6612125fb3a0daecd2799dfd6c9c299424fd92f9b308110a2c1fbd8f443"
+    );
+
+    seed = 2;
+    sign = 1;
+    hashedSign = Random.hashString(sign, seed);
+    expect(hashedSign).toBe(
+      "12206b51d431df5d7f141cbececcf79edf3dd861c3b469fb11661a3eefacbba918"
+    );
   });
 
   it("should get contract metadata", () => {

@@ -215,10 +215,10 @@
  (global $assembly/Constants/Constants.TIMEOUT_DURATION (mut i64) (i64.const 0))
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
- (global $~lib/rt/__rtti_base i32 (i32.const 8464))
- (global $~lib/memory/__data_end i32 (i32.const 9724))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 26108))
- (global $~lib/memory/__heap_base i32 (i32.const 26108))
+ (global $~lib/rt/__rtti_base i32 (i32.const 8496))
+ (global $~lib/memory/__data_end i32 (i32.const 9772))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 26156))
+ (global $~lib/memory/__heap_base i32 (i32.const 26156))
  (global $~started (mut i32) (i32.const 0))
  (memory $0 1)
  (data (i32.const 16) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -341,46 +341,47 @@
  (data (i32.const 6540) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\18\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00s\00i\00g\00n\00\00\00\00\00")
  (data (i32.const 6588) "\1c\00\00\00\00\00\00\00\00\00\00\00\82\00\00\00\08\00\00\008\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 6620) "\1c\00\00\00\00\00\00\00\00\00\00\00\84\00\00\00\08\00\00\009\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6652) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00H\00a\00s\00h\00e\00d\00 \00s\00i\00g\00n\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00m\00a\00t\00c\00h\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6732) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\002\00\00\00k\00l\00a\00s\00h\00.\00s\00i\00g\00n\00_\00v\00e\00r\00i\00f\00i\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6812) "\1c\00\00\00\00\00\00\00\00\00\00\00\86\00\00\00\08\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6844) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6876) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00@\00\00\00k\00l\00a\00s\00h\00.\00m\00a\00t\00c\00h\00_\00r\00o\00u\00n\00d\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 6972) "\1c\00\00\00\00\00\00\00\00\00\00\00\88\00\00\00\08\00\00\00;\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7004) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7036) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00c\00o\00u\00l\00d\00 \00n\00o\00t\00 \00s\00u\00b\00t\00r\00a\00c\00t\00 \00\00\00\00\00\00\00")
- (data (i32.const 7100) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00 \00f\00r\00o\00m\00 \00")
- (data (i32.const 7132) ",\00\00\00\00\00\00\00\00\00\00\00t\00\00\00\14\00\00\00\90\1b\00\00\00\00\00\00\d0\1b\00\00\00\00\00\00\e0\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7180) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00:\00\00\00k\00l\00a\00s\00h\00.\00n\00e\00w\00_\00m\00a\00t\00c\00h\00_\00c\00r\00e\00a\00t\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00")
- (data (i32.const 7260) "\1c\00\00\00\00\00\00\00\00\00\00\00\8a\00\00\00\08\00\00\00<\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7292) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7324) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00p\00l\00a\00y\00e\00r\00_\00s\00k\00i\00p\00p\00e\00d\00_\00r\00o\00u\00n\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7404) "\1c\00\00\00\00\00\00\00\00\00\00\00\8c\00\00\00\08\00\00\00=\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7436) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7468) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00<\00\00\00k\00l\00a\00s\00h\00.\00n\00e\00w\00_\00p\00l\00a\00y\00e\00r\00_\00w\00a\00i\00t\00i\00n\00g\00_\00e\00v\00e\00n\00t\00")
- (data (i32.const 7548) "\1c\00\00\00\00\00\00\00\00\00\00\00\8e\00\00\00\08\00\00\00>\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7580) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7612) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00k\00l\00a\00s\00h\00.\00m\00a\00t\00c\00h\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7692) "\1c\00\00\00\00\00\00\00\00\00\00\00\90\00\00\00\08\00\00\00?\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7724) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7756) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00J\00\00\00k\00l\00a\00s\00h\00.\00t\00o\00u\00r\00n\00a\00m\00e\00n\00t\00_\00r\00o\00u\00n\00d\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00")
- (data (i32.const 7852) "\1c\00\00\00\00\00\00\00\00\00\00\00\91\00\00\00\08\00\00\00@\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7884) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 7916) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00>\00\00\00k\00l\00a\00s\00h\00.\00t\00o\00u\00r\00n\00a\00m\00e\00n\00t\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8012) "\1c\00\00\00\00\00\00\00\00\00\00\00\93\00\00\00\08\00\00\00A\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8044) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6652) "\1c\00\00\00\00\00\00\00\00\00\00\00\86\00\00\00\08\00\00\00:\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6684) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00H\00a\00s\00h\00e\00d\00 \00s\00i\00g\00n\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00m\00a\00t\00c\00h\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6764) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\002\00\00\00k\00l\00a\00s\00h\00.\00s\00i\00g\00n\00_\00v\00e\00r\00i\00f\00i\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6844) "\1c\00\00\00\00\00\00\00\00\00\00\00\88\00\00\00\08\00\00\00;\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6876) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 6908) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00@\00\00\00k\00l\00a\00s\00h\00.\00m\00a\00t\00c\00h\00_\00r\00o\00u\00n\00d\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7004) "\1c\00\00\00\00\00\00\00\00\00\00\00\8a\00\00\00\08\00\00\00<\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7036) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7068) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00c\00o\00u\00l\00d\00 \00n\00o\00t\00 \00s\00u\00b\00t\00r\00a\00c\00t\00 \00\00\00\00\00\00\00")
+ (data (i32.const 7132) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0c\00\00\00 \00f\00r\00o\00m\00 \00")
+ (data (i32.const 7164) ",\00\00\00\00\00\00\00\00\00\00\00t\00\00\00\14\00\00\00\b0\1b\00\00\00\00\00\00\f0\1b\00\00\00\00\00\00\e0\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7212) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00:\00\00\00k\00l\00a\00s\00h\00.\00n\00e\00w\00_\00m\00a\00t\00c\00h\00_\00c\00r\00e\00a\00t\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00")
+ (data (i32.const 7292) "\1c\00\00\00\00\00\00\00\00\00\00\00\8c\00\00\00\08\00\00\00=\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7324) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7356) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00p\00l\00a\00y\00e\00r\00_\00s\00k\00i\00p\00p\00e\00d\00_\00r\00o\00u\00n\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7436) "\1c\00\00\00\00\00\00\00\00\00\00\00\8e\00\00\00\08\00\00\00>\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7468) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7500) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00<\00\00\00k\00l\00a\00s\00h\00.\00n\00e\00w\00_\00p\00l\00a\00y\00e\00r\00_\00w\00a\00i\00t\00i\00n\00g\00_\00e\00v\00e\00n\00t\00")
+ (data (i32.const 7580) "\1c\00\00\00\00\00\00\00\00\00\00\00\90\00\00\00\08\00\00\00?\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7612) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7644) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\004\00\00\00k\00l\00a\00s\00h\00.\00m\00a\00t\00c\00h\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7724) "\1c\00\00\00\00\00\00\00\00\00\00\00\92\00\00\00\08\00\00\00@\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7756) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7788) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00J\00\00\00k\00l\00a\00s\00h\00.\00t\00o\00u\00r\00n\00a\00m\00e\00n\00t\00_\00r\00o\00u\00n\00d\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00")
+ (data (i32.const 7884) "\1c\00\00\00\00\00\00\00\00\00\00\00\93\00\00\00\08\00\00\00A\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7916) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 7948) "\\\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00>\00\00\00k\00l\00a\00s\00h\00.\00t\00o\00u\00r\00n\00a\00m\00e\00n\00t\00_\00f\00i\00n\00i\00s\00h\00e\00d\00_\00e\00v\00e\00n\00t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8044) "\1c\00\00\00\00\00\00\00\00\00\00\00\95\00\00\00\08\00\00\00B\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 8076) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8108) "\1c\00\00\00\00\00\00\00\00\00\00\00\95\00\00\00\08\00\00\00B\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8140) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\002\00\00\00P\00l\00a\00y\00e\00r\00 \00c\00a\00n\00\'\00t\00 \00b\00e\00 \00t\00i\00m\00e\00d\00-\00o\00u\00t\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8220) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\008\00\00\00k\00l\00a\00s\00h\00.\00p\00l\00a\00y\00e\00r\00_\00t\00i\00m\00e\00d\00_\00o\00u\00t\00_\00e\00v\00e\00n\00t\00\00\00\00\00")
- (data (i32.const 8300) "\1c\00\00\00\00\00\00\00\00\00\00\00\97\00\00\00\08\00\00\00C\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8332) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8364) "\1c\00\00\00\00\00\00\00\00\00\00\00\99\00\00\00\08\00\00\00D\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8396) "\1c\00\00\00\00\00\00\00\00\00\00\00\9a\00\00\00\08\00\00\00E\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8108) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8140) "\1c\00\00\00\00\00\00\00\00\00\00\00\97\00\00\00\08\00\00\00C\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8172) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\002\00\00\00P\00l\00a\00y\00e\00r\00 \00c\00a\00n\00\'\00t\00 \00b\00e\00 \00t\00i\00m\00e\00d\00-\00o\00u\00t\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8252) "L\00\00\00\00\00\00\00\00\00\00\00\01\00\00\008\00\00\00k\00l\00a\00s\00h\00.\00p\00l\00a\00y\00e\00r\00_\00t\00i\00m\00e\00d\00_\00o\00u\00t\00_\00e\00v\00e\00n\00t\00\00\00\00\00")
+ (data (i32.const 8332) "\1c\00\00\00\00\00\00\00\00\00\00\00\99\00\00\00\08\00\00\00D\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8364) "\1c\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8396) "\1c\00\00\00\00\00\00\00\00\00\00\00\9b\00\00\00\08\00\00\00E\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 8428) "\1c\00\00\00\00\00\00\00\00\00\00\00\9c\00\00\00\08\00\00\00F\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 8464) "\9d\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\02\01\00\00\00\00\00\00\02\t\00\00\00\00\00\00A\00\00\00\02\00\00\00\00\00\00\00\n\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\01\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\04A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (table $0 71 funcref)
- (elem $0 (i32.const 1) $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments.encode $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result.decode $assembly/proto/klash/klash.contract_metadata.decode $assembly/proto/klash/klash.contract_metadata.encode $assembly/Klash/Klash#constructor~anonymous|0 $assembly/proto/klash/klash.full_tournament_config.decode $assembly/proto/klash/klash.full_tournament_config.encode $assembly/Klash/Klash#constructor~anonymous|1 $assembly/proto/klash/klash.players.decode $assembly/proto/klash/klash.players.encode $assembly/Klash/Klash#constructor~anonymous|2 $assembly/proto/klash/klash.waiting_players_rounds.decode $assembly/proto/klash/klash.waiting_players_rounds.encode $assembly/Klash/Klash#constructor~anonymous|3 $assembly/proto/klash/klash.tournament_tree.decode $assembly/proto/klash/klash.tournament_tree.encode $assembly/Klash/Klash#constructor~anonymous|4 $assembly/proto/klash/klash.match.decode $assembly/proto/klash/klash.match.encode $assembly/Klash/Klash#constructor~anonymous|5 $assembly/proto/klash/klash.uint64Array.decode $assembly/proto/klash/klash.uint64Array.encode $assembly/Klash/Klash#constructor~anonymous|6 $assembly/proto/klash/klash.get_contract_metadata_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result.decode $assembly/proto/klash/klash.create_tournament_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments.encode $assembly/proto/klash/klash.tournament_created_event.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments.encode $assembly/proto/klash/klash.start_tournament_arguments.decode $assembly/proto/klash/klash.tournament_round_started_event.encode $assembly/proto/klash/klash.tournament_started_event.encode $assembly/proto/klash/klash.get_tournament_config_arguments.decode $assembly/proto/klash/klash.get_tournament_tree_arguments.decode $assembly/proto/klash/klash.get_waiting_players_arguments.decode $assembly/proto/klash/klash.get_unfinished_matches_arguments.decode $assembly/proto/klash/klash.can_timeout_player_arguments.decode $assembly/proto/klash/klash.boolean.encode $assembly/proto/klash/klash.sign_up_arguments.decode $assembly/proto/klash/klash.player_signed_up_event.encode $assembly/proto/klash/klash.empty_message.encode $assembly/proto/klash/klash.play_sign_arguments.decode $assembly/proto/klash/klash.sign_played_event.encode $assembly/proto/klash/klash.verify_sign_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result.decode $assembly/proto/klash/klash.sign_verified_event.encode $assembly/proto/klash/klash.match_round_finished_event.encode $assembly/proto/klash/klash.new_match_created_event.encode $assembly/proto/klash/klash.player_skipped_round_event.encode $assembly/proto/klash/klash.new_player_waiting_event.encode $assembly/proto/klash/klash.match_finished_event.encode $assembly/proto/klash/klash.tournament_round_finished_event.encode $assembly/proto/klash/klash.tournament_finished_event.encode $assembly/proto/klash/klash.timeout_player_arguments.decode $assembly/proto/klash/klash.player_timed_out_event.encode $assembly/proto/klash/klash.get_current_match_arguments.decode $assembly/proto/klash/klash.get_signed_up_players_arguments.decode $assembly/proto/klash/klash.update_owner_arguments.decode)
+ (data (i32.const 8460) "\1c\00\00\00\00\00\00\00\00\00\00\00\9e\00\00\00\08\00\00\00G\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 8496) "\9f\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\04\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\04\00\00\00\02\01\00\00\00\00\00\00\02\t\00\00\00\00\00\00A\00\00\00\02\00\00\00\00\00\00\00\n\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\01\00\00\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\04A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (table $0 72 funcref)
+ (elem $0 (i32.const 1) $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments.encode $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result.decode $assembly/proto/klash/klash.contract_metadata.decode $assembly/proto/klash/klash.contract_metadata.encode $assembly/Klash/Klash#constructor~anonymous|0 $assembly/proto/klash/klash.full_tournament_config.decode $assembly/proto/klash/klash.full_tournament_config.encode $assembly/Klash/Klash#constructor~anonymous|1 $assembly/proto/klash/klash.players.decode $assembly/proto/klash/klash.players.encode $assembly/Klash/Klash#constructor~anonymous|2 $assembly/proto/klash/klash.waiting_players_rounds.decode $assembly/proto/klash/klash.waiting_players_rounds.encode $assembly/Klash/Klash#constructor~anonymous|3 $assembly/proto/klash/klash.tournament_tree.decode $assembly/proto/klash/klash.tournament_tree.encode $assembly/Klash/Klash#constructor~anonymous|4 $assembly/proto/klash/klash.match.decode $assembly/proto/klash/klash.match.encode $assembly/Klash/Klash#constructor~anonymous|5 $assembly/proto/klash/klash.uint64Array.decode $assembly/proto/klash/klash.uint64Array.encode $assembly/Klash/Klash#constructor~anonymous|6 $assembly/proto/klash/klash.get_contract_metadata_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result.decode $assembly/proto/klash/klash.create_tournament_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments.encode $assembly/proto/klash/klash.tournament_created_event.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments.encode $assembly/proto/klash/klash.start_tournament_arguments.decode $assembly/proto/klash/klash.tournament_round_started_event.encode $assembly/proto/klash/klash.tournament_started_event.encode $assembly/proto/klash/klash.get_tournament_config_arguments.decode $assembly/proto/klash/klash.get_tournament_tree_arguments.decode $assembly/proto/klash/klash.get_waiting_players_arguments.decode $assembly/proto/klash/klash.get_unfinished_matches_arguments.decode $assembly/proto/klash/klash.can_timeout_player_arguments.decode $assembly/proto/klash/klash.boolean.encode $assembly/proto/klash/klash.sign_up_arguments.decode $assembly/proto/klash/klash.player_signed_up_event.encode $assembly/proto/klash/klash.empty_message.encode $assembly/proto/klash/klash.play_sign_arguments.decode $assembly/proto/klash/klash.sign_played_event.encode $assembly/proto/klash/klash.verify_sign_arguments.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments.encode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result.decode $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments.encode $assembly/proto/klash/klash.sign_verified_event.encode $assembly/proto/klash/klash.match_round_finished_event.encode $assembly/proto/klash/klash.new_match_created_event.encode $assembly/proto/klash/klash.player_skipped_round_event.encode $assembly/proto/klash/klash.new_player_waiting_event.encode $assembly/proto/klash/klash.match_finished_event.encode $assembly/proto/klash/klash.tournament_round_finished_event.encode $assembly/proto/klash/klash.tournament_finished_event.encode $assembly/proto/klash/klash.timeout_player_arguments.decode $assembly/proto/klash/klash.player_timed_out_event.encode $assembly/proto/klash/klash.get_current_match_arguments.decode $assembly/proto/klash/klash.get_signed_up_players_arguments.decode $assembly/proto/klash/klash.update_owner_arguments.decode)
  (export "main" (func $assembly/index/main))
  (export "memory" (memory $0))
  (export "_start" (func $~start))
@@ -9708,6 +9709,53 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
+ (func $~lib/number/U8#toString (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  i32.const 255
+  i32.and
+  local.get $1
+  call $~lib/util/number/utoa32
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments#set:message (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments.encode (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.load
+  local.tee $2
+  i32.store
+  local.get $2
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 10
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   local.get $2
+   call $~lib/as-proto/Writer/Writer#string@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
  (func $assembly/proto/klash/klash.sign_verified_event#set:player (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -14861,6 +14909,28 @@
   local.get $1
   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result>#__visit
  )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
+  local.get $0
+  i32.load offset=4
+  local.get $1
+  call $~lib/rt/itcms/__visit
+ )
+ (func $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void>#__visit
+ )
  (func $assembly/proto/klash/klash.sign_verified_event~visit (param $0 i32) (param $1 i32)
   (local $2 i32)
   local.get $0
@@ -15167,793 +15237,805 @@
                         block $assembly/proto/klash/klash.match_round_finished_event
                          block $~lib/function/Function<%28assembly/proto/klash/klash.sign_verified_event%2C~lib/as-proto/Writer/Writer%29=>void>
                           block $assembly/proto/klash/klash.sign_verified_event
-                           block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result>
-                            block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result
-                             block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                              block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments
-                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments>
-                                block $assembly/proto/klash/klash.verify_sign_arguments
-                                 block $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void>
-                                  block $assembly/proto/klash/klash.sign_played_event
-                                   block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments>
-                                    block $assembly/proto/klash/klash.play_sign_arguments
-                                     block $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void>
-                                      block $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void>
-                                       block $assembly/proto/klash/klash.player_signed_up_event
-                                        block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments>
-                                         block $assembly/proto/klash/klash.sign_up_arguments
-                                          block $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void>
-                                           block $~lib/staticarray/StaticArray<~lib/string/String>
-                                            block $~lib/@koinos/sdk-as/util/safeMath/SafeMath.SafeInteger<u64>
-                                             block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments>
-                                              block $assembly/proto/klash/klash.can_timeout_player_arguments
-                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments>
-                                                block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments>
-                                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments>
-                                                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments>
-                                                   block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                    block $assembly/proto/klash/klash.tournament_started_event
-                                                     block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                      block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments>
-                                                       block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                        block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments
-                                                         block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                          block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments
-                                                            block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result>
-                                                             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result
-                                                              block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                               block $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction>
-                                                                block $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation>
-                                                                 block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation
-                                                                  block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle
-                                                                   block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target
-                                                                    block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation
-                                                                     block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation
-                                                                      block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation
-                                                                       block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation
-                                                                        block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header
-                                                                         block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction
-                                                                          block $~lib/array/Array<~lib/typedarray/Uint8Array>
-                                                                           block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header
-                                                                            block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block
-                                                                             block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>
-                                                                              block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                               block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments
-                                                                                block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result>
-                                                                                 block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result
-                                                                                  block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                   block $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data
-                                                                                    block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments>
-                                                                                     block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>
-                                                                                      block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object
-                                                                                       block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result
-                                                                                        block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                         block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments
-                                                                                          block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments>
-                                                                                           block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null>
-                                                                                            block $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                             block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array>
-                                                                                              block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null>
-                                                                                               block $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match>
-                                                                                                 block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null>
-                                                                                                  block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                   block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree>
-                                                                                                    block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null>
-                                                                                                     block $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                      block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds>
-                                                                                                       block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null>
-                                                                                                        block $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                         block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players>
-                                                                                                          block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null>
-                                                                                                           block $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                            block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config>
-                                                                                                             block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null>
-                                                                                                              block $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata>
-                                                                                                                block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>
-                                                                                                                 block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result
-                                                                                                                  block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                                   block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array>
-                                                                                                                    block $~lib/array/Array<u64>
-                                                                                                                     block $assembly/proto/klash/klash.uint64Array
-                                                                                                                      block $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match>
-                                                                                                                       block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree>
-                                                                                                                        block $~lib/array/Array<assembly/proto/klash/klash.round>
-                                                                                                                         block $~lib/array/Array<assembly/proto/klash/klash.match>
-                                                                                                                          block $assembly/proto/klash/klash.sign
-                                                                                                                           block $assembly/proto/klash/klash.match
-                                                                                                                            block $assembly/proto/klash/klash.round
-                                                                                                                             block $assembly/proto/klash/klash.tournament_tree
-                                                                                                                              block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>
-                                                                                                                               block $~lib/array/Array<assembly/proto/klash/klash.players>
-                                                                                                                                block $assembly/proto/klash/klash.waiting_players_rounds
-                                                                                                                                 block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players>
-                                                                                                                                  block $~lib/array/Array<assembly/proto/klash/klash.player>
-                                                                                                                                   block $assembly/proto/klash/klash.player
-                                                                                                                                    block $assembly/proto/klash/klash.players
-                                                                                                                                     block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config>
-                                                                                                                                      block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata>
-                                                                                                                                       block $assembly/proto/klash/klash.contract_metadata
-                                                                                                                                        block $assembly/Klash/Klash
-                                                                                                                                         block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>
-                                                                                                                                          block $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data
-                                                                                                                                           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result
-                                                                                                                                            block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                                                             block $~lib/@koinos/proto-as/koinos/chain/chain/chain.result
-                                                                                                                                              block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments
-                                                                                                                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>
-                                                                                                                                                block $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data
-                                                                                                                                                 block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
-                                                                                                                                                  block $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn
-                                                                                                                                                   block $~lib/typedarray/Uint32Array
-                                                                                                                                                    block $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space
-                                                                                                                                                     block $~lib/as-proto/Reader/Reader
-                                                                                                                                                      block $~lib/as-proto/internal/FixedReader/FixedReader
-                                                                                                                                                       block $~lib/typedarray/Uint8Array
-                                                                                                                                                        block $~lib/array/Array<i32>
-                                                                                                                                                         block $~lib/array/Array<u32>
-                                                                                                                                                          block $~lib/as-proto/internal/FixedSizer/FixedSizer
-                                                                                                                                                           block $~lib/as-proto/Writer/Writer
-                                                                                                                                                            block $~lib/as-proto/internal/FixedWriter/FixedWriter
-                                                                                                                                                             block $~lib/arraybuffer/ArrayBufferView
-                                                                                                                                                              block $~lib/string/String
-                                                                                                                                                               block $~lib/arraybuffer/ArrayBuffer
-                                                                                                                                                                local.get $0
-                                                                                                                                                                i32.const 8
-                                                                                                                                                                i32.sub
-                                                                                                                                                                i32.load
-                                                                                                                                                                br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/internal/FixedWriter/FixedWriter $~lib/as-proto/Writer/Writer $~lib/as-proto/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/internal/FixedReader/FixedReader $~lib/as-proto/Reader/Reader $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space $~lib/typedarray/Uint32Array $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments $~lib/@koinos/proto-as/koinos/chain/chain/chain.result $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result> $assembly/Klash/Klash $assembly/proto/klash/klash.contract_metadata $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config> $assembly/proto/klash/klash.players $assembly/proto/klash/klash.player $~lib/array/Array<assembly/proto/klash/klash.player> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players> $assembly/proto/klash/klash.waiting_players_rounds $~lib/array/Array<assembly/proto/klash/klash.players> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds> $assembly/proto/klash/klash.tournament_tree $assembly/proto/klash/klash.round $assembly/proto/klash/klash.match $assembly/proto/klash/klash.sign $~lib/array/Array<assembly/proto/klash/klash.match> $~lib/array/Array<assembly/proto/klash/klash.round> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree> $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match> $assembly/proto/klash/klash.uint64Array $~lib/array/Array<u64> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata> $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config> $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players> $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds> $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match> $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array> $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments> $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result> $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header $~lib/array/Array<~lib/typedarray/Uint8Array> $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation> $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.tournament_started_event $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments> $assembly/proto/klash/klash.can_timeout_player_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments> $~lib/@koinos/sdk-as/util/safeMath/SafeMath.SafeInteger<u64> $~lib/staticarray/StaticArray<~lib/string/String> $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.sign_up_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments> $assembly/proto/klash/klash.player_signed_up_event $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.play_sign_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments> $assembly/proto/klash/klash.sign_played_event $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.verify_sign_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result> $assembly/proto/klash/klash.sign_verified_event $~lib/function/Function<%28assembly/proto/klash/klash.sign_verified_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.match_round_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.match_round_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.new_match_created_event $~lib/function/Function<%28assembly/proto/klash/klash.new_match_created_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.player_skipped_round_event $~lib/function/Function<%28assembly/proto/klash/klash.player_skipped_round_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.new_player_waiting_event $~lib/function/Function<%28assembly/proto/klash/klash.new_player_waiting_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.match_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.match_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.tournament_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.tournament_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.timeout_player_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.timeout_player_arguments> $assembly/proto/klash/klash.player_timed_out_event $~lib/function/Function<%28assembly/proto/klash/klash.player_timed_out_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.get_current_match_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_current_match_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_signed_up_players_arguments> $assembly/proto/klash/klash.update_owner_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.update_owner_arguments> $invalid
+                           block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                            block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments
+                             block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result>
+                              block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result
+                               block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments
+                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments>
+                                  block $assembly/proto/klash/klash.verify_sign_arguments
+                                   block $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void>
+                                    block $assembly/proto/klash/klash.sign_played_event
+                                     block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments>
+                                      block $assembly/proto/klash/klash.play_sign_arguments
+                                       block $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void>
+                                        block $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void>
+                                         block $assembly/proto/klash/klash.player_signed_up_event
+                                          block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments>
+                                           block $assembly/proto/klash/klash.sign_up_arguments
+                                            block $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void>
+                                             block $~lib/staticarray/StaticArray<~lib/string/String>
+                                              block $~lib/@koinos/sdk-as/util/safeMath/SafeMath.SafeInteger<u64>
+                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments>
+                                                block $assembly/proto/klash/klash.can_timeout_player_arguments
+                                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments>
+                                                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments>
+                                                   block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments>
+                                                    block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments>
+                                                     block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                      block $assembly/proto/klash/klash.tournament_started_event
+                                                       block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                        block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments>
+                                                         block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                          block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments
+                                                           block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                            block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments
+                                                              block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result>
+                                                               block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result
+                                                                block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                 block $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction>
+                                                                  block $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation>
+                                                                   block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation
+                                                                    block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle
+                                                                     block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target
+                                                                      block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation
+                                                                       block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation
+                                                                        block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation
+                                                                         block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation
+                                                                          block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header
+                                                                           block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction
+                                                                            block $~lib/array/Array<~lib/typedarray/Uint8Array>
+                                                                             block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header
+                                                                              block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block
+                                                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>
+                                                                                block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                 block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments
+                                                                                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result>
+                                                                                   block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result
+                                                                                    block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                     block $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data
+                                                                                      block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments>
+                                                                                       block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>
+                                                                                        block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object
+                                                                                         block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result
+                                                                                          block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                           block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments
+                                                                                            block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments>
+                                                                                             block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null>
+                                                                                              block $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                               block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array>
+                                                                                                block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null>
+                                                                                                 block $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match>
+                                                                                                   block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null>
+                                                                                                    block $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                     block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree>
+                                                                                                      block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null>
+                                                                                                       block $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                        block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds>
+                                                                                                         block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null>
+                                                                                                          block $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                           block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players>
+                                                                                                            block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null>
+                                                                                                             block $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                              block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config>
+                                                                                                               block $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null>
+                                                                                                                block $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata>
+                                                                                                                  block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>
+                                                                                                                   block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result
+                                                                                                                    block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                                     block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array>
+                                                                                                                      block $~lib/array/Array<u64>
+                                                                                                                       block $assembly/proto/klash/klash.uint64Array
+                                                                                                                        block $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match>
+                                                                                                                         block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree>
+                                                                                                                          block $~lib/array/Array<assembly/proto/klash/klash.round>
+                                                                                                                           block $~lib/array/Array<assembly/proto/klash/klash.match>
+                                                                                                                            block $assembly/proto/klash/klash.sign
+                                                                                                                             block $assembly/proto/klash/klash.match
+                                                                                                                              block $assembly/proto/klash/klash.round
+                                                                                                                               block $assembly/proto/klash/klash.tournament_tree
+                                                                                                                                block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>
+                                                                                                                                 block $~lib/array/Array<assembly/proto/klash/klash.players>
+                                                                                                                                  block $assembly/proto/klash/klash.waiting_players_rounds
+                                                                                                                                   block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players>
+                                                                                                                                    block $~lib/array/Array<assembly/proto/klash/klash.player>
+                                                                                                                                     block $assembly/proto/klash/klash.player
+                                                                                                                                      block $assembly/proto/klash/klash.players
+                                                                                                                                       block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config>
+                                                                                                                                        block $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata>
+                                                                                                                                         block $assembly/proto/klash/klash.contract_metadata
+                                                                                                                                          block $assembly/Klash/Klash
+                                                                                                                                           block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>
+                                                                                                                                            block $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data
+                                                                                                                                             block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result
+                                                                                                                                              block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                                                               block $~lib/@koinos/proto-as/koinos/chain/chain/chain.result
+                                                                                                                                                block $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments
+                                                                                                                                                 block $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>
+                                                                                                                                                  block $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data
+                                                                                                                                                   block $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>
+                                                                                                                                                    block $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn
+                                                                                                                                                     block $~lib/typedarray/Uint32Array
+                                                                                                                                                      block $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space
+                                                                                                                                                       block $~lib/as-proto/Reader/Reader
+                                                                                                                                                        block $~lib/as-proto/internal/FixedReader/FixedReader
+                                                                                                                                                         block $~lib/typedarray/Uint8Array
+                                                                                                                                                          block $~lib/array/Array<i32>
+                                                                                                                                                           block $~lib/array/Array<u32>
+                                                                                                                                                            block $~lib/as-proto/internal/FixedSizer/FixedSizer
+                                                                                                                                                             block $~lib/as-proto/Writer/Writer
+                                                                                                                                                              block $~lib/as-proto/internal/FixedWriter/FixedWriter
+                                                                                                                                                               block $~lib/arraybuffer/ArrayBufferView
+                                                                                                                                                                block $~lib/string/String
+                                                                                                                                                                 block $~lib/arraybuffer/ArrayBuffer
+                                                                                                                                                                  local.get $0
+                                                                                                                                                                  i32.const 8
+                                                                                                                                                                  i32.sub
+                                                                                                                                                                  i32.load
+                                                                                                                                                                  br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/as-proto/internal/FixedWriter/FixedWriter $~lib/as-proto/Writer/Writer $~lib/as-proto/internal/FixedSizer/FixedSizer $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/typedarray/Uint8Array $~lib/as-proto/internal/FixedReader/FixedReader $~lib/as-proto/Reader/Reader $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space $~lib/typedarray/Uint32Array $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments $~lib/@koinos/proto-as/koinos/chain/chain/chain.result $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result> $assembly/Klash/Klash $assembly/proto/klash/klash.contract_metadata $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config> $assembly/proto/klash/klash.players $assembly/proto/klash/klash.player $~lib/array/Array<assembly/proto/klash/klash.player> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players> $assembly/proto/klash/klash.waiting_players_rounds $~lib/array/Array<assembly/proto/klash/klash.players> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds> $assembly/proto/klash/klash.tournament_tree $assembly/proto/klash/klash.round $assembly/proto/klash/klash.match $assembly/proto/klash/klash.sign $~lib/array/Array<assembly/proto/klash/klash.match> $~lib/array/Array<assembly/proto/klash/klash.round> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree> $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match> $assembly/proto/klash/klash.uint64Array $~lib/array/Array<u64> $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata> $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config> $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players> $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds> $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match> $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array> $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments> $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result> $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header $~lib/array/Array<~lib/typedarray/Uint8Array> $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation> $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction> $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.tournament_started_event $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments> $assembly/proto/klash/klash.can_timeout_player_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments> $~lib/@koinos/sdk-as/util/safeMath/SafeMath.SafeInteger<u64> $~lib/staticarray/StaticArray<~lib/string/String> $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.sign_up_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments> $assembly/proto/klash/klash.player_signed_up_event $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.play_sign_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments> $assembly/proto/klash/klash.sign_played_event $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.verify_sign_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result> $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.sign_verified_event $~lib/function/Function<%28assembly/proto/klash/klash.sign_verified_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.match_round_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.match_round_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.new_match_created_event $~lib/function/Function<%28assembly/proto/klash/klash.new_match_created_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.player_skipped_round_event $~lib/function/Function<%28assembly/proto/klash/klash.player_skipped_round_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.new_player_waiting_event $~lib/function/Function<%28assembly/proto/klash/klash.new_player_waiting_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.match_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.match_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.tournament_finished_event $~lib/function/Function<%28assembly/proto/klash/klash.tournament_finished_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.timeout_player_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.timeout_player_arguments> $assembly/proto/klash/klash.player_timed_out_event $~lib/function/Function<%28assembly/proto/klash/klash.player_timed_out_event%2C~lib/as-proto/Writer/Writer%29=>void> $assembly/proto/klash/klash.get_current_match_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_current_match_arguments> $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_signed_up_players_arguments> $assembly/proto/klash/klash.update_owner_arguments $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.update_owner_arguments> $invalid
+                                                                                                                                                                 end
+                                                                                                                                                                 return
+                                                                                                                                                                end
+                                                                                                                                                                return
                                                                                                                                                                end
+                                                                                                                                                               local.get $0
+                                                                                                                                                               local.get $1
+                                                                                                                                                               call $~lib/arraybuffer/ArrayBufferView~visit
                                                                                                                                                                return
                                                                                                                                                               end
+                                                                                                                                                              local.get $0
+                                                                                                                                                              local.get $1
+                                                                                                                                                              call $~lib/as-proto/internal/FixedWriter/FixedWriter~visit
                                                                                                                                                               return
                                                                                                                                                              end
-                                                                                                                                                             local.get $0
-                                                                                                                                                             local.get $1
-                                                                                                                                                             call $~lib/arraybuffer/ArrayBufferView~visit
                                                                                                                                                              return
                                                                                                                                                             end
                                                                                                                                                             local.get $0
                                                                                                                                                             local.get $1
-                                                                                                                                                            call $~lib/as-proto/internal/FixedWriter/FixedWriter~visit
+                                                                                                                                                            call $~lib/as-proto/internal/FixedSizer/FixedSizer~visit
                                                                                                                                                             return
                                                                                                                                                            end
+                                                                                                                                                           local.get $0
+                                                                                                                                                           local.get $1
+                                                                                                                                                           call $~lib/array/Array<u32>~visit
                                                                                                                                                            return
                                                                                                                                                           end
                                                                                                                                                           local.get $0
                                                                                                                                                           local.get $1
-                                                                                                                                                          call $~lib/as-proto/internal/FixedSizer/FixedSizer~visit
+                                                                                                                                                          call $~lib/array/Array<i32>~visit
                                                                                                                                                           return
                                                                                                                                                          end
                                                                                                                                                          local.get $0
                                                                                                                                                          local.get $1
-                                                                                                                                                         call $~lib/array/Array<u32>~visit
+                                                                                                                                                         call $~lib/typedarray/Uint8Array~visit
                                                                                                                                                          return
                                                                                                                                                         end
                                                                                                                                                         local.get $0
                                                                                                                                                         local.get $1
-                                                                                                                                                        call $~lib/array/Array<i32>~visit
+                                                                                                                                                        call $~lib/as-proto/internal/FixedReader/FixedReader~visit
                                                                                                                                                         return
                                                                                                                                                        end
-                                                                                                                                                       local.get $0
-                                                                                                                                                       local.get $1
-                                                                                                                                                       call $~lib/typedarray/Uint8Array~visit
                                                                                                                                                        return
                                                                                                                                                       end
                                                                                                                                                       local.get $0
                                                                                                                                                       local.get $1
-                                                                                                                                                      call $~lib/as-proto/internal/FixedReader/FixedReader~visit
+                                                                                                                                                      call $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space~visit
                                                                                                                                                       return
                                                                                                                                                      end
+                                                                                                                                                     local.get $0
+                                                                                                                                                     local.get $1
+                                                                                                                                                     call $~lib/typedarray/Uint32Array~visit
                                                                                                                                                      return
                                                                                                                                                     end
                                                                                                                                                     local.get $0
                                                                                                                                                     local.get $1
-                                                                                                                                                    call $~lib/@koinos/proto-as/koinos/chain/chain/chain.object_space~visit
+                                                                                                                                                    call $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn~visit
                                                                                                                                                     return
                                                                                                                                                    end
                                                                                                                                                    local.get $0
                                                                                                                                                    local.get $1
-                                                                                                                                                   call $~lib/typedarray/Uint32Array~visit
+                                                                                                                                                   call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                                                                    return
                                                                                                                                                   end
                                                                                                                                                   local.get $0
                                                                                                                                                   local.get $1
-                                                                                                                                                  call $~lib/@koinos/sdk-as/systemCalls/System.getArgumentsReturn~visit
+                                                                                                                                                  call $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data~visit
                                                                                                                                                   return
                                                                                                                                                  end
                                                                                                                                                  local.get $0
                                                                                                                                                  local.get $1
-                                                                                                                                                 call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                                                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>~visit
                                                                                                                                                  return
                                                                                                                                                 end
                                                                                                                                                 local.get $0
                                                                                                                                                 local.get $1
-                                                                                                                                                call $~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data~visit
+                                                                                                                                                call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments~visit
                                                                                                                                                 return
                                                                                                                                                end
                                                                                                                                                local.get $0
                                                                                                                                                local.get $1
-                                                                                                                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/chain/chain.error_data>~visit
+                                                                                                                                               call $~lib/@koinos/proto-as/koinos/chain/chain/chain.result~visit
                                                                                                                                                return
                                                                                                                                               end
                                                                                                                                               local.get $0
                                                                                                                                               local.get $1
-                                                                                                                                              call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments~visit
+                                                                                                                                              call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                                                               return
                                                                                                                                              end
                                                                                                                                              local.get $0
                                                                                                                                              local.get $1
-                                                                                                                                             call $~lib/@koinos/proto-as/koinos/chain/chain/chain.result~visit
+                                                                                                                                             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result~visit
                                                                                                                                              return
                                                                                                                                             end
                                                                                                                                             local.get $0
                                                                                                                                             local.get $1
-                                                                                                                                            call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.exit_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                                                            call $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data~visit
                                                                                                                                             return
                                                                                                                                            end
                                                                                                                                            local.get $0
                                                                                                                                            local.get $1
-                                                                                                                                           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result~visit
+                                                                                                                                           call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>~visit
                                                                                                                                            return
                                                                                                                                           end
                                                                                                                                           local.get $0
                                                                                                                                           local.get $1
-                                                                                                                                          call $~lib/@koinos/proto-as/koinos/chain/chain/chain.argument_data~visit
+                                                                                                                                          call $assembly/Klash/Klash~visit
                                                                                                                                           return
                                                                                                                                          end
                                                                                                                                          local.get $0
                                                                                                                                          local.get $1
-                                                                                                                                         call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_arguments_result>~visit
+                                                                                                                                         call $assembly/proto/klash/klash.contract_metadata~visit
                                                                                                                                          return
                                                                                                                                         end
                                                                                                                                         local.get $0
                                                                                                                                         local.get $1
-                                                                                                                                        call $assembly/Klash/Klash~visit
+                                                                                                                                        call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata>~visit
                                                                                                                                         return
                                                                                                                                        end
                                                                                                                                        local.get $0
                                                                                                                                        local.get $1
-                                                                                                                                       call $assembly/proto/klash/klash.contract_metadata~visit
+                                                                                                                                       call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config>~visit
                                                                                                                                        return
                                                                                                                                       end
                                                                                                                                       local.get $0
                                                                                                                                       local.get $1
-                                                                                                                                      call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.contract_metadata>~visit
+                                                                                                                                      call $assembly/proto/klash/klash.players~visit
                                                                                                                                       return
                                                                                                                                      end
                                                                                                                                      local.get $0
                                                                                                                                      local.get $1
-                                                                                                                                     call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.full_tournament_config>~visit
+                                                                                                                                     call $assembly/proto/klash/klash.player~visit
                                                                                                                                      return
                                                                                                                                     end
                                                                                                                                     local.get $0
                                                                                                                                     local.get $1
-                                                                                                                                    call $assembly/proto/klash/klash.players~visit
+                                                                                                                                    call $~lib/array/Array<assembly/proto/klash/klash.player>~visit
                                                                                                                                     return
                                                                                                                                    end
                                                                                                                                    local.get $0
                                                                                                                                    local.get $1
-                                                                                                                                   call $assembly/proto/klash/klash.player~visit
+                                                                                                                                   call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players>~visit
                                                                                                                                    return
                                                                                                                                   end
                                                                                                                                   local.get $0
                                                                                                                                   local.get $1
-                                                                                                                                  call $~lib/array/Array<assembly/proto/klash/klash.player>~visit
+                                                                                                                                  call $assembly/proto/klash/klash.waiting_players_rounds~visit
                                                                                                                                   return
                                                                                                                                  end
                                                                                                                                  local.get $0
                                                                                                                                  local.get $1
-                                                                                                                                 call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.players>~visit
+                                                                                                                                 call $~lib/array/Array<assembly/proto/klash/klash.players>~visit
                                                                                                                                  return
                                                                                                                                 end
                                                                                                                                 local.get $0
                                                                                                                                 local.get $1
-                                                                                                                                call $assembly/proto/klash/klash.waiting_players_rounds~visit
+                                                                                                                                call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>~visit
                                                                                                                                 return
                                                                                                                                end
                                                                                                                                local.get $0
                                                                                                                                local.get $1
-                                                                                                                               call $~lib/array/Array<assembly/proto/klash/klash.players>~visit
+                                                                                                                               call $assembly/proto/klash/klash.tournament_tree~visit
                                                                                                                                return
                                                                                                                               end
                                                                                                                               local.get $0
                                                                                                                               local.get $1
-                                                                                                                              call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>~visit
+                                                                                                                              call $assembly/proto/klash/klash.round~visit
                                                                                                                               return
                                                                                                                              end
                                                                                                                              local.get $0
                                                                                                                              local.get $1
-                                                                                                                             call $assembly/proto/klash/klash.tournament_tree~visit
+                                                                                                                             call $assembly/proto/klash/klash.match~visit
                                                                                                                              return
                                                                                                                             end
                                                                                                                             local.get $0
                                                                                                                             local.get $1
-                                                                                                                            call $assembly/proto/klash/klash.round~visit
+                                                                                                                            call $assembly/proto/klash/klash.sign~visit
                                                                                                                             return
                                                                                                                            end
                                                                                                                            local.get $0
                                                                                                                            local.get $1
-                                                                                                                           call $assembly/proto/klash/klash.match~visit
+                                                                                                                           call $~lib/array/Array<assembly/proto/klash/klash.match>~visit
                                                                                                                            return
                                                                                                                           end
                                                                                                                           local.get $0
                                                                                                                           local.get $1
-                                                                                                                          call $assembly/proto/klash/klash.sign~visit
+                                                                                                                          call $~lib/array/Array<assembly/proto/klash/klash.round>~visit
                                                                                                                           return
                                                                                                                          end
                                                                                                                          local.get $0
                                                                                                                          local.get $1
-                                                                                                                         call $~lib/array/Array<assembly/proto/klash/klash.match>~visit
+                                                                                                                         call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree>~visit
                                                                                                                          return
                                                                                                                         end
                                                                                                                         local.get $0
                                                                                                                         local.get $1
-                                                                                                                        call $~lib/array/Array<assembly/proto/klash/klash.round>~visit
+                                                                                                                        call $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match>~visit
                                                                                                                         return
                                                                                                                        end
                                                                                                                        local.get $0
                                                                                                                        local.get $1
-                                                                                                                       call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.tournament_tree>~visit
+                                                                                                                       call $assembly/proto/klash/klash.uint64Array~visit
                                                                                                                        return
                                                                                                                       end
                                                                                                                       local.get $0
                                                                                                                       local.get $1
-                                                                                                                      call $~lib/@koinos/sdk-as/util/storage/Storage.Map<~lib/typedarray/Uint8Array,assembly/proto/klash/klash.match>~visit
+                                                                                                                      call $~lib/array/Array<u64>~visit
                                                                                                                       return
                                                                                                                      end
                                                                                                                      local.get $0
                                                                                                                      local.get $1
-                                                                                                                     call $assembly/proto/klash/klash.uint64Array~visit
+                                                                                                                     call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array>~visit
                                                                                                                      return
                                                                                                                     end
                                                                                                                     local.get $0
                                                                                                                     local.get $1
-                                                                                                                    call $~lib/array/Array<u64>~visit
+                                                                                                                    call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                                     return
                                                                                                                    end
                                                                                                                    local.get $0
                                                                                                                    local.get $1
-                                                                                                                   call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.uint64Array>~visit
+                                                                                                                   call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result~visit
                                                                                                                    return
                                                                                                                   end
                                                                                                                   local.get $0
                                                                                                                   local.get $1
-                                                                                                                  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>~visit
                                                                                                                   return
                                                                                                                  end
                                                                                                                  local.get $0
                                                                                                                  local.get $1
-                                                                                                                 call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result~visit
+                                                                                                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata>~visit
                                                                                                                  return
                                                                                                                 end
                                                                                                                 local.get $0
                                                                                                                 local.get $1
-                                                                                                                call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_contract_id_result>~visit
+                                                                                                                call $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                                 return
                                                                                                                end
                                                                                                                local.get $0
                                                                                                                local.get $1
-                                                                                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.contract_metadata>~visit
+                                                                                                               call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null>~visit
                                                                                                                return
                                                                                                               end
                                                                                                               local.get $0
                                                                                                               local.get $1
-                                                                                                              call $~lib/function/Function<%28assembly/proto/klash/klash.contract_metadata%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                              call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config>~visit
                                                                                                               return
                                                                                                              end
                                                                                                              local.get $0
                                                                                                              local.get $1
-                                                                                                             call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.contract_metadata|null>~visit
+                                                                                                             call $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                              return
                                                                                                             end
                                                                                                             local.get $0
                                                                                                             local.get $1
-                                                                                                            call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.full_tournament_config>~visit
+                                                                                                            call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null>~visit
                                                                                                             return
                                                                                                            end
                                                                                                            local.get $0
                                                                                                            local.get $1
-                                                                                                           call $~lib/function/Function<%28assembly/proto/klash/klash.full_tournament_config%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                           call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players>~visit
                                                                                                            return
                                                                                                           end
                                                                                                           local.get $0
                                                                                                           local.get $1
-                                                                                                          call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.full_tournament_config|null>~visit
+                                                                                                          call $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                           return
                                                                                                          end
                                                                                                          local.get $0
                                                                                                          local.get $1
-                                                                                                         call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.players>~visit
+                                                                                                         call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null>~visit
                                                                                                          return
                                                                                                         end
                                                                                                         local.get $0
                                                                                                         local.get $1
-                                                                                                        call $~lib/function/Function<%28assembly/proto/klash/klash.players%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                        call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds>~visit
                                                                                                         return
                                                                                                        end
                                                                                                        local.get $0
                                                                                                        local.get $1
-                                                                                                       call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.players|null>~visit
+                                                                                                       call $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                        return
                                                                                                       end
                                                                                                       local.get $0
                                                                                                       local.get $1
-                                                                                                      call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.waiting_players_rounds>~visit
+                                                                                                      call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null>~visit
                                                                                                       return
                                                                                                      end
                                                                                                      local.get $0
                                                                                                      local.get $1
-                                                                                                     call $~lib/function/Function<%28assembly/proto/klash/klash.waiting_players_rounds%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                     call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree>~visit
                                                                                                      return
                                                                                                     end
                                                                                                     local.get $0
                                                                                                     local.get $1
-                                                                                                    call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.waiting_players_rounds|null>~visit
+                                                                                                    call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                     return
                                                                                                    end
                                                                                                    local.get $0
                                                                                                    local.get $1
-                                                                                                   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.tournament_tree>~visit
+                                                                                                   call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null>~visit
                                                                                                    return
                                                                                                   end
                                                                                                   local.get $0
                                                                                                   local.get $1
-                                                                                                  call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_tree%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match>~visit
                                                                                                   return
                                                                                                  end
                                                                                                  local.get $0
                                                                                                  local.get $1
-                                                                                                 call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.tournament_tree|null>~visit
+                                                                                                 call $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                                  return
                                                                                                 end
                                                                                                 local.get $0
                                                                                                 local.get $1
-                                                                                                call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.match>~visit
+                                                                                                call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null>~visit
                                                                                                 return
                                                                                                end
                                                                                                local.get $0
                                                                                                local.get $1
-                                                                                               call $~lib/function/Function<%28assembly/proto/klash/klash.match%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array>~visit
                                                                                                return
                                                                                               end
                                                                                               local.get $0
                                                                                               local.get $1
-                                                                                              call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.match|null>~visit
+                                                                                              call $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                               return
                                                                                              end
                                                                                              local.get $0
                                                                                              local.get $1
-                                                                                             call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.uint64Array>~visit
+                                                                                             call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null>~visit
                                                                                              return
                                                                                             end
                                                                                             local.get $0
                                                                                             local.get $1
-                                                                                            call $~lib/function/Function<%28assembly/proto/klash/klash.uint64Array%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                            call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments>~visit
                                                                                             return
                                                                                            end
                                                                                            local.get $0
                                                                                            local.get $1
-                                                                                           call $~lib/function/Function<%28%29=>assembly/proto/klash/klash.uint64Array|null>~visit
+                                                                                           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments~visit
                                                                                            return
                                                                                           end
                                                                                           local.get $0
                                                                                           local.get $1
-                                                                                          call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_contract_metadata_arguments>~visit
+                                                                                          call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                           return
                                                                                          end
                                                                                          local.get $0
                                                                                          local.get $1
-                                                                                         call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments~visit
+                                                                                         call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result~visit
                                                                                          return
                                                                                         end
                                                                                         local.get $0
                                                                                         local.get $1
-                                                                                        call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                        call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object~visit
                                                                                         return
                                                                                        end
                                                                                        local.get $0
                                                                                        local.get $1
-                                                                                       call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result~visit
+                                                                                       call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>~visit
                                                                                        return
                                                                                       end
                                                                                       local.get $0
                                                                                       local.get $1
-                                                                                      call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.database_object~visit
+                                                                                      call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments>~visit
                                                                                       return
                                                                                      end
                                                                                      local.get $0
                                                                                      local.get $1
-                                                                                     call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_object_result>~visit
+                                                                                     call $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data~visit
                                                                                      return
                                                                                     end
                                                                                     local.get $0
                                                                                     local.get $1
-                                                                                    call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.create_tournament_arguments>~visit
+                                                                                    call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                     return
                                                                                    end
                                                                                    local.get $0
                                                                                    local.get $1
-                                                                                   call $~lib/@koinos/proto-as/koinos/chain/chain/chain.caller_data~visit
+                                                                                   call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result~visit
                                                                                    return
                                                                                   end
                                                                                   local.get $0
                                                                                   local.get $1
-                                                                                  call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result>~visit
                                                                                   return
                                                                                  end
                                                                                  local.get $0
                                                                                  local.get $1
-                                                                                 call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result~visit
+                                                                                 call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments~visit
                                                                                  return
                                                                                 end
                                                                                 local.get $0
                                                                                 local.get $1
-                                                                                call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_caller_result>~visit
+                                                                                call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                                 return
                                                                                end
                                                                                local.get $0
                                                                                local.get $1
-                                                                               call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments~visit
+                                                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>~visit
                                                                                return
                                                                               end
                                                                               local.get $0
                                                                               local.get $1
-                                                                              call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                                              call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block~visit
                                                                               return
                                                                              end
                                                                              local.get $0
                                                                              local.get $1
-                                                                             call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.check_authority_result>~visit
+                                                                             call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header~visit
                                                                              return
                                                                             end
                                                                             local.get $0
                                                                             local.get $1
-                                                                            call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block~visit
+                                                                            call $~lib/array/Array<~lib/typedarray/Uint8Array>~visit
                                                                             return
                                                                            end
                                                                            local.get $0
                                                                            local.get $1
-                                                                           call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.block_header~visit
+                                                                           call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction~visit
                                                                            return
                                                                           end
                                                                           local.get $0
                                                                           local.get $1
-                                                                          call $~lib/array/Array<~lib/typedarray/Uint8Array>~visit
+                                                                          call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header~visit
                                                                           return
                                                                          end
                                                                          local.get $0
                                                                          local.get $1
-                                                                         call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction~visit
+                                                                         call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation~visit
                                                                          return
                                                                         end
                                                                         local.get $0
                                                                         local.get $1
-                                                                        call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction_header~visit
+                                                                        call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation~visit
                                                                         return
                                                                        end
                                                                        local.get $0
                                                                        local.get $1
-                                                                       call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation~visit
+                                                                       call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation~visit
                                                                        return
                                                                       end
                                                                       local.get $0
                                                                       local.get $1
-                                                                      call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.upload_contract_operation~visit
+                                                                      call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation~visit
                                                                       return
                                                                      end
                                                                      local.get $0
                                                                      local.get $1
-                                                                     call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.call_contract_operation~visit
+                                                                     call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target~visit
                                                                      return
                                                                     end
                                                                     local.get $0
                                                                     local.get $1
-                                                                    call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_call_operation~visit
+                                                                    call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle~visit
                                                                     return
                                                                    end
                                                                    local.get $0
                                                                    local.get $1
-                                                                   call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.system_call_target~visit
+                                                                   call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation~visit
                                                                    return
                                                                   end
                                                                   local.get $0
                                                                   local.get $1
-                                                                  call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.contract_call_bundle~visit
+                                                                  call $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation>~visit
                                                                   return
                                                                  end
                                                                  local.get $0
                                                                  local.get $1
-                                                                 call $~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.set_system_contract_operation~visit
+                                                                 call $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction>~visit
                                                                  return
                                                                 end
                                                                 local.get $0
                                                                 local.get $1
-                                                                call $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.operation>~visit
+                                                                call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                                 return
                                                                end
                                                                local.get $0
                                                                local.get $1
-                                                               call $~lib/array/Array<~lib/@koinos/proto-as/koinos/protocol/protocol/protocol.transaction>~visit
+                                                               call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result~visit
                                                                return
                                                               end
                                                               local.get $0
                                                               local.get $1
-                                                              call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                              call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result>~visit
                                                               return
                                                              end
                                                              local.get $0
                                                              local.get $1
-                                                             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result~visit
+                                                             call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments~visit
                                                              return
                                                             end
                                                             local.get $0
                                                             local.get $1
-                                                            call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.get_block_result>~visit
+                                                            call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                             return
                                                            end
                                                            local.get $0
                                                            local.get $1
-                                                           call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments~visit
+                                                           call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                            return
                                                           end
                                                           local.get $0
                                                           local.get $1
-                                                          call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.put_object_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                          call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments~visit
                                                           return
                                                          end
                                                          local.get $0
                                                          local.get $1
-                                                         call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_created_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                         call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                          return
                                                         end
                                                         local.get $0
                                                         local.get $1
-                                                        call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments~visit
+                                                        call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments>~visit
                                                         return
                                                        end
                                                        local.get $0
                                                        local.get $1
-                                                       call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.event_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                       call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                        return
                                                       end
                                                       local.get $0
                                                       local.get $1
-                                                      call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.start_tournament_arguments>~visit
+                                                      call $assembly/proto/klash/klash.tournament_started_event~visit
                                                       return
                                                      end
                                                      local.get $0
                                                      local.get $1
-                                                     call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_round_started_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                     call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                                      return
                                                     end
                                                     local.get $0
                                                     local.get $1
-                                                    call $assembly/proto/klash/klash.tournament_started_event~visit
+                                                    call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments>~visit
                                                     return
                                                    end
                                                    local.get $0
                                                    local.get $1
-                                                   call $~lib/function/Function<%28assembly/proto/klash/klash.tournament_started_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                                   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments>~visit
                                                    return
                                                   end
                                                   local.get $0
                                                   local.get $1
-                                                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_config_arguments>~visit
+                                                  call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments>~visit
                                                   return
                                                  end
                                                  local.get $0
                                                  local.get $1
-                                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_tournament_tree_arguments>~visit
+                                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments>~visit
                                                  return
                                                 end
                                                 local.get $0
                                                 local.get $1
-                                                call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_waiting_players_arguments>~visit
+                                                call $assembly/proto/klash/klash.can_timeout_player_arguments~visit
                                                 return
                                                end
                                                local.get $0
                                                local.get $1
-                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.get_unfinished_matches_arguments>~visit
+                                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments>~visit
                                                return
                                               end
-                                              local.get $0
-                                              local.get $1
-                                              call $assembly/proto/klash/klash.can_timeout_player_arguments~visit
                                               return
                                              end
                                              local.get $0
                                              local.get $1
-                                             call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.can_timeout_player_arguments>~visit
+                                             call $~lib/staticarray/StaticArray<~lib/string/String>~visit
                                              return
                                             end
+                                            local.get $0
+                                            local.get $1
+                                            call $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                             return
                                            end
                                            local.get $0
                                            local.get $1
-                                           call $~lib/staticarray/StaticArray<~lib/string/String>~visit
+                                           call $assembly/proto/klash/klash.sign_up_arguments~visit
                                            return
                                           end
                                           local.get $0
                                           local.get $1
-                                          call $~lib/function/Function<%28assembly/proto/klash/klash.boolean%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                          call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments>~visit
                                           return
                                          end
                                          local.get $0
                                          local.get $1
-                                         call $assembly/proto/klash/klash.sign_up_arguments~visit
+                                         call $assembly/proto/klash/klash.player_signed_up_event~visit
                                          return
                                         end
                                         local.get $0
                                         local.get $1
-                                        call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.sign_up_arguments>~visit
+                                        call $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                         return
                                        end
                                        local.get $0
                                        local.get $1
-                                       call $assembly/proto/klash/klash.player_signed_up_event~visit
+                                       call $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                        return
                                       end
                                       local.get $0
                                       local.get $1
-                                      call $~lib/function/Function<%28assembly/proto/klash/klash.player_signed_up_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                      call $assembly/proto/klash/klash.play_sign_arguments~visit
                                       return
                                      end
                                      local.get $0
                                      local.get $1
-                                     call $~lib/function/Function<%28assembly/proto/klash/klash.empty_message%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                     call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments>~visit
                                      return
                                     end
                                     local.get $0
                                     local.get $1
-                                    call $assembly/proto/klash/klash.play_sign_arguments~visit
+                                    call $assembly/proto/klash/klash.sign_played_event~visit
                                     return
                                    end
                                    local.get $0
                                    local.get $1
-                                   call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.play_sign_arguments>~visit
+                                   call $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                    return
                                   end
                                   local.get $0
                                   local.get $1
-                                  call $assembly/proto/klash/klash.sign_played_event~visit
+                                  call $assembly/proto/klash/klash.verify_sign_arguments~visit
                                   return
                                  end
                                  local.get $0
                                  local.get $1
-                                 call $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                                 call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments>~visit
                                  return
                                 end
                                 local.get $0
                                 local.get $1
-                                call $assembly/proto/klash/klash.verify_sign_arguments~visit
+                                call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments~visit
                                 return
                                end
                                local.get $0
                                local.get $1
-                               call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>assembly/proto/klash/klash.verify_sign_arguments>~visit
+                               call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                                return
                               end
                               local.get $0
                               local.get $1
-                              call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments~visit
+                              call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result~visit
                               return
                              end
                              local.get $0
                              local.get $1
-                             call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
+                             call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result>~visit
                              return
                             end
                             local.get $0
                             local.get $1
-                            call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result~visit
+                            call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments~visit
                             return
                            end
                            local.get $0
                            local.get $1
-                           call $~lib/function/Function<%28~lib/as-proto/Reader/Reader%2Ci32%29=>~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.hash_result>~visit
+                           call $~lib/function/Function<%28~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments%2C~lib/as-proto/Writer/Writer%29=>void>~visit
                            return
                           end
                           local.get $0
@@ -25051,11 +25133,77 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
  )
- (func $assembly/Random/Random.verifySign (param $0 i64) (param $1 i64) (param $2 i32) (result i32)
+ (func $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments> (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedSizer/FixedSizer#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  i32.load
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#reset
+  local.get $0
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store offset=4
+  local.get $2
+  i32.const 2
+  global.set $~argumentsLength
+  local.get $1
+  i32.load
+  call_indirect $0 (type $i32_i32_=>_none)
+  global.get $~lib/as-proto/Protobuf/WRITER
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.store
+  local.get $2
+  call $~lib/as-proto/internal/FixedWriter/FixedWriter#finish
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
+ (func $~lib/@koinos/sdk-as/systemCalls/System.log (param $0 i32)
+  (local $1 i32)
+  (local $2 i32)
   (local $3 i32)
   (local $4 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 20
+  i32.const 16
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -25067,57 +25215,180 @@
   i64.store offset=8
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  i32.store offset=16
+  local.get $0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments#constructor
+  local.tee $1
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.const 6672
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  call $~lib/as-proto/Protobuf/Protobuf.encode<~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments>
+  local.tee $2
+  i32.store offset=8
+  global.get $~lib/@koinos/proto-as/koinos/chain/system_call_ids/system_call_ids.system_call_id.log
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  i32.load offset=4
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.MAX_BUFFER_SIZE
+  local.get $2
+  i32.load offset=4
+  local.get $2
+  i32.load offset=8
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  i32.load offset=4
+  call $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall
+  local.set $3
+  local.get $3
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.SYSTEM_CALL_BUFFER
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  i32.const 0
+  global.get $~lib/@koinos/sdk-as/systemCalls/System.RETURN_BYTES
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=12
+  local.get $4
+  i32.const 0
+  call $~lib/typedarray/Uint32Array#__get
+  call $~lib/typedarray/Uint8Array#slice
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  local.get $4
+  i32.store offset=4
+  local.get $4
+  call $~lib/@koinos/sdk-as/systemCalls/System.checkErrorCode
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/Random/Random.verifySign (param $0 i64) (param $1 i64) (param $2 i32) (result i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 24
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=16
   global.get $~lib/memory/__stack_pointer
   global.get $~lib/@koinos/sdk-as/util/crypto/Crypto.multicodec.sha2_256
   i64.extend_i32_s
   local.get $0
   i32.const 10
   call $~lib/number/U64#toString
-  local.set $4
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store offset=8
-  local.get $4
+  local.get $7
+  i32.store offset=4
+  local.get $7
   local.get $1
   i32.const 10
   call $~lib/number/U64#toString
-  local.set $4
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store offset=12
-  local.get $4
+  local.get $7
+  i32.store offset=8
+  local.get $7
   call $~lib/string/String.__concat
-  local.set $4
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store offset=4
-  local.get $4
+  local.get $7
+  i32.store
+  local.get $7
   call $~lib/@koinos/sdk-as/util/stringBytes/StringBytes.stringToBytes
-  local.set $4
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store offset=4
-  local.get $4
+  local.get $7
+  i32.store
+  local.get $7
   i64.const 0
   call $~lib/@koinos/sdk-as/systemCalls/System.hash
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  local.get $4
-  i32.store
-  local.get $4
-  call $~lib/@koinos/sdk-as/util/stringBytes/StringBytes.bytesToString
   local.tee $3
-  i32.store offset=16
+  i32.store offset=12
+  i32.const 0
+  local.set $4
+  loop $for-loop|0
+   local.get $4
+   local.get $3
+   local.tee $5
+   if (result i32)
+    local.get $5
+   else
+    unreachable
+   end
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   local.get $7
+   i32.store offset=16
+   local.get $7
+   call $~lib/typedarray/Uint8Array#get:length
+   i32.lt_s
+   local.set $5
+   local.get $5
+   if
+    local.get $3
+    local.tee $6
+    if (result i32)
+     local.get $6
+    else
+     unreachable
+    end
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store
+    local.get $7
+    local.get $4
+    call $~lib/typedarray/Uint8Array#__get
+    i32.const 10
+    call $~lib/number/U8#toString
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store offset=16
+    local.get $7
+    call $~lib/@koinos/sdk-as/systemCalls/System.log
+    local.get $4
+    i32.const 1
+    i32.add
+    local.set $4
+    br $for-loop|0
+   end
+  end
+  global.get $~lib/memory/__stack_pointer
   local.get $3
+  call $~lib/@koinos/sdk-as/util/stringBytes/StringBytes.bytesToString
+  local.tee $4
+  i32.store offset=20
+  local.get $4
   local.get $2
   call $~lib/string/String.__eq
-  local.set $4
+  local.set $7
   global.get $~lib/memory/__stack_pointer
-  i32.const 20
+  i32.const 24
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $4
+  local.get $7
  )
  (func $~lib/as-proto/Protobuf/Protobuf.encode<assembly/proto/klash/klash.sign_verified_event> (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -25302,7 +25573,7 @@
     call $~lib/number/U64#toString
     local.tee $5
     i32.store offset=12
-    i32.const 7152
+    i32.const 7184
     local.set $6
     global.get $~lib/memory/__stack_pointer
     local.get $6
@@ -25311,7 +25582,7 @@
     i32.const 1
     local.get $4
     call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
-    i32.const 7152
+    i32.const 7184
     local.set $6
     global.get $~lib/memory/__stack_pointer
     local.get $6
@@ -25320,7 +25591,7 @@
     i32.const 3
     local.get $5
     call $~lib/staticarray/StaticArray<~lib/string/String>#__uset
-    i32.const 7152
+    i32.const 7184
     local.set $6
     global.get $~lib/memory/__stack_pointer
     local.get $6
@@ -25975,7 +26246,7 @@
    local.get $0
    local.get $10
    call $assembly/Klash/Klash#_update_match
-   i32.const 7200
+   i32.const 7232
    local.set $13
    global.get $~lib/memory/__stack_pointer
    local.get $13
@@ -25989,7 +26260,7 @@
    local.get $13
    i32.store offset=8
    local.get $13
-   i32.const 7280
+   i32.const 7312
    local.set $13
    global.get $~lib/memory/__stack_pointer
    local.get $13
@@ -26004,7 +26275,7 @@
    i32.const 0
    i32.const 2
    i32.const 85
-   i32.const 7312
+   i32.const 7344
    call $~lib/rt/__newArray
    local.set $13
    global.get $~lib/memory/__stack_pointer
@@ -26058,7 +26329,7 @@
     local.get $13
     local.get $5
     call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>#put
-    i32.const 7344
+    i32.const 7376
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26089,7 +26360,7 @@
     local.get $13
     i32.store offset=8
     local.get $13
-    i32.const 7424
+    i32.const 7456
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26104,7 +26375,7 @@
     i32.const 0
     i32.const 2
     i32.const 85
-    i32.const 7456
+    i32.const 7488
     call $~lib/rt/__newArray
     local.set $13
     global.get $~lib/memory/__stack_pointer
@@ -26146,7 +26417,7 @@
     local.get $13
     local.get $5
     call $~lib/@koinos/sdk-as/util/storage/Storage.Obj<assembly/proto/klash/klash.waiting_players_rounds>#put
-    i32.const 7488
+    i32.const 7520
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26179,7 +26450,7 @@
     local.get $13
     i32.store offset=8
     local.get $13
-    i32.const 7568
+    i32.const 7600
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26194,7 +26465,7 @@
     i32.const 0
     i32.const 2
     i32.const 85
-    i32.const 7600
+    i32.const 7632
     call $~lib/rt/__newArray
     local.set $13
     global.get $~lib/memory/__stack_pointer
@@ -26204,7 +26475,7 @@
     call $~lib/@koinos/sdk-as/systemCalls/System.event
    end
   end
-  i32.const 7632
+  i32.const 7664
   local.set $13
   global.get $~lib/memory/__stack_pointer
   local.get $13
@@ -26218,7 +26489,7 @@
   local.get $13
   i32.store offset=8
   local.get $13
-  i32.const 7712
+  i32.const 7744
   local.set $13
   global.get $~lib/memory/__stack_pointer
   local.get $13
@@ -26233,7 +26504,7 @@
   i32.const 0
   i32.const 2
   i32.const 85
-  i32.const 7744
+  i32.const 7776
   call $~lib/rt/__newArray
   local.set $13
   global.get $~lib/memory/__stack_pointer
@@ -26255,7 +26526,7 @@
   i64.const 0
   i64.eq
   if
-   i32.const 7776
+   i32.const 7808
    local.set $13
    global.get $~lib/memory/__stack_pointer
    local.get $13
@@ -26266,7 +26537,7 @@
    i64.extend_i32_s
    local.get $6
    call $assembly/proto/klash/klash.tournament_round_finished_event#constructor
-   i32.const 7872
+   i32.const 7904
    local.set $13
    global.get $~lib/memory/__stack_pointer
    local.get $13
@@ -26281,7 +26552,7 @@
    i32.const 0
    i32.const 2
    i32.const 85
-   i32.const 7904
+   i32.const 7936
    call $~lib/rt/__newArray
    local.set $13
    global.get $~lib/memory/__stack_pointer
@@ -26302,7 +26573,7 @@
    i32.sub
    i32.eq
    if
-    i32.const 7936
+    i32.const 7968
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26316,7 +26587,7 @@
     local.get $13
     i32.store offset=8
     local.get $13
-    i32.const 8032
+    i32.const 8064
     local.set $13
     global.get $~lib/memory/__stack_pointer
     local.get $13
@@ -26331,7 +26602,7 @@
     i32.const 0
     i32.const 2
     i32.const 85
-    i32.const 8064
+    i32.const 8096
     call $~lib/rt/__newArray
     local.set $13
     global.get $~lib/memory/__stack_pointer
@@ -26408,7 +26679,7 @@
     i32.const 0
     i32.const 2
     i32.const 85
-    i32.const 8096
+    i32.const 8128
     call $~lib/rt/__newArray
     local.set $13
     global.get $~lib/memory/__stack_pointer
@@ -26681,7 +26952,7 @@
   i32.store offset=28
   local.get $14
   call $assembly/Random/Random.verifySign
-  i32.const 6672
+  i32.const 6704
   local.set $14
   global.get $~lib/memory/__stack_pointer
   local.get $14
@@ -26746,7 +27017,7 @@
    local.get $10
    call $assembly/proto/klash/klash.player#set:last_action_timestamp
   end
-  i32.const 6752
+  i32.const 6784
   local.set $14
   global.get $~lib/memory/__stack_pointer
   local.get $14
@@ -26762,7 +27033,7 @@
   local.get $14
   i32.store offset=28
   local.get $14
-  i32.const 6832
+  i32.const 6864
   local.set $14
   global.get $~lib/memory/__stack_pointer
   local.get $14
@@ -26777,7 +27048,7 @@
   i32.const 0
   i32.const 2
   i32.const 85
-  i32.const 6864
+  i32.const 6896
   call $~lib/rt/__newArray
   local.set $14
   global.get $~lib/memory/__stack_pointer
@@ -26977,7 +27248,7 @@
      i32.store offset=32
     end
    end
-   i32.const 6896
+   i32.const 6928
    local.set $14
    global.get $~lib/memory/__stack_pointer
    local.get $14
@@ -26992,7 +27263,7 @@
    local.get $14
    i32.store offset=28
    local.get $14
-   i32.const 6992
+   i32.const 7024
    local.set $14
    global.get $~lib/memory/__stack_pointer
    local.get $14
@@ -27007,7 +27278,7 @@
    i32.const 0
    i32.const 2
    i32.const 85
-   i32.const 7024
+   i32.const 7056
    call $~lib/rt/__newArray
    local.set $14
    global.get $~lib/memory/__stack_pointer
@@ -27241,7 +27512,7 @@
   local.set $3
   local.get $3
   i32.load8_u
-  i32.const 8160
+  i32.const 8192
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
@@ -27301,7 +27572,7 @@
   end
   i64.extend_i32_u
   call $assembly/Klash/Klash#_resolve_match
-  i32.const 8240
+  i32.const 8272
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
@@ -27316,7 +27587,7 @@
   local.get $8
   i32.store offset=24
   local.get $8
-  i32.const 8320
+  i32.const 8352
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
@@ -27331,7 +27602,7 @@
   i32.const 0
   i32.const 2
   i32.const 85
-  i32.const 8352
+  i32.const 8384
   call $~lib/rt/__newArray
   local.set $8
   global.get $~lib/memory/__stack_pointer
@@ -28213,7 +28484,7 @@
        local.get $5
        i32.store offset=12
        local.get $5
-       i32.const 8128
+       i32.const 8160
        local.set $5
        global.get $~lib/memory/__stack_pointer
        local.get $5
@@ -28250,7 +28521,7 @@
       local.get $5
       i32.store offset=12
       local.get $5
-      i32.const 8384
+      i32.const 8416
       local.set $5
       global.get $~lib/memory/__stack_pointer
       local.get $5
@@ -28288,7 +28559,7 @@
      local.get $5
      i32.store offset=12
      local.get $5
-     i32.const 8416
+     i32.const 8448
      local.set $5
      global.get $~lib/memory/__stack_pointer
      local.get $5
@@ -28326,7 +28597,7 @@
     local.get $5
     i32.store offset=12
     local.get $5
-    i32.const 8448
+    i32.const 8480
     local.set $5
     global.get $~lib/memory/__stack_pointer
     local.get $5
@@ -36160,6 +36431,176 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
  )
+ (func $~lib/util/number/utoa32 (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $1
+  i32.const 2
+  i32.lt_s
+  if (result i32)
+   i32.const 1
+  else
+   local.get $1
+   i32.const 36
+   i32.gt_s
+  end
+  if
+   unreachable
+  end
+  local.get $0
+  i32.eqz
+  if
+   i32.const 3280
+   local.set $7
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $7
+   return
+  end
+  local.get $1
+  i32.const 10
+  i32.eq
+  if
+   local.get $0
+   call $~lib/util/number/decimalCount32
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.const 1
+   i32.shl
+   i32.const 1
+   call $~lib/rt/itcms/__new
+   local.tee $2
+   i32.store
+   local.get $2
+   local.set $6
+   local.get $0
+   local.set $5
+   local.get $3
+   local.set $4
+   i32.const 0
+   i32.const 1
+   i32.ge_s
+   drop
+   local.get $6
+   local.get $5
+   local.get $4
+   call $~lib/util/number/utoa32_dec_lut
+  else
+   local.get $1
+   i32.const 16
+   i32.eq
+   if
+    i32.const 31
+    local.get $0
+    i32.clz
+    i32.sub
+    i32.const 2
+    i32.shr_s
+    i32.const 1
+    i32.add
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.const 1
+    i32.shl
+    i32.const 1
+    call $~lib/rt/itcms/__new
+    local.tee $2
+    i32.store
+    local.get $2
+    local.set $6
+    local.get $0
+    local.set $5
+    local.get $3
+    local.set $4
+    i32.const 0
+    i32.const 1
+    i32.ge_s
+    drop
+    local.get $6
+    local.get $5
+    i64.extend_i32_u
+    local.get $4
+    call $~lib/util/number/utoa_hex_lut
+   else
+    local.get $0
+    i64.extend_i32_u
+    local.get $1
+    call $~lib/util/number/ulog_base
+    local.set $3
+    global.get $~lib/memory/__stack_pointer
+    local.get $3
+    i32.const 1
+    i32.shl
+    i32.const 1
+    call $~lib/rt/itcms/__new
+    local.tee $2
+    i32.store
+    local.get $2
+    local.get $0
+    i64.extend_i32_u
+    local.get $3
+    local.get $1
+    call $~lib/util/number/utoa64_any_core
+   end
+  end
+  local.get $2
+  local.set $7
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $7
+ )
+ (func $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments#constructor (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.const 133
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments#set:message
+  local.get $0
+  local.get $1
+  call $~lib/@koinos/proto-as/koinos/chain/system_calls/system_calls.log_arguments#set:message
+  local.get $0
+  local.set $2
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $2
+ )
  (func $assembly/proto/klash/klash.sign_verified_event#constructor (param $0 i32) (param $1 i32) (param $2 i64) (param $3 i64) (result i32)
   (local $4 i32)
   global.get $~lib/memory/__stack_pointer
@@ -36175,7 +36616,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
-   i32.const 133
+   i32.const 135
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36221,7 +36662,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
-   i32.const 135
+   i32.const 137
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36306,7 +36747,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 137
+   i32.const 139
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36340,7 +36781,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 139
+   i32.const 141
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36380,7 +36821,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 141
+   i32.const 143
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36420,7 +36861,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 143
+   i32.const 145
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36454,7 +36895,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 146
+   i32.const 148
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36488,7 +36929,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 148
+   i32.const 150
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36604,7 +37045,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
-   i32.const 150
+   i32.const 152
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36644,7 +37085,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 152
+   i32.const 154
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -36760,7 +37201,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 155
+   i32.const 157
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store

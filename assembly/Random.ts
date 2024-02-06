@@ -40,13 +40,23 @@ export default class Random {
     return result;
   }
 
-  static verifySign(sign: u64, seed: u64, hash_to_verify: string): boolean {
-    const hashed_sign = StringBytes.bytesToString(
-      System.hash(
-        Crypto.multicodec.sha2_256,
-        StringBytes.stringToBytes(sign.toString() + seed.toString())
-      )
+  static hashString(sign: u64, seed: u64): string {
+    const hashedBytes = System.hash(
+      Crypto.multicodec.sha2_256,
+      StringBytes.stringToBytes(sign.toString() + seed.toString())
     );
-    return hashed_sign == hash_to_verify;
+
+    // Convert the hashed bytes to a hex string
+    let hashedSign = "";
+    for (let i = 0; i < hashedBytes!.length; i++) {
+      hashedSign += hashedBytes![i].toString(16);
+    }
+
+    return hashedSign;
+  }
+
+  static verifySign(sign: u64, seed: u64, hash_to_verify: string): boolean {
+    let hashedSign = Random.hashString(sign, seed);
+    return hashedSign == hash_to_verify;
   }
 }

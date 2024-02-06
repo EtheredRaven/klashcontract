@@ -1,6 +1,7 @@
 import { Klash } from "../Klash";
 import { klash } from "../proto/klash";
 import Constants from "../Constants";
+import Random from "../Random";
 import {
   MockVM,
   authority,
@@ -8,8 +9,6 @@ import {
   Arrays,
   protocol,
   StringBytes,
-  System,
-  Crypto,
 } from "@koinos/sdk-as";
 
 const CONTRACT_ID = Base58.decode("1KLASH1i4nXLHWh19obwtotNGx2GufiMbG");
@@ -78,12 +77,7 @@ export function playSign(
   sign: u64 = Constants.ROCK_SIGN,
   seed: u64 = 10000
 ): string {
-  const hashed_sign = StringBytes.bytesToString(
-    System.hash(
-      Crypto.multicodec.sha2_256,
-      StringBytes.stringToBytes(sign.toString() + seed.toString())
-    )
-  );
+  const hashed_sign = Random.hashString(sign, seed);
   setAuthority(account);
   c.play_sign(new klash.play_sign_arguments(account, hashed_sign));
 
