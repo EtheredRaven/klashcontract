@@ -122,7 +122,8 @@ export class Klash {
   verify_sign(args: klash.verify_sign_arguments): klash.empty_message {
     // const from = args.from;
     // const sign = args.sign;
-    // const random_seed = args.random_seed;
+    // const random_seed_1 = args.random_seed_1;
+    // const random_seed_2 = args.random_seed_2;
 
     // YOUR CODE HERE
 

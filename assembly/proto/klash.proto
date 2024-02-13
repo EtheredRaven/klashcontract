@@ -138,7 +138,8 @@ message play_sign_arguments {
 message verify_sign_arguments {
   bytes from = 1 [(koinos.btype) = ADDRESS];
   uint64 sign = 2;
-  uint64 random_seed = 3 [jstype = JS_STRING];
+  uint64 random_seed_1 = 3 [jstype = JS_STRING];
+  uint64 random_seed_2 = 4 [jstype = JS_STRING];
 }
 
 // @description Timeout a player that didn't play or verify a sign in a match
@@ -173,6 +174,7 @@ message tournament_created_event {
 
 message player_signed_up_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
+  uint64 tournament_id = 2 [jstype = JS_STRING];
 }
 
 message tournament_started_event {
@@ -184,12 +186,18 @@ message sign_played_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   string sign_hash = 2;
   uint64 timestamp = 3 [jstype = JS_STRING];
+  uint64 round = 4 [jstype = JS_STRING];
+  uint64 tournament_id = 5 [jstype = JS_STRING];
+  bool is_player1 = 6;
 }
 
 message sign_verified_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 sign = 2 [jstype = JS_STRING];
   uint64 timestamp = 3 [jstype = JS_STRING];
+  uint64 round = 4 [jstype = JS_STRING];
+  uint64 tournament_id = 5 [jstype = JS_STRING];
+  bool is_player1 = 6;
 }
 
 message match_round_finished_event {
@@ -204,11 +212,13 @@ message match_finished_event {
 message tournament_round_finished_event {
   uint64 round = 1 [jstype = JS_STRING];
   uint64 timestamp = 2 [jstype = JS_STRING];
+  uint64 tournament_id = 3 [jstype = JS_STRING];
 }
 
 message tournament_round_started_event {
   uint64 round = 1 [jstype = JS_STRING];
   uint64 timestamp = 2 [jstype = JS_STRING];
+  uint64 tournament_id = 3 [jstype = JS_STRING];
 }
 
 message new_match_created_event {
@@ -218,11 +228,13 @@ message new_match_created_event {
 message new_player_waiting_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 round = 2 [jstype = JS_STRING];
+  uint64 tournament_id = 3 [jstype = JS_STRING];
 }
 
 message player_skipped_round_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 round = 2 [jstype = JS_STRING];
+  uint64 tournament_id = 3 [jstype = JS_STRING];
 }
 
 message player_timed_out_event {

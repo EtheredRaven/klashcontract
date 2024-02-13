@@ -1038,9 +1038,14 @@ export namespace klash {
         writer.uint64(message.sign);
       }
 
-      if (message.random_seed != 0) {
+      if (message.random_seed_1 != 0) {
         writer.uint32(24);
-        writer.uint64(message.random_seed);
+        writer.uint64(message.random_seed_1);
+      }
+
+      if (message.random_seed_2 != 0) {
+        writer.uint32(32);
+        writer.uint64(message.random_seed_2);
       }
     }
 
@@ -1060,7 +1065,11 @@ export namespace klash {
             break;
 
           case 3:
-            message.random_seed = reader.uint64();
+            message.random_seed_1 = reader.uint64();
+            break;
+
+          case 4:
+            message.random_seed_2 = reader.uint64();
             break;
 
           default:
@@ -1074,16 +1083,19 @@ export namespace klash {
 
     from: Uint8Array | null;
     sign: u64;
-    random_seed: u64;
+    random_seed_1: u64;
+    random_seed_2: u64;
 
     constructor(
       from: Uint8Array | null = null,
       sign: u64 = 0,
-      random_seed: u64 = 0
+      random_seed_1: u64 = 0,
+      random_seed_2: u64 = 0
     ) {
       this.from = from;
       this.sign = sign;
-      this.random_seed = random_seed;
+      this.random_seed_1 = random_seed_1;
+      this.random_seed_2 = random_seed_2;
     }
   }
 
@@ -1273,6 +1285,11 @@ export namespace klash {
         writer.uint32(10);
         writer.bytes(unique_name_player);
       }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(16);
+        writer.uint64(message.tournament_id);
+      }
     }
 
     static decode(reader: Reader, length: i32): player_signed_up_event {
@@ -1286,6 +1303,10 @@ export namespace klash {
             message.player = reader.bytes();
             break;
 
+          case 2:
+            message.tournament_id = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1296,9 +1317,11 @@ export namespace klash {
     }
 
     player: Uint8Array | null;
+    tournament_id: u64;
 
-    constructor(player: Uint8Array | null = null) {
+    constructor(player: Uint8Array | null = null, tournament_id: u64 = 0) {
       this.player = player;
+      this.tournament_id = tournament_id;
     }
   }
 
@@ -1378,6 +1401,21 @@ export namespace klash {
         writer.uint32(24);
         writer.uint64(message.timestamp);
       }
+
+      if (message.round != 0) {
+        writer.uint32(32);
+        writer.uint64(message.round);
+      }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(40);
+        writer.uint64(message.tournament_id);
+      }
+
+      if (message.is_player1 != false) {
+        writer.uint32(48);
+        writer.bool(message.is_player1);
+      }
     }
 
     static decode(reader: Reader, length: i32): sign_played_event {
@@ -1399,6 +1437,18 @@ export namespace klash {
             message.timestamp = reader.uint64();
             break;
 
+          case 4:
+            message.round = reader.uint64();
+            break;
+
+          case 5:
+            message.tournament_id = reader.uint64();
+            break;
+
+          case 6:
+            message.is_player1 = reader.bool();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1411,15 +1461,24 @@ export namespace klash {
     player: Uint8Array | null;
     sign_hash: string | null;
     timestamp: u64;
+    round: u64;
+    tournament_id: u64;
+    is_player1: bool;
 
     constructor(
       player: Uint8Array | null = null,
       sign_hash: string | null = null,
-      timestamp: u64 = 0
+      timestamp: u64 = 0,
+      round: u64 = 0,
+      tournament_id: u64 = 0,
+      is_player1: bool = false
     ) {
       this.player = player;
       this.sign_hash = sign_hash;
       this.timestamp = timestamp;
+      this.round = round;
+      this.tournament_id = tournament_id;
+      this.is_player1 = is_player1;
     }
   }
 
@@ -1439,6 +1498,21 @@ export namespace klash {
       if (message.timestamp != 0) {
         writer.uint32(24);
         writer.uint64(message.timestamp);
+      }
+
+      if (message.round != 0) {
+        writer.uint32(32);
+        writer.uint64(message.round);
+      }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(40);
+        writer.uint64(message.tournament_id);
+      }
+
+      if (message.is_player1 != false) {
+        writer.uint32(48);
+        writer.bool(message.is_player1);
       }
     }
 
@@ -1461,6 +1535,18 @@ export namespace klash {
             message.timestamp = reader.uint64();
             break;
 
+          case 4:
+            message.round = reader.uint64();
+            break;
+
+          case 5:
+            message.tournament_id = reader.uint64();
+            break;
+
+          case 6:
+            message.is_player1 = reader.bool();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1473,15 +1559,24 @@ export namespace klash {
     player: Uint8Array | null;
     sign: u64;
     timestamp: u64;
+    round: u64;
+    tournament_id: u64;
+    is_player1: bool;
 
     constructor(
       player: Uint8Array | null = null,
       sign: u64 = 0,
-      timestamp: u64 = 0
+      timestamp: u64 = 0,
+      round: u64 = 0,
+      tournament_id: u64 = 0,
+      is_player1: bool = false
     ) {
       this.player = player;
       this.sign = sign;
       this.timestamp = timestamp;
+      this.round = round;
+      this.tournament_id = tournament_id;
+      this.is_player1 = is_player1;
     }
   }
 
@@ -1591,6 +1686,11 @@ export namespace klash {
         writer.uint32(16);
         writer.uint64(message.timestamp);
       }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(24);
+        writer.uint64(message.tournament_id);
+      }
     }
 
     static decode(
@@ -1611,6 +1711,10 @@ export namespace klash {
             message.timestamp = reader.uint64();
             break;
 
+          case 3:
+            message.tournament_id = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1622,10 +1726,12 @@ export namespace klash {
 
     round: u64;
     timestamp: u64;
+    tournament_id: u64;
 
-    constructor(round: u64 = 0, timestamp: u64 = 0) {
+    constructor(round: u64 = 0, timestamp: u64 = 0, tournament_id: u64 = 0) {
       this.round = round;
       this.timestamp = timestamp;
+      this.tournament_id = tournament_id;
     }
   }
 
@@ -1644,6 +1750,11 @@ export namespace klash {
         writer.uint32(16);
         writer.uint64(message.timestamp);
       }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(24);
+        writer.uint64(message.tournament_id);
+      }
     }
 
     static decode(reader: Reader, length: i32): tournament_round_started_event {
@@ -1661,6 +1772,10 @@ export namespace klash {
             message.timestamp = reader.uint64();
             break;
 
+          case 3:
+            message.tournament_id = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1672,10 +1787,12 @@ export namespace klash {
 
     round: u64;
     timestamp: u64;
+    tournament_id: u64;
 
-    constructor(round: u64 = 0, timestamp: u64 = 0) {
+    constructor(round: u64 = 0, timestamp: u64 = 0, tournament_id: u64 = 0) {
       this.round = round;
       this.timestamp = timestamp;
+      this.tournament_id = tournament_id;
     }
   }
 
@@ -1729,6 +1846,11 @@ export namespace klash {
         writer.uint32(16);
         writer.uint64(message.round);
       }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(24);
+        writer.uint64(message.tournament_id);
+      }
     }
 
     static decode(reader: Reader, length: i32): new_player_waiting_event {
@@ -1746,6 +1868,10 @@ export namespace klash {
             message.round = reader.uint64();
             break;
 
+          case 3:
+            message.tournament_id = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1757,10 +1883,16 @@ export namespace klash {
 
     player: Uint8Array | null;
     round: u64;
+    tournament_id: u64;
 
-    constructor(player: Uint8Array | null = null, round: u64 = 0) {
+    constructor(
+      player: Uint8Array | null = null,
+      round: u64 = 0,
+      tournament_id: u64 = 0
+    ) {
       this.player = player;
       this.round = round;
+      this.tournament_id = tournament_id;
     }
   }
 
@@ -1775,6 +1907,11 @@ export namespace klash {
       if (message.round != 0) {
         writer.uint32(16);
         writer.uint64(message.round);
+      }
+
+      if (message.tournament_id != 0) {
+        writer.uint32(24);
+        writer.uint64(message.tournament_id);
       }
     }
 
@@ -1793,6 +1930,10 @@ export namespace klash {
             message.round = reader.uint64();
             break;
 
+          case 3:
+            message.tournament_id = reader.uint64();
+            break;
+
           default:
             reader.skipType(tag & 7);
             break;
@@ -1804,10 +1945,16 @@ export namespace klash {
 
     player: Uint8Array | null;
     round: u64;
+    tournament_id: u64;
 
-    constructor(player: Uint8Array | null = null, round: u64 = 0) {
+    constructor(
+      player: Uint8Array | null = null,
+      round: u64 = 0,
+      tournament_id: u64 = 0
+    ) {
       this.player = player;
       this.round = round;
+      this.tournament_id = tournament_id;
     }
   }
 

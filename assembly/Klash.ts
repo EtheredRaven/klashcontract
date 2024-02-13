@@ -194,7 +194,11 @@ export class Klash {
         System.event(
           "klash.tournament_round_started_event",
           Protobuf.encode(
-            new klash.tournament_round_started_event(1, timestamp),
+            new klash.tournament_round_started_event(
+              1,
+              timestamp,
+              this._tournamentConfig.get()!.tournament_id
+            ),
             klash.tournament_round_started_event.encode
           ),
           []
@@ -485,7 +489,10 @@ export class Klash {
     System.event(
       "klash.player_signed_up_event",
       Protobuf.encode(
-        new klash.player_signed_up_event(from),
+        new klash.player_signed_up_event(
+          from,
+          this._tournamentConfig.get()!.tournament_id
+        ),
         klash.player_signed_up_event.encode
       ),
       []
@@ -532,7 +539,14 @@ export class Klash {
     System.event(
       "klash.sign_played_event",
       Protobuf.encode(
-        new klash.sign_played_event(from, sign_hash, timestamp),
+        new klash.sign_played_event(
+          from,
+          sign_hash,
+          timestamp,
+          match.round,
+          match.tournament_id,
+          isPlayer1
+        ),
         klash.sign_played_event.encode
       ),
       []
@@ -547,13 +561,15 @@ export class Klash {
    * @param args
    * @param args.from - The address of the player
    * @param args.sign - The sign of the player
-   * @param args.random_seed - The random seed used to generate the sign
+   * @param args.random_seed_1 - The first random seed used to generate the sign
+   * @param args.random_seed_2 - The second random seed used to generate the sign
    * @returns An empty message
    */
   verify_sign(args: klash.verify_sign_arguments): klash.empty_message {
     const from = args.from!;
     const sign = args.sign;
-    const random_seed = args.random_seed;
+    const random_seed_1 = args.random_seed_1;
+    const random_seed_2 = args.random_seed_2;
 
     this._checkPlayability(from);
 
@@ -588,7 +604,8 @@ export class Klash {
     );
 
     System.require(
-      Random.verifySign(sign, random_seed, playerSign.sign_hash!),
+      Random.verifySign(sign, random_seed_1, playerSign.sign_hash!) ||
+        Random.verifySign(sign, random_seed_2, playerSign.sign_hash!),
       "Hashed sign does not match"
     );
 
@@ -604,7 +621,14 @@ export class Klash {
     System.event(
       "klash.sign_verified_event",
       Protobuf.encode(
-        new klash.sign_verified_event(from, sign, timestamp),
+        new klash.sign_verified_event(
+          from,
+          sign,
+          timestamp,
+          match.round,
+          match.tournament_id,
+          isPlayer1
+        ),
         klash.sign_verified_event.encode
       ),
       []
@@ -631,6 +655,12 @@ export class Klash {
         round_winner = match.player1!.address;
       } // If it is a draw, then nothing happens
 
+      // Reset the signs for the next round
+      match.sign1 = null;
+      match.sign2 = null;
+      match.player1!.last_action_timestamp = timestamp;
+      match.player2!.last_action_timestamp = timestamp;
+
       // Emit the event
       System.event(
         "klash.match_round_finished_event",
@@ -640,12 +670,6 @@ export class Klash {
         ),
         []
       );
-
-      // Reset the signs for the next round
-      match.sign1 = null;
-      match.sign2 = null;
-      match.player1!.last_action_timestamp = timestamp;
-      match.player2!.last_action_timestamp = timestamp;
     }
 
     this._update_match(match);
@@ -692,11 +716,18 @@ export class Klash {
     const winningPlayer =
       winner == Constants.MATCH_PLAYER_1_WON ? match.player1! : match.player2!;
     winningPlayer.last_action_timestamp = 0;
+
+    let emitEvent = 0;
+    let newMatch: klash.match = new klash.match();
+    const NEW_MATCH_CREATED = 1;
+    const PLAYER_SKIPPED_ROUND = 2;
+    const NEW_PLAYER_WAITING = 3;
+
     if (nextRoundWaitingPlayers.players.length > 0) {
       // If there is a player waiting for a match
       const newOpponent = nextRoundWaitingPlayers.players.pop();
       this._waitingPlayers.put(waitingPlayersRounds);
-      const newMatch = new klash.match(
+      newMatch = new klash.match(
         winningPlayer,
         newOpponent,
         0,
@@ -708,15 +739,7 @@ export class Klash {
         null
       );
       this._update_match(newMatch);
-
-      System.event(
-        "klash.new_match_created_event",
-        Protobuf.encode(
-          new klash.new_match_created_event(newMatch),
-          klash.new_match_created_event.encode
-        ),
-        []
-      );
+      emitEvent = NEW_MATCH_CREATED;
     } else if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
       // If there is no player waiting for a match and all the matches of the round are finished
       // Go into the next waiting list
@@ -724,38 +747,14 @@ export class Klash {
         waitingPlayersRounds.waiting_players_rounds[roundNumber];
       nextRoundWaitingPlayers.players.push(winningPlayer);
       this._waitingPlayers.put(waitingPlayersRounds);
-
-      // Emit the event
-      System.event(
-        "player_skipped_round_event",
-        Protobuf.encode(
-          new klash.player_skipped_round_event(
-            winningPlayer.address!,
-            roundNumber
-          ),
-          klash.player_skipped_round_event.encode
-        ),
-        []
-      );
+      emitEvent = PLAYER_SKIPPED_ROUND;
     } else {
       // If there are still matches to be played in the round, just wait for the next match
       const nextRoundWaitingPlayers =
         waitingPlayersRounds.waiting_players_rounds[roundNumber - 1];
       nextRoundWaitingPlayers.players.push(winningPlayer);
       this._waitingPlayers.put(waitingPlayersRounds);
-
-      // Emit the event
-      System.event(
-        "klash.new_player_waiting_event",
-        Protobuf.encode(
-          new klash.new_player_waiting_event(
-            winningPlayer.address!,
-            roundNumber - 1
-          ),
-          klash.new_player_waiting_event.encode
-        ),
-        []
-      );
+      emitEvent = NEW_PLAYER_WAITING;
     }
 
     System.event(
@@ -773,7 +772,11 @@ export class Klash {
       System.event(
         "klash.tournament_round_finished_event",
         Protobuf.encode(
-          new klash.tournament_round_finished_event(roundNumber, timestamp),
+          new klash.tournament_round_finished_event(
+            roundNumber,
+            timestamp,
+            this._tournamentConfig.get()!.tournament_id
+          ),
           klash.tournament_round_finished_event.encode
         ),
         []
@@ -800,9 +803,49 @@ export class Klash {
           Protobuf.encode(
             new klash.tournament_round_started_event(
               roundNumber + 1,
-              timestamp
+              timestamp,
+              this._tournamentConfig.get()!.tournament_id
             ),
             klash.tournament_round_started_event.encode
+          ),
+          []
+        );
+      }
+    }
+
+    if (emitEvent > 0) {
+      if (emitEvent == NEW_MATCH_CREATED) {
+        System.event(
+          "klash.new_match_created_event",
+          Protobuf.encode(
+            new klash.new_match_created_event(newMatch),
+            klash.new_match_created_event.encode
+          ),
+          []
+        );
+      } else if (emitEvent == PLAYER_SKIPPED_ROUND) {
+        System.event(
+          "player_skipped_round_event",
+          Protobuf.encode(
+            new klash.player_skipped_round_event(
+              winningPlayer.address!,
+              roundNumber,
+              this._tournamentConfig.get()!.tournament_id
+            ),
+            klash.player_skipped_round_event.encode
+          ),
+          []
+        );
+      } else if (emitEvent == NEW_PLAYER_WAITING) {
+        System.event(
+          "klash.new_player_waiting_event",
+          Protobuf.encode(
+            new klash.new_player_waiting_event(
+              winningPlayer.address!,
+              roundNumber - 1,
+              this._tournamentConfig.get()!.tournament_id
+            ),
+            klash.new_player_waiting_event.encode
           ),
           []
         );

@@ -1,5 +1,5 @@
 
-¶
+÷
 assembly/proto/klash.protoklashkoinos/options.proto"
 empty_message""
 uint64
@@ -57,12 +57,12 @@
 from (B€µRfrom"L
 play_sign_arguments
 from (B€µRfrom
-	sign_hash (	RsignHash"j
+	sign_hash (	RsignHash"•
 verify_sign_arguments
 from (B€µRfrom
-sign (Rsign#
-random_seed (B0R
-randomSeed"8
+sign (Rsign&
+random_seed_1 (B0RrandomSeed1&
+random_seed_2 (B0RrandomSeed2"8
 timeout_player_arguments
 player (B€µRplayer"7
 get_current_match_arguments
@@ -71,39 +71,52 @@ randomSeed"8
 update_owner_arguments!
 	new_owner (B€µRnewOwner"Q
 tournament_created_event5
-config (2.klash.full_tournament_configRconfig"6
+config (2.klash.full_tournament_configRconfig"_
 player_signed_up_event
-player (B€µRplayer"Ž
+player (B€µRplayer'
+tournament_id (B0RtournamentId"Ž
 tournament_started_event*
 tree (2.klash.tournament_treeRtreeF
-waiting_players (2.klash.waiting_players_roundsRwaitingPlayers"p
+waiting_players (2.klash.waiting_players_roundsRwaitingPlayers"Ò
 sign_played_event
 player (B€µRplayer
 	sign_hash (	RsignHash 
-	timestamp (B0R	timestamp"m
+	timestamp (B0R	timestamp
+round (B0Rround'
+tournament_id (B0RtournamentId
+
+is_player1 (R	isPlayer1"Ï
 sign_verified_event
 player (B€µRplayer
 sign (B0Rsign 
-	timestamp (B0R	timestamp"i
+	timestamp (B0R	timestamp
+round (B0Rround'
+tournament_id (B0RtournamentId
+
+is_player1 (R	isPlayer1"i
 match_round_finished_event"
 match (2.klash.matchRmatch'
 round_winner (B€µRroundWinner":
 match_finished_event"
-match (2.klash.matchRmatch"]
+match (2.klash.matchRmatch"†
 tournament_round_finished_event
 round (B0Rround 
-	timestamp (B0R	timestamp"\
+	timestamp (B0R	timestamp'
+tournament_id (B0RtournamentId"…
 tournament_round_started_event
 round (B0Rround 
-	timestamp (B0R	timestamp"=
+	timestamp (B0R	timestamp'
+tournament_id (B0RtournamentId"=
 new_match_created_event"
-match (2.klash.matchRmatch"R
+match (2.klash.matchRmatch"{
 new_player_waiting_event
 player (B€µRplayer
-round (B0Rround"T
+round (B0Rround'
+tournament_id (B0RtournamentId"}
 player_skipped_round_event
 player (B€µRplayer
-round (B0Rround"Z
+round (B0Rround'
+tournament_id (B0RtournamentId"Z
 player_timed_out_event
 player (B€µRplayer"
 match (2.klash.matchRmatch"?
