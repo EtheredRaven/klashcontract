@@ -1,5 +1,5 @@
 
-÷
+õ
 assembly/proto/klash.protoklashkoinos/options.proto"
 empty_message""
 uint64
@@ -77,23 +77,19 @@
 tournament_id (B0RtournamentId"Ž
 tournament_started_event*
 tree (2.klash.tournament_treeRtreeF
-waiting_players (2.klash.waiting_players_roundsRwaitingPlayers"Ò
+waiting_players (2.klash.waiting_players_roundsRwaitingPlayers"‘
 sign_played_event
 player (B€µRplayer
-	sign_hash (	RsignHash 
-	timestamp (B0R	timestamp
-round (B0Rround'
-tournament_id (B0RtournamentId
+	sign_hash (	RsignHash
 
-is_player1 (R	isPlayer1"Ï
+is_player1 (R	isPlayer1"
+match (2.klash.matchRmatch"Ž
 sign_verified_event
 player (B€µRplayer
-sign (B0Rsign 
-	timestamp (B0R	timestamp
-round (B0Rround'
-tournament_id (B0RtournamentId
+sign (B0Rsign
 
-is_player1 (R	isPlayer1"i
+is_player1 (R	isPlayer1"
+match (2.klash.matchRmatch"i
 match_round_finished_event"
 match (2.klash.matchRmatch'
 round_winner (B€µRroundWinner":

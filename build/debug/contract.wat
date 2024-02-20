@@ -8,8 +8,8 @@
  (type $i32_=>_none (func (param i32)))
  (type $none_=>_none (func))
  (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
- (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $i32_i32_i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32 i32 i32) (result i32)))
  (type $i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32) (result i32)))
  (type $i32_i32_i64_=>_i32 (func (param i32 i32 i64) (result i32)))
@@ -33,11 +33,10 @@
  (type $i32_i32_i32_i64_i64_i64_i64_i64_i32_i32_=>_i32 (func (param i32 i32 i32 i64 i64 i64 i64 i64 i32 i32) (result i32)))
  (type $i32_i32_i64_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i64 i32 i32 i32 i32) (result i32)))
  (type $i32_i64_i32_=>_i32 (func (param i32 i64 i32) (result i32)))
- (type $i32_i32_i32_i64_i64_i64_i32_=>_i32 (func (param i32 i32 i32 i64 i64 i64 i32) (result i32)))
  (type $i32_i32_i64_i64_i64_=>_i32 (func (param i32 i32 i64 i64 i64) (result i32)))
  (type $i32_i64_i32_i64_=>_i32 (func (param i32 i64 i32 i64) (result i32)))
  (type $i64_i64_i32_=>_i32 (func (param i64 i64 i32) (result i32)))
- (type $i32_i32_i64_i64_i64_i64_i32_=>_i32 (func (param i32 i32 i64 i64 i64 i64 i32) (result i32)))
+ (type $i32_i32_i64_i32_i32_=>_i32 (func (param i32 i32 i64 i32 i32) (result i32)))
  (import "env" "invoke_system_call" (func $~lib/@koinos/sdk-as/env/index/env.invokeSystemCall (param i32 i32 i32 i32 i32 i32) (result i32)))
  (global $~lib/as-proto/WireType/WireType.VARINT i32 (i32.const 0))
  (global $~lib/as-proto/WireType/WireType.FIXED_64 i32 (i32.const 1))
@@ -9559,37 +9558,35 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $assembly/proto/klash/klash.sign_played_event#set:timestamp (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=8
- )
- (func $assembly/proto/klash/klash.sign_played_event#set:round (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=16
- )
- (func $assembly/proto/klash/klash.sign_played_event#set:tournament_id (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=24
- )
  (func $assembly/proto/klash/klash.sign_played_event#set:is_player1 (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store8 offset=32
+  i32.store8 offset=8
+ )
+ (func $assembly/proto/klash/klash.sign_played_event#set:match (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=12
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
  )
  (func $assembly/proto/klash/klash.sign_played_event.encode (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
+  (local $4 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load
@@ -9623,61 +9620,42 @@
    call $~lib/as-proto/Writer/Writer#string@virtual
   end
   local.get $0
-  i64.load offset=8
-  i64.const 0
-  i64.ne
+  i32.load8_u offset=8
+  i32.const 0
+  i32.ne
+  i32.const 0
+  i32.ne
   if
    local.get $1
    i32.const 24
    call $~lib/as-proto/Writer/Writer#uint32@virtual
    local.get $1
    local.get $0
-   i64.load offset=8
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i64.load offset=16
-  i64.const 0
-  i64.ne
-  if
-   local.get $1
-   i32.const 32
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i64.load offset=16
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i64.load offset=24
-  i64.const 0
-  i64.ne
-  if
-   local.get $1
-   i32.const 40
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i64.load offset=24
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i32.load8_u offset=32
-  i32.const 0
-  i32.ne
-  i32.const 0
-  i32.ne
-  if
-   local.get $1
-   i32.const 48
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i32.load8_u offset=32
+   i32.load8_u offset=8
    call $~lib/as-proto/Writer/Writer#bool@virtual
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  local.get $0
+  i32.load offset=12
+  local.tee $4
+  i32.store offset=8
+  local.get $4
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 34
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   call $~lib/as-proto/Writer/Writer#fork@virtual
+   local.get $4
+   local.get $1
+   call $assembly/proto/klash/klash.match.encode
+   local.get $1
+   call $~lib/as-proto/Writer/Writer#ldelim@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -9835,36 +9813,31 @@
   local.get $1
   i64.store offset=8
  )
- (func $assembly/proto/klash/klash.sign_verified_event#set:timestamp (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=16
- )
- (func $assembly/proto/klash/klash.sign_verified_event#set:round (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=24
- )
- (func $assembly/proto/klash/klash.sign_verified_event#set:tournament_id (param $0 i32) (param $1 i64)
-  local.get $0
-  local.get $1
-  i64.store offset=32
- )
  (func $assembly/proto/klash/klash.sign_verified_event#set:is_player1 (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  i32.store8 offset=40
+  i32.store8 offset=16
+ )
+ (func $assembly/proto/klash/klash.sign_verified_event#set:match (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=20
+  local.get $0
+  local.get $1
+  i32.const 0
+  call $~lib/rt/itcms/__link
  )
  (func $assembly/proto/klash/klash.sign_verified_event.encode (param $0 i32) (param $1 i32)
   (local $2 i32)
+  (local $3 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 8
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
+  i64.const 0
+  i64.store
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load
@@ -9895,61 +9868,42 @@
    call $~lib/as-proto/Writer/Writer#uint64@virtual
   end
   local.get $0
-  i64.load offset=16
-  i64.const 0
-  i64.ne
+  i32.load8_u offset=16
+  i32.const 0
+  i32.ne
+  i32.const 0
+  i32.ne
   if
    local.get $1
    i32.const 24
    call $~lib/as-proto/Writer/Writer#uint32@virtual
    local.get $1
    local.get $0
-   i64.load offset=16
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i64.load offset=24
-  i64.const 0
-  i64.ne
-  if
-   local.get $1
-   i32.const 32
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i64.load offset=24
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i64.load offset=32
-  i64.const 0
-  i64.ne
-  if
-   local.get $1
-   i32.const 40
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i64.load offset=32
-   call $~lib/as-proto/Writer/Writer#uint64@virtual
-  end
-  local.get $0
-  i32.load8_u offset=40
-  i32.const 0
-  i32.ne
-  i32.const 0
-  i32.ne
-  if
-   local.get $1
-   i32.const 48
-   call $~lib/as-proto/Writer/Writer#uint32@virtual
-   local.get $1
-   local.get $0
-   i32.load8_u offset=40
+   i32.load8_u offset=16
    call $~lib/as-proto/Writer/Writer#bool@virtual
   end
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  local.get $0
+  i32.load offset=20
+  local.tee $3
+  i32.store offset=4
+  local.get $3
+  i32.const 0
+  i32.ne
+  if
+   local.get $1
+   i32.const 34
+   call $~lib/as-proto/Writer/Writer#uint32@virtual
+   local.get $1
+   call $~lib/as-proto/Writer/Writer#fork@virtual
+   local.get $3
+   local.get $1
+   call $assembly/proto/klash/klash.match.encode
+   local.get $1
+   call $~lib/as-proto/Writer/Writer#ldelim@virtual
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
@@ -15012,6 +14966,14 @@
    local.get $1
    call $~lib/rt/itcms/__visit
   end
+  local.get $0
+  i32.load offset=12
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
  )
  (func $~lib/function/Function<%28assembly/proto/klash/klash.sign_played_event%2C~lib/as-proto/Writer/Writer%29=>void>#__visit (param $0 i32) (param $1 i32)
   local.get $0
@@ -15094,6 +15056,14 @@
   (local $2 i32)
   local.get $0
   i32.load
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=20
   local.tee $2
   if
    local.get $2
@@ -24996,6 +24966,56 @@
    local.get $7
    call $assembly/proto/klash/klash.player#set:last_action_timestamp
   end
+  local.get $5
+  if (result i32)
+   local.get $4
+   i32.load offset=52
+   i32.const 0
+   i32.ne
+  else
+   i32.const 0
+  end
+  if
+   global.get $~lib/memory/__stack_pointer
+   local.get $4
+   i32.load offset=4
+   local.tee $6
+   i32.store offset=24
+   local.get $6
+   if (result i32)
+    local.get $6
+   else
+    unreachable
+   end
+   local.get $7
+   call $assembly/proto/klash/klash.player#set:last_action_timestamp
+  else
+   local.get $5
+   i32.eqz
+   if (result i32)
+    local.get $4
+    i32.load offset=48
+    i32.const 0
+    i32.ne
+   else
+    i32.const 0
+   end
+   if
+    global.get $~lib/memory/__stack_pointer
+    local.get $4
+    i32.load
+    local.tee $6
+    i32.store offset=24
+    local.get $6
+    if (result i32)
+     local.get $6
+    else
+     unreachable
+    end
+    local.get $7
+    call $assembly/proto/klash/klash.player#set:last_action_timestamp
+   end
+  end
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.get $3
@@ -25026,12 +25046,8 @@
   i32.const 0
   local.get $2
   local.get $3
-  local.get $7
-  local.get $4
-  i64.load offset=32
-  local.get $4
-  i64.load offset=40
   local.get $5
+  local.get $4
   call $assembly/proto/klash/klash.sign_played_event#constructor
   local.set $10
   global.get $~lib/memory/__stack_pointer
@@ -27202,12 +27218,8 @@
   i32.const 0
   local.get $2
   local.get $3
-  local.get $11
-  local.get $6
-  i64.load offset=32
-  local.get $6
-  i64.load offset=40
   local.get $7
+  local.get $6
   call $assembly/proto/klash/klash.sign_verified_event#constructor
   local.set $15
   global.get $~lib/memory/__stack_pointer
@@ -36193,8 +36205,8 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
  )
- (func $assembly/proto/klash/klash.sign_played_event#constructor (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i64) (param $4 i64) (param $5 i64) (param $6 i32) (result i32)
-  (local $7 i32)
+ (func $assembly/proto/klash/klash.sign_played_event#constructor (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
+  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -36207,7 +36219,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 33
+   i32.const 16
    i32.const 125
    call $~lib/rt/itcms/__new
    local.tee $0
@@ -36220,17 +36232,11 @@
   i32.const 0
   call $assembly/proto/klash/klash.sign_played_event#set:sign_hash
   local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_played_event#set:timestamp
-  local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_played_event#set:round
-  local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_played_event#set:tournament_id
-  local.get $0
   i32.const 0
   call $assembly/proto/klash/klash.sign_played_event#set:is_player1
+  local.get $0
+  i32.const 0
+  call $assembly/proto/klash/klash.sign_played_event#set:match
   local.get $0
   local.get $1
   call $assembly/proto/klash/klash.sign_played_event#set:player
@@ -36239,23 +36245,17 @@
   call $assembly/proto/klash/klash.sign_played_event#set:sign_hash
   local.get $0
   local.get $3
-  call $assembly/proto/klash/klash.sign_played_event#set:timestamp
-  local.get $0
-  local.get $4
-  call $assembly/proto/klash/klash.sign_played_event#set:round
-  local.get $0
-  local.get $5
-  call $assembly/proto/klash/klash.sign_played_event#set:tournament_id
-  local.get $0
-  local.get $6
   call $assembly/proto/klash/klash.sign_played_event#set:is_player1
   local.get $0
-  local.set $7
+  local.get $4
+  call $assembly/proto/klash/klash.sign_played_event#set:match
+  local.get $0
+  local.set $5
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $5
  )
  (func $assembly/proto/klash/klash.verify_sign_arguments#constructor (param $0 i32) (param $1 i32) (param $2 i64) (param $3 i64) (param $4 i64) (result i32)
   (local $5 i32)
@@ -36817,8 +36817,8 @@
   global.set $~lib/memory/__stack_pointer
   local.get $4
  )
- (func $assembly/proto/klash/klash.sign_verified_event#constructor (param $0 i32) (param $1 i32) (param $2 i64) (param $3 i64) (param $4 i64) (param $5 i64) (param $6 i32) (result i32)
-  (local $7 i32)
+ (func $assembly/proto/klash/klash.sign_verified_event#constructor (param $0 i32) (param $1 i32) (param $2 i64) (param $3 i32) (param $4 i32) (result i32)
+  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -36831,7 +36831,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 41
+   i32.const 24
    i32.const 133
    call $~lib/rt/itcms/__new
    local.tee $0
@@ -36844,17 +36844,11 @@
   i64.const 0
   call $assembly/proto/klash/klash.sign_verified_event#set:sign
   local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_verified_event#set:timestamp
-  local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_verified_event#set:round
-  local.get $0
-  i64.const 0
-  call $assembly/proto/klash/klash.sign_verified_event#set:tournament_id
-  local.get $0
   i32.const 0
   call $assembly/proto/klash/klash.sign_verified_event#set:is_player1
+  local.get $0
+  i32.const 0
+  call $assembly/proto/klash/klash.sign_verified_event#set:match
   local.get $0
   local.get $1
   call $assembly/proto/klash/klash.sign_verified_event#set:player
@@ -36863,23 +36857,17 @@
   call $assembly/proto/klash/klash.sign_verified_event#set:sign
   local.get $0
   local.get $3
-  call $assembly/proto/klash/klash.sign_verified_event#set:timestamp
-  local.get $0
-  local.get $4
-  call $assembly/proto/klash/klash.sign_verified_event#set:round
-  local.get $0
-  local.get $5
-  call $assembly/proto/klash/klash.sign_verified_event#set:tournament_id
-  local.get $0
-  local.get $6
   call $assembly/proto/klash/klash.sign_verified_event#set:is_player1
   local.get $0
-  local.set $7
+  local.get $4
+  call $assembly/proto/klash/klash.sign_verified_event#set:match
+  local.get $0
+  local.set $5
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $5
  )
  (func $assembly/proto/klash/klash.match_round_finished_event#constructor (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)

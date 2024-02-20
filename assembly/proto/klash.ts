@@ -1397,24 +1397,17 @@ export namespace klash {
         writer.string(unique_name_sign_hash);
       }
 
-      if (message.timestamp != 0) {
-        writer.uint32(24);
-        writer.uint64(message.timestamp);
-      }
-
-      if (message.round != 0) {
-        writer.uint32(32);
-        writer.uint64(message.round);
-      }
-
-      if (message.tournament_id != 0) {
-        writer.uint32(40);
-        writer.uint64(message.tournament_id);
-      }
-
       if (message.is_player1 != false) {
-        writer.uint32(48);
+        writer.uint32(24);
         writer.bool(message.is_player1);
+      }
+
+      const unique_name_match = message.match;
+      if (unique_name_match !== null) {
+        writer.uint32(34);
+        writer.fork();
+        match.encode(unique_name_match, writer);
+        writer.ldelim();
       }
     }
 
@@ -1434,19 +1427,11 @@ export namespace klash {
             break;
 
           case 3:
-            message.timestamp = reader.uint64();
+            message.is_player1 = reader.bool();
             break;
 
           case 4:
-            message.round = reader.uint64();
-            break;
-
-          case 5:
-            message.tournament_id = reader.uint64();
-            break;
-
-          case 6:
-            message.is_player1 = reader.bool();
+            message.match = match.decode(reader, reader.uint32());
             break;
 
           default:
@@ -1460,25 +1445,19 @@ export namespace klash {
 
     player: Uint8Array | null;
     sign_hash: string | null;
-    timestamp: u64;
-    round: u64;
-    tournament_id: u64;
     is_player1: bool;
+    match: match | null;
 
     constructor(
       player: Uint8Array | null = null,
       sign_hash: string | null = null,
-      timestamp: u64 = 0,
-      round: u64 = 0,
-      tournament_id: u64 = 0,
-      is_player1: bool = false
+      is_player1: bool = false,
+      match: match | null = null
     ) {
       this.player = player;
       this.sign_hash = sign_hash;
-      this.timestamp = timestamp;
-      this.round = round;
-      this.tournament_id = tournament_id;
       this.is_player1 = is_player1;
+      this.match = match;
     }
   }
 
@@ -1495,24 +1474,17 @@ export namespace klash {
         writer.uint64(message.sign);
       }
 
-      if (message.timestamp != 0) {
-        writer.uint32(24);
-        writer.uint64(message.timestamp);
-      }
-
-      if (message.round != 0) {
-        writer.uint32(32);
-        writer.uint64(message.round);
-      }
-
-      if (message.tournament_id != 0) {
-        writer.uint32(40);
-        writer.uint64(message.tournament_id);
-      }
-
       if (message.is_player1 != false) {
-        writer.uint32(48);
+        writer.uint32(24);
         writer.bool(message.is_player1);
+      }
+
+      const unique_name_match = message.match;
+      if (unique_name_match !== null) {
+        writer.uint32(34);
+        writer.fork();
+        match.encode(unique_name_match, writer);
+        writer.ldelim();
       }
     }
 
@@ -1532,19 +1504,11 @@ export namespace klash {
             break;
 
           case 3:
-            message.timestamp = reader.uint64();
+            message.is_player1 = reader.bool();
             break;
 
           case 4:
-            message.round = reader.uint64();
-            break;
-
-          case 5:
-            message.tournament_id = reader.uint64();
-            break;
-
-          case 6:
-            message.is_player1 = reader.bool();
+            message.match = match.decode(reader, reader.uint32());
             break;
 
           default:
@@ -1558,25 +1522,19 @@ export namespace klash {
 
     player: Uint8Array | null;
     sign: u64;
-    timestamp: u64;
-    round: u64;
-    tournament_id: u64;
     is_player1: bool;
+    match: match | null;
 
     constructor(
       player: Uint8Array | null = null,
       sign: u64 = 0,
-      timestamp: u64 = 0,
-      round: u64 = 0,
-      tournament_id: u64 = 0,
-      is_player1: bool = false
+      is_player1: bool = false,
+      match: match | null = null
     ) {
       this.player = player;
       this.sign = sign;
-      this.timestamp = timestamp;
-      this.round = round;
-      this.tournament_id = tournament_id;
       this.is_player1 = is_player1;
+      this.match = match;
     }
   }
 

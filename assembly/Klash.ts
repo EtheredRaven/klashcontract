@@ -530,6 +530,13 @@ export class Klash {
       ? (match.player1!.last_action_timestamp = timestamp)
       : (match.player2!.last_action_timestamp = timestamp);
 
+    // If the opponent has already played, then the timestamp of the last action of the opponent is updated
+    if (isPlayer1 && match.sign2 != null) {
+      match.player2!.last_action_timestamp = timestamp;
+    } else if (!isPlayer1 && match.sign1 != null) {
+      match.player1!.last_action_timestamp = timestamp;
+    }
+
     // For now, the game only knows the hash of the sign, to avoid the opponent to guess the sign before the end of the round
     const new_sign = new klash.sign(sign_hash, Constants.UNKNOWN_SIGN);
     isPlayer1 ? (match.sign1 = new_sign) : (match.sign2 = new_sign);
@@ -539,14 +546,7 @@ export class Klash {
     System.event(
       "klash.sign_played_event",
       Protobuf.encode(
-        new klash.sign_played_event(
-          from,
-          sign_hash,
-          timestamp,
-          match.round,
-          match.tournament_id,
-          isPlayer1
-        ),
+        new klash.sign_played_event(from, sign_hash, isPlayer1, match),
         klash.sign_played_event.encode
       ),
       []
@@ -621,14 +621,7 @@ export class Klash {
     System.event(
       "klash.sign_verified_event",
       Protobuf.encode(
-        new klash.sign_verified_event(
-          from,
-          sign,
-          timestamp,
-          match.round,
-          match.tournament_id,
-          isPlayer1
-        ),
+        new klash.sign_verified_event(from, sign, isPlayer1, match),
         klash.sign_verified_event.encode
       ),
       []
@@ -676,9 +669,9 @@ export class Klash {
 
     // If there is a winner, then the match is finished and the winner will play against the next player in the waiting list
     const winner =
-      match.score1 >= 4
+      match.score1 >= 1 // TODO: Change to 3 or 4cd ..
         ? Constants.MATCH_PLAYER_1_WON
-        : match.score2 >= 4
+        : match.score2 >= 1
         ? Constants.MATCH_PLAYER_2_WON
         : Constants.MATCH_NOT_FINISHED;
     if (winner != Constants.MATCH_NOT_FINISHED) {
@@ -825,11 +818,11 @@ export class Klash {
         );
       } else if (emitEvent == PLAYER_SKIPPED_ROUND) {
         System.event(
-          "player_skipped_round_event",
+          "klash.player_skipped_round_event",
           Protobuf.encode(
             new klash.player_skipped_round_event(
               winningPlayer.address!,
-              roundNumber,
+              roundNumber + 1,
               this._tournamentConfig.get()!.tournament_id
             ),
             klash.player_skipped_round_event.encode

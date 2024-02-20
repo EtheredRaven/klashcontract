@@ -185,19 +185,15 @@ message tournament_started_event {
 message sign_played_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   string sign_hash = 2;
-  uint64 timestamp = 3 [jstype = JS_STRING];
-  uint64 round = 4 [jstype = JS_STRING];
-  uint64 tournament_id = 5 [jstype = JS_STRING];
-  bool is_player1 = 6;
+  bool is_player1 = 3;
+  match match = 4;
 }
 
 message sign_verified_event {
   bytes player = 1 [(koinos.btype) = ADDRESS];
   uint64 sign = 2 [jstype = JS_STRING];
-  uint64 timestamp = 3 [jstype = JS_STRING];
-  uint64 round = 4 [jstype = JS_STRING];
-  uint64 tournament_id = 5 [jstype = JS_STRING];
-  bool is_player1 = 6;
+  bool is_player1 = 3;
+  match match = 4;
 }
 
 message match_round_finished_event {
