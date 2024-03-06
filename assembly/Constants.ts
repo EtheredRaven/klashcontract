@@ -1,5 +1,5 @@
 export default class Constants {
-  static CONTRACT_METADATA_SPACE_ID: u32 = 0;
+  static CONTRACT_METADATA_SPACE_ID: u32 = 100;
   static TOURNAMENT_CONFIG_SPACE_ID: u32 = 1;
   static SIGNED_UP_PLAYERS_SPACE_ID: u32 = 2;
   static TOURNAMENT_TREE_SPACE_ID: u32 = 3;

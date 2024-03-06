@@ -669,9 +669,9 @@ export class Klash {
 
     // If there is a winner, then the match is finished and the winner will play against the next player in the waiting list
     const winner =
-      match.score1 >= 1 // TODO: Change to 3 or 4cd ..
+      match.score1 >= 4 // TODO: Change to 3 or 4cd ..
         ? Constants.MATCH_PLAYER_1_WON
-        : match.score2 >= 1
+        : match.score2 >= 4
         ? Constants.MATCH_PLAYER_2_WON
         : Constants.MATCH_NOT_FINISHED;
     if (winner != Constants.MATCH_NOT_FINISHED) {
@@ -760,6 +760,7 @@ export class Klash {
     );
 
     // If the tournament is finished, then emit the event
+    let emitTournamentRoundStarted = false;
     if (unfinishedMatchesNumber.values[roundNumber - 1] == 0) {
       // Emit tournament round finished event
       System.event(
@@ -787,22 +788,7 @@ export class Klash {
           []
         );
       } else {
-        const tree = this._tournamentTree.get()!;
-        tree.rounds[roundNumber].start_timestamp = timestamp;
-        this._tournamentTree.put(tree);
-
-        System.event(
-          "klash.tournament_round_started_event",
-          Protobuf.encode(
-            new klash.tournament_round_started_event(
-              roundNumber + 1,
-              timestamp,
-              this._tournamentConfig.get()!.tournament_id
-            ),
-            klash.tournament_round_started_event.encode
-          ),
-          []
-        );
+        emitTournamentRoundStarted = true;
       }
     }
 
@@ -843,6 +829,25 @@ export class Klash {
           []
         );
       }
+    }
+
+    if (emitTournamentRoundStarted) {
+      const tree = this._tournamentTree.get()!;
+      tree.rounds[roundNumber].start_timestamp = timestamp;
+      this._tournamentTree.put(tree);
+
+      System.event(
+        "klash.tournament_round_started_event",
+        Protobuf.encode(
+          new klash.tournament_round_started_event(
+            roundNumber + 1,
+            timestamp,
+            this._tournamentConfig.get()!.tournament_id
+          ),
+          klash.tournament_round_started_event.encode
+        ),
+        []
+      );
     }
   }
 
