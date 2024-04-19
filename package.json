@@ -18,8 +18,8 @@
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "build:debug": "koinos-sdk-as-cli build-all debug 0 klash.proto",
-    "build:release": "koinos-sdk-as-cli build-all release 0 klash.proto",
+    "build:debug": "RETURN_BUFFER_SIZE=524288 koinos-sdk-as-cli build-all --generate_authorize debug 0 klash.proto",
+    "build:release": "RETURN_BUFFER_SIZE=524288 koinos-sdk-as-cli build-all --generate_authorize release 0 klash.proto",
     "test": "koinos-sdk-as-cli run-tests"
   }
 }

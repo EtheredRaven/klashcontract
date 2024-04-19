@@ -2,6 +2,18 @@ import { System, Protobuf, authority } from "@koinos/sdk-as";
 import { klash } from "./proto/klash";
 
 export class Klash {
+  authorize(args: authority.authorize_arguments): authority.authorize_result {
+    // const call = args.call;
+    // const type = args.type;
+
+    // YOUR CODE HERE
+
+    const res = new authority.authorize_result();
+    res.value = true;
+
+    return res;
+  }
+
   get_contract_metadata(
     args: klash.get_contract_metadata_arguments
   ): klash.contract_metadata {

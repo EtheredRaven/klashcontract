@@ -4,12 +4,17 @@ import {
   authority,
   Arrays,
   error,
+  value,
+  protocol,
   Protobuf,
   SafeMath,
+  Crypto,
 } from "@koinos/sdk-as";
 import { klash } from "./proto/klash";
 import Constants from "./Constants";
 import Random from "./Random";
+
+System.setSystemBufferSize(524288);
 
 export class Klash {
   _contractId: Uint8Array;
@@ -669,9 +674,9 @@ export class Klash {
 
     // If there is a winner, then the match is finished and the winner will play against the next player in the waiting list
     const winner =
-      match.score1 >= 4 // TODO: Change to 3 or 4cd ..
+      match.score1 >= 1 // TODO: Change to 3 or 4cd ..
         ? Constants.MATCH_PLAYER_1_WON
-        : match.score2 >= 4
+        : match.score2 >= 1
         ? Constants.MATCH_PLAYER_2_WON
         : Constants.MATCH_NOT_FINISHED;
     if (winner != Constants.MATCH_NOT_FINISHED) {
@@ -869,11 +874,6 @@ export class Klash {
     const match = this._matches.get(player)!;
     const isPlayer1 = Arrays.equal(match.player1!.address, player);
 
-    this._resolve_match(
-      match,
-      isPlayer1 ? Constants.MATCH_PLAYER_2_WON : Constants.MATCH_PLAYER_1_WON
-    );
-
     // Emit the event
     System.event(
       "klash.player_timed_out_event",
@@ -882,6 +882,11 @@ export class Klash {
         klash.player_timed_out_event.encode
       ),
       []
+    );
+
+    this._resolve_match(
+      match,
+      isPlayer1 ? Constants.MATCH_PLAYER_2_WON : Constants.MATCH_PLAYER_1_WON
     );
 
     return new klash.empty_message();
@@ -998,5 +1003,81 @@ export class Klash {
       "Owner has not authorized this call",
       error.error_code.authorization_failure
     );
+  }
+
+  /**
+   * Retrieves the signers associated with the current transaction.
+   * @returns {Array<Uint8Array>} An array of signer addresses.
+   */
+  getSigners(): Array<Uint8Array> {
+    const sigBytes =
+      System.getTransactionField("signatures")!.message_value!.value!;
+    const signatures = Protobuf.decode<value.list_type>(
+      sigBytes,
+      value.list_type.decode
+    );
+    const txId = System.getTransactionField("id")!.bytes_value!;
+    const signers: Array<Uint8Array> = [];
+    for (let i = 0; i < signatures.values.length; i++) {
+      let sig = signatures.values[i].bytes_value;
+      if (sig != null) {
+        const publicKey = System.recoverPublicKey(sig!, txId);
+        const address = Crypto.addressFromPublicKey(publicKey!);
+        signers.push(address);
+      }
+    }
+    return signers;
+  }
+
+  // Mana fountain
+  authorize(args: authority.authorize_arguments): authority.authorize_result {
+    // Check if it is the contract itself
+    const signers = this.getSigners();
+    for (let i = 0; i < signers.length; i += 1) {
+      if (Arrays.equal(this._contractId, signers[i]))
+        return new authority.authorize_result(true);
+    }
+
+    if (args.type == authority.authorization_type.transaction_application) {
+      const operations = Protobuf.decode<value.list_type>(
+        System.getTransactionField("operations")!.message_value!.value!,
+        value.list_type.decode
+      );
+      System.require(
+        operations.values.length == 1,
+        "transaction must have only 1 operation"
+      );
+
+      const operation = Protobuf.decode<protocol.operation>(
+        operations.values[0].message_value!.value!,
+        protocol.operation.decode
+      );
+
+      if (
+        operation.upload_contract != null &&
+        Arrays.equal(operation.upload_contract!.contract_id, this._contractId)
+      ) {
+        return new authority.authorize_result(true);
+      }
+
+      System.require(
+        System.getTransactionField("header.rc_limit")!.uint64_value <=
+          100000000,
+        "transaction rc limit must be less than 100000000"
+      );
+
+      System.require(
+        operation.call_contract != null,
+        "expected call contract operation"
+      );
+      System.require(
+        Arrays.equal(operation.call_contract!.contract_id, this._contractId),
+        "expected call contract operation to be this contract"
+      );
+
+      return new authority.authorize_result(true);
+    }
+
+    return new authority.authorize_result(false);
   }
 }

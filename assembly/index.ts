@@ -4,11 +4,21 @@ import { klash as ProtoNamespace } from "./proto/klash";
 
 export function main(): i32 {
   const contractArgs = System.getArguments();
-  let retbuf = new Uint8Array(1024);
+  let retbuf = new Uint8Array(524288);
 
   const c = new ContractClass();
 
   switch (contractArgs.entry_point) {
+    case 0x4a2dbd90: {
+      const args = Protobuf.decode<authority.authorize_arguments>(
+        contractArgs.args,
+        authority.authorize_arguments.decode
+      );
+      const res = c.authorize(args);
+      retbuf = Protobuf.encode(res, authority.authorize_result.encode);
+      break;
+    }
+
     case 0x784faa08: {
       const args =
         Protobuf.decode<ProtoNamespace.get_contract_metadata_arguments>(
